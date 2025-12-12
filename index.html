@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="당신의 마음은 몇 살인가요? AI로 실물 나이를 추측하고 심리 질문으로 마음의 나이를 계산해보세요!">
+    <meta name="keywords" content="마음의 나이, 심리테스트, 나이 계산기, 재미있는 테스트">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="마음의 나이 계산기">
+    <meta property="og:description" content="당신의 실물 나이와 마음의 나이를 비교해보세요!">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="마음의 나이 계산기">
+
+    <title>마음의 나이 계산기 | Mental Age Calculator</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&family=Poppins:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="lang-btn active" data-lang="ko" onclick="i18n.setLanguage('ko')">한국어</button>
+        <button class="lang-btn" data-lang="en" onclick="i18n.setLanguage('en')">English</button>
+        <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
+    </div>
+
+    <!-- Start Section -->
+    <section id="start-section" class="section active">
+        <div class="container">
+            <div class="start-content">
+                <div class="decorative-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+
+                <h1 class="main-title" data-i18n="title">
+                    당신의 마음은<br>몇 살인가요?
+                </h1>
+
+                <p class="subtitle" data-i18n="subtitle">
+                    AI가 당신의 얼굴로 실물 나이를 추측하고,<br>
+                    10가지 질문으로 마음의 나이를 알려드려요
+                </p>
+
+                <button class="btn-primary btn-start" onclick="app.goToUpload()">
+                    <span data-i18n="btnStart">테스트 시작하기</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload-section" class="section">
+        <div class="container">
+            <button class="btn-back" onclick="app.goToStart()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <div class="upload-content">
+                <h2 class="section-title" data-i18n="uploadTitle">사진 업로드</h2>
+                <p class="section-description" data-i18n="uploadDesc">정면 얼굴이 잘 보이는 사진을 올려주세요</p>
+
+                <div class="upload-card" id="upload-card">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                                <circle cx="12" cy="13" r="4" />
+                            </svg>
+                        </div>
+                        <p class="upload-text" data-i18n="uploadText">클릭하거나 이미지를 드래그하세요</p>
+                        <input type="file" id="photo-input" accept="image/*" hidden>
+                    </div>
+
+                    <div class="preview-area hidden" id="preview-area">
+                        <img id="preview-image" alt="Preview">
+                        <button class="btn-change" onclick="app.changePhoto()" data-i18n="btnChange">사진 변경</button>
+                    </div>
+                </div>
+
+                <div class="analyzing-area hidden" id="analyzing-area">
+                    <div class="loader"></div>
+                    <p class="analyzing-text" data-i18n="analyzing">AI가 당신의 얼굴을 분석하고 있어요...</p>
+                </div>
+
+                <div class="age-result hidden" id="age-result">
+                    <div class="result-badge">
+                        <span class="result-label" data-i18n="resultLabel">분석 완료!</span>
+                        <span class="result-value" data-i18n="resultText">당신의 실물 나이는 <strong
+                                id="physical-age">--</strong>세입니다</span>
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-next hidden" id="btn-next" onclick="app.startQuestions()">
+                    <span data-i18n="btnNext">다음 단계</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questions Section -->
+    <section id="questions-section" class="section">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+                <span class="progress-text" id="progress-text">1 / 10</span>
+            </div>
+
+            <div class="question-content" id="question-content">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section id="result-section" class="section">
+        <div class="container">
+            <div class="result-content" id="result-content">
+                <h2 class="section-title">결과 분석</h2>
+
+                <div class="age-comparison">
+                    <div class="age-circle">
+                        <div class="circle-inner">
+                            <span class="circle-label" data-i18n="physicalAgeLabel">실물 나이</span>
+                            <span class="circle-value" id="result-physical-age">--</span>
+                            <span class="circle-unit" data-i18n="ageUnit">세</span>
+                        </div>
+                    </div>
+
+                    <div class="vs-badge">VS</div>
+
+                    <div class="age-circle">
+                        <div class="circle-inner">
+                            <span class="circle-label" data-i18n="mentalAgeLabel">마음의 나이</span>
+                            <span class="circle-value" id="result-mental-age">--</span>
+                            <span class="circle-unit" data-i18n="ageUnit">세</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="age-difference" id="age-difference">
+                    <span class="diff-value" id="diff-value">+0</span>
+                </div>
+
+                <div class="result-message" id="result-message">
+                    <div class="message-emoji" id="message-emoji">🎈</div>
+                    <p class="message-text" id="message-text">완벽한 밸런스!</p>
+                </div>
+
+                <div class="share-buttons">
+                    <button class="btn-share" onclick="app.downloadImage()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                        </svg>
+                        이미지 저장
+                    </button>
+
+                    <button class="btn-share" onclick="app.copyLink()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        </svg>
+                        링크 복사
+                    </button>
+                </div>
+
+                <button class="btn-restart" onclick="app.restart()">
+                    다시 테스트하기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/ageDetection.js"></script>
+    <script src="js/share.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
