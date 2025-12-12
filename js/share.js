@@ -6,7 +6,7 @@ function initKakao() {
         // TODO: Replace with your actual Kakao JavaScript Key
         // Get your key from https://developers.kakao.com/
         const kakaoKey = 'YOUR_KAKAO_JAVASCRIPT_KEY';
-        
+
         if (kakaoKey !== 'YOUR_KAKAO_JAVASCRIPT_KEY') {
             window.Kakao.init(kakaoKey);
         }
@@ -33,7 +33,7 @@ function shareToKakao(physicalAge, mentalAge, diffText) {
             content: {
                 title: '🎯 마음의 나이 계산기',
                 description: `내 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세!\n${diffText}`,
-                imageUrl: 'https://via.placeholder.com/800x400.png?text=Mental+Age+Calculator',
+                imageUrl: window.location.origin + window.location.pathname.replace('index.html', '') + 'og-image.png',
                 link: {
                     mobileWebUrl: window.location.href,
                     webUrl: window.location.href,
@@ -60,14 +60,14 @@ function shareToTwitter(physicalAge, mentalAge, diffText) {
     const text = `내 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세! ${diffText}\n\n나도 테스트하기 👉`;
     const url = window.location.href;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-    
+
     window.open(twitterUrl, '_blank', 'width=550,height=420');
 }
 
 // Share to Instagram (Download guide)
 function shareToInstagram() {
     const message = `인스타그램에 공유하려면:\n\n1. 아래 '이미지 저장' 버튼을 눌러주세요\n2. 인스타그램 앱을 열어주세요\n3. 스토리나 게시물에 저장된 이미지를 업로드하세요\n\n💡 팁: 스토리에는 해시태그 #마음의나이 #심리테스트 를 추가해보세요!`;
-    
+
     if (confirm(message)) {
         // Trigger image download
         downloadResultImage();
