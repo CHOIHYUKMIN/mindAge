@@ -17,30 +17,40 @@ if (document.readyState === 'loading') {
 }
 
 // Share to KakaoTalk
-function shareToKakao(physicalAge, mentalAge, diffText) {
+function shareToKakao(physicalAge, mentalAge, diffText, resultMessage) {
     if (!window.Kakao || !window.Kakao.isInitialized()) {
         alert('카카오톡 공유를 사용하려면 Kakao JavaScript Key를 설정해주세요.\n\njs/share.js 파일에서 YOUR_KAKAO_JAVASCRIPT_KEY를 실제 키로 변경하세요.');
         return;
     }
+
+    // Get current URL without hash/query
+    const shareUrl = window.location.origin + window.location.pathname;
 
     try {
         window.Kakao.Share.sendDefault({
             objectType: 'feed',
             content: {
                 title: '🎯 마음의 나이 계산기',
-                description: `내 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세!\n${diffText}`,
+                description: `나의 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세!\n${diffText}\n\n${resultMessage}`,
                 imageUrl: window.location.origin + window.location.pathname.replace('index.html', '') + 'og-image.png',
                 link: {
-                    mobileWebUrl: window.location.href,
-                    webUrl: window.location.href,
+                    mobileWebUrl: shareUrl,
+                    webUrl: shareUrl,
                 },
             },
             buttons: [
                 {
-                    title: '나도 테스트하기',
+                    title: '나도 테스트하기 🎈',
                     link: {
-                        mobileWebUrl: window.location.origin + window.location.pathname,
-                        webUrl: window.location.origin + window.location.pathname,
+                        mobileWebUrl: shareUrl,
+                        webUrl: shareUrl,
+                    },
+                },
+                {
+                    title: '결과 자세히 보기',
+                    link: {
+                        mobileWebUrl: window.location.href,
+                        webUrl: window.location.href,
                     },
                 },
             ],

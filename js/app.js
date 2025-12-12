@@ -258,6 +258,9 @@ const app = {
         document.getElementById('message-emoji').textContent = emoji;
         document.getElementById('message-text').textContent = message;
 
+        // Store message for sharing
+        this.resultMessage = message;
+
         // Add confetti effect
         this.createConfetti();
     },
@@ -299,7 +302,8 @@ const app = {
     shareKakao() {
         const diff = this.mentalAge - this.physicalAge;
         const diffText = diff > 0 ? `${diff}살 더 성숙해요!` : diff < 0 ? `${Math.abs(diff)}살 더 젊어요!` : '딱 맞아요!';
-        shareToKakao(this.physicalAge, this.mentalAge, diffText);
+        const resultMessage = this.resultMessage || '재미있는 결과가 나왔어요!';
+        shareToKakao(this.physicalAge, this.mentalAge, diffText, resultMessage);
     },
 
     // Share to X (Twitter)
