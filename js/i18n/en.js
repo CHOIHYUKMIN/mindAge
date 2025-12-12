@@ -15,7 +15,8 @@ const translations_en = {
     // Analyzing
     analyzing: "AI is analyzing your face...",
     resultLabel: "Analysis Complete!",
-    resultText: "Your physical age is <strong id=\"physical-age\">--</strong> years old",
+    resultText: "Your physical age is",
+    resultTextAge: "years old",
 
     // Questions
     progressText: "{current} / {total}",

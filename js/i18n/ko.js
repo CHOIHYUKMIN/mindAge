@@ -15,7 +15,8 @@ const translations_ko = {
     // Analyzing
     analyzing: "AI가 당신의 얼굴을 분석하고 있어요...",
     resultLabel: "분석 완료!",
-    resultText: "당신의 실물 나이는 <strong id=\"physical-age\">--</strong>세입니다",
+    resultText: "당신의 실물 나이는",
+    resultTextAge: "세입니다",
 
     // Questions
     progressText: "{current} / {total}",

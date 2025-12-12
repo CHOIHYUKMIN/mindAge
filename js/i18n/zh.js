@@ -15,7 +15,8 @@ const translations_zh = {
     // Analyzing
     analyzing: "AI正在分析你的面部...",
     resultLabel: "分析完成！",
-    resultText: "你的实际年龄是 <strong id=\"physical-age\">--</strong> 岁",
+    resultText: "你的实际年龄是",
+    resultTextAge: "岁",
 
     // Questions
     progressText: "{current} / {total}",
