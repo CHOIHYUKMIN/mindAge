@@ -1086,3 +1086,22 @@ body {
         font-size: 2rem;
     }
 }
+
+/* Snow Effect */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: #fff;
+    font-size: 1em;
+    opacity: 0.8;
+    z-index: 9999;
+    pointer-events: none;
+    animation: fall linear forwards;
+    text-shadow: 0 0 5px #fff;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh);
+    }
+}
