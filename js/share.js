@@ -43,9 +43,13 @@ async function shareToKakao(physicalAge, mentalAge, diffText, resultMessage, arc
     const imageUrl = getBaseUrl() + CONFIG.OG_IMAGE; // static OG image
 
     // Build description with archetype if available
-    let description = `나의 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세!\n${diffText}\n\n${resultMessage}`;
+    let description = i18n.t('shareDesc')
+        .replace('{pa}', physicalAge)
+        .replace('{ma}', mentalAge);
+    description += `\n${diffText}\n\n${resultMessage}`;
+
     if (archetype) {
-        description += `\n\n✨ 캐릭터 유형: ${archetype.name}\n${archetype.desc}`;
+        description += `\n\n✨ ${archetype.name}\n${archetype.desc}`;
     }
 
     try {
@@ -62,14 +66,14 @@ async function shareToKakao(physicalAge, mentalAge, diffText, resultMessage, arc
             },
             buttons: [
                 {
-                    title: '결과 보기 👀',
+                    title: i18n.t('resultTitle') || '결과 보기 👀',
                     link: {
                         mobileWebUrl: shareUrl,
                         webUrl: shareUrl,
                     },
                 },
                 {
-                    title: '나도 테스트하기 🎈',
+                    title: i18n.t('btnMyTest') || '나도 테스트하기 🎈',
                     link: {
                         mobileWebUrl: baseUrl,
                         webUrl: baseUrl,
@@ -85,7 +89,11 @@ async function shareToKakao(physicalAge, mentalAge, diffText, resultMessage, arc
 
 // Share to X (Twitter)
 function shareToTwitter(physicalAge, mentalAge, diffText) {
-    const text = `내 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세! ${diffText}\n\n나도 테스트하기 👉`;
+    let text = i18n.t('shareDesc')
+        .replace('{pa}', physicalAge)
+        .replace('{ma}', mentalAge);
+    text += ` ${diffText}\n\n${i18n.t('btnMyTest')} 👉`;
+
     const url = window.location.href;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
 
@@ -212,7 +220,7 @@ async function copyLinkToClipboard() {
 function showCopyNotification() {
     // Create notification element
     const notification = document.createElement('div');
-    notification.textContent = '✓ 링크가 복사되었습니다!';
+    notification.textContent = i18n.t('linkCopied');
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -243,9 +251,14 @@ function showCopyNotification() {
 async function shareResult(physicalAge, mentalAge, message) {
     if (navigator.share) {
         try {
+            let shareText = i18n.t('shareDesc')
+                .replace('{pa}', physicalAge)
+                .replace('{ma}', mentalAge);
+            shareText += `\n${message}\n\n${i18n.t('btnMyTest')} 👉`;
+
             await navigator.share({
-                title: '마음의 나이 계산기',
-                text: `내 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세!\n${message}\n\n나도 테스트하기 👉`,
+                title: i18n.t('title').replace(/<br>/g, ' '),
+                text: shareText,
                 url: window.location.href
             });
             return true;

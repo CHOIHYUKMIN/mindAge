@@ -109,6 +109,7 @@ const translations_en = {
     btnRestart: "Take Test Again",
     btnMyTest: "Take My Test 🎈",
     linkCopied: "✓ Link copied to clipboard!",
+    shareDesc: "My physical age is {pa}, my mental age is {ma}!",
 
     // Errors
     errorNoFace: "No face detected. Please upload a photo with a clear frontal face.",
