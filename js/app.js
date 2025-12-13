@@ -228,7 +228,7 @@ const app = {
                     archetypeContainer.innerHTML = `
                         <div class="archetype-badge">
                             <div class="archetype-title">${archetypeTitle}</div>
-                            ${imageHtml}
+                            <!-- ${imageHtml} -->
                             <div class="archetype-name">✨ ${archetype.name}</div>
                             <div class="archetype-desc">${archetype.desc}</div>
                         </div>
@@ -532,7 +532,7 @@ const app = {
                 archetypeContainer.innerHTML = `
                     <div class="archetype-badge">
                         <div class="archetype-title">${archetypeTitle}</div>
-                        ${imageHtml}
+                        <!-- ${imageHtml} -->
                         <div class="archetype-name">✨ ${this.archetype.name}</div>
                         <div class="archetype-desc">${this.archetype.desc}</div>
                     </div>
