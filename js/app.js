@@ -253,6 +253,34 @@ const app = {
                 console.log('Age detection ready');
             }
         });
+
+        // Start seasonal snow effect ❄️
+        this.startSnowEffect();
+    },
+
+    // Create snow effect
+    startSnowEffect() {
+        const createSnowflake = () => {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = ['❄', '❅', '❆'][Math.floor(Math.random() * 3)];
+
+            // Random properties
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // 2~5s
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+
+            document.body.appendChild(snowflake);
+
+            // Remove after animation
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        };
+
+        // Create a snowflake every 300ms
+        setInterval(createSnowflake, 300);
     },
 
     // Section navigation

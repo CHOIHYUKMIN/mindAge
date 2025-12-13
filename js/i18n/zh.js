@@ -1,7 +1,7 @@
 // Chinese Simplified translations
 const translations_zh = {
     // Start Screen
-    title: "你的心理年龄<br>是多少岁？",
+    title: "🎄 你的心理年龄<br>是多少岁？ 🎅",
     subtitle: "AI通过你的照片估算实际年龄，<br>10个问题揭示你的心理年龄",
     btnStart: "开始测试",
 
@@ -107,7 +107,7 @@ const translations_zh = {
     btnDownload: "保存图片",
     btnCopyLink: "复制链接",
     btnRestart: "重新测试",
-    btnMyTest: "我也要测试 🎈",
+    btnMyTest: "你也是“老颜”吗？快来测测！🤣",
     linkCopied: "✓ 链接已复制！",
     shareDesc: "📸 实际年龄: {pa}岁\n🧠 心理年龄: {ma}岁",
     // shareTitleArchetype: "我的角色类型: {name} ✨",

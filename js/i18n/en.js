@@ -1,7 +1,7 @@
 // English translations
 const translations_en = {
     // Start Screen
-    title: "How Old is<br>Your Mind?",
+    title: "🎄 How Old is<br>Your Mind? 🎅",
     subtitle: "AI estimates your physical age from your photo,<br>and 10 questions reveal your mental age",
     btnStart: "Start Test",
 
@@ -107,7 +107,7 @@ const translations_en = {
     btnDownload: "Save Image",
     btnCopyLink: "Copy Link",
     btnRestart: "Take Test Again",
-    btnMyTest: "Take My Test 🎈",
+    btnMyTest: "Are you looking old? 🤫 Try this! 🤣",
     linkCopied: "✓ Link copied to clipboard!",
     shareDesc: "📸 Physical Age: {pa}\n🧠 Mental Age: {ma}",
     // shareTitleArchetype: "My Character Type: {name} ✨",

@@ -1,7 +1,7 @@
 // Korean translations
 const translations_ko = {
     // Start Screen
-    title: "당신의 마음은<br>몇 살인가요?",
+    title: "🎄 당신의 마음은<br>몇 살인가요? 🎅",
     subtitle: "AI가 당신의 얼굴로 실물 나이를 추측하고,<br>10가지 질문으로 마음의 나이를 알려드려요",
     btnStart: "테스트 시작하기",
 
@@ -107,7 +107,7 @@ const translations_ko = {
     btnDownload: "이미지 저장",
     btnCopyLink: "링크 복사",
     btnRestart: "다시 테스트하기",
-    btnMyTest: "나도 테스트하기 🎈",
+    btnMyTest: "너도 혹시... 노안 🤫? 테스트해봐!",
     linkCopied: "✓ 링크가 복사되었습니다!",
     shareDesc: "📸 실물 나이: {pa}세\n🧠 마음의 나이: {ma}세",
     // shareTitleArchetype: "나는: {name} ✨",
