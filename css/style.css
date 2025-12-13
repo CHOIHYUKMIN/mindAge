@@ -401,7 +401,7 @@ body {
    =========================== */
 .result-content {
     text-align: center;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
 }
 
 .age-comparison {
@@ -737,63 +737,95 @@ body {
         margin-bottom: var(--spacing-lg);
     }
 
-    /* 결과 섹션 조정 */
+    /* 결과 섹션 조정 - 모바일 한 화면에 맞춤 */
     .result-content {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: var(--spacing-sm);
     }
 
     .age-comparison {
         flex-direction: column;
-        gap: var(--spacing-md);
-        margin: var(--spacing-lg) 0;
+        gap: var(--spacing-sm);
+        margin: var(--spacing-md) 0;
     }
 
     .age-circle {
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .circle-label {
+        font-size: 0.75rem;
     }
 
     .circle-value {
-        font-size: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .circle-unit {
+        font-size: 0.8rem;
     }
 
     .vs-badge {
         transform: rotate(90deg);
-        font-size: 1.2rem;
+        font-size: 1rem;
+        margin: -0.5rem 0;
+    }
+
+    .age-difference {
+        margin: var(--spacing-sm) 0;
     }
 
     .diff-value {
-        font-size: 2rem;
-    }
-
-    .message-emoji {
-        font-size: 3rem;
-    }
-
-    .message-text {
-        font-size: 1.1rem;
+        font-size: 1.75rem;
     }
 
     .result-message {
-        padding: var(--spacing-md);
-        margin: var(--spacing-lg) 0;
+        padding: var(--spacing-sm) var(--spacing-md);
+        margin: var(--spacing-md) 0;
     }
 
-    /* 공유 버튼 조정 */
+    .message-emoji {
+        font-size: 2.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .message-text {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* 광고 영역 축소 */
+    .ad-container {
+        margin: var(--spacing-sm) 0 !important;
+        min-height: 50px;
+    }
+
+    /* 공유 버튼 그리드 레이아웃 유지하되 간격 축소 */
     .share-buttons {
-        flex-direction: column;
-        gap: var(--spacing-sm);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin: var(--spacing-sm) 0;
     }
 
     .btn-share {
-        width: 100%;
-        justify-content: center;
-        padding: 0.875rem 1.5rem;
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-share svg {
+        width: 16px;
+        height: 16px;
     }
 
     .btn-restart {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.95rem;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+        margin-top: var(--spacing-sm);
     }
 
     /* 장식 요소 조정 */
@@ -816,6 +848,16 @@ body {
     .shape-3 {
         width: 150px;
         height: 150px;
+    }
+
+    /* 섹션 높이를 유동적으로 조정 */
+    #result-section {
+        min-height: auto;
+        padding: var(--spacing-md) 0;
+    }
+
+    #result-section .container {
+        padding: var(--spacing-sm);
     }
 }
 

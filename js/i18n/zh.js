@@ -27,10 +27,16 @@ const translations_zh = {
     mentalAgeLabel: "心理年龄",
     ageUnit: "岁",
 
-    // Result Messages
-    resultYoung: "童心未泯！永远年轻的心",
-    resultWise: "智慧长者！深邃成熟的灵魂",
-    resultBalance: "完美平衡！与年龄相符的成熟度",
+    // Result Messages (9 different cases based on age difference)
+    resultVeryYoung: "小王子/小公主！永远的少年感！🌟",
+    resultYoung: "活力青春！充满朝气与活力！✨",
+    resultFresh: "生机勃勃！感受到了明朗积极的能量！",
+    resultCute: "童心未泯！非常可爱的灵魂！",
+    resultBalance: "完美平衡！保养得很好呢！",
+    resultMature: "稳重的成年人！拥有成熟的魅力！",
+    resultWise: "老练的智者！深邃的灵魂！",
+    resultExpert: "人生高手！流露出丰富的经验！",
+    resultMentor: "活着的智慧！你是人生的导师！",
 
     // Share
     btnDownload: "保存图片",

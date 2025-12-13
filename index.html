@@ -164,7 +164,7 @@
     <section id="result-section" class="section">
         <div class="container">
             <div class="result-content" id="result-content">
-                <h2 class="section-title">결과 분석</h2>
+                <h2 class="section-title" data-i18n="resultTitle">결과 분석</h2>
 
                 <div class="age-comparison">
                     <div class="age-circle">
@@ -235,7 +235,7 @@
                             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
                         </svg>
-                        링크 복사
+                        <span data-i18n="btnCopyLink">링크 복사</span>
                     </button>
 
                     <button class="btn-share btn-download" onclick="app.downloadImage()">
@@ -243,12 +243,12 @@
                             stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
                         </svg>
-                        이미지 저장
+                        <span data-i18n="btnDownload">이미지 저장</span>
                     </button>
                 </div>
 
                 <button class="btn-restart" onclick="app.restart()">
-                    다시 테스트하기
+                    <span data-i18n="btnRestart">다시 테스트하기</span>
                 </button>
             </div>
         </div>
@@ -257,6 +257,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/i18n/ko.js"></script>
     <script src="js/i18n/en.js"></script>
     <script src="js/i18n/zh.js"></script>

@@ -247,31 +247,31 @@ const app = {
 
         if (diff < -15) {
             emoji = '👶';
-            message = '완전 어린왕자/공주! 영원한 10대 감성이네요! �';
+            message = i18n.t('resultVeryYoung');
         } else if (diff < -10) {
-            emoji = '�🎈';
-            message = '발랄한 청춘! 젊음이 넘쳐흘러요! ✨';
+            emoji = '🎈';
+            message = i18n.t('resultYoung');
         } else if (diff < -5) {
             emoji = '🌸';
-            message = '생기발랄! 밝고 긍정적인 에너지가 느껴져요!';
+            message = i18n.t('resultFresh');
         } else if (diff < -2) {
             emoji = '😊';
-            message = '마음만은 소녀/소년! 귀여운 영혼이에요!';
+            message = i18n.t('resultCute');
         } else if (diff <= 2) {
             emoji = '⚖️';
-            message = '완벽한 밸런스! 나이를 잘 먹고 계시네요!';
+            message = i18n.t('resultBalance');
         } else if (diff <= 5) {
             emoji = '🎯';
-            message = '안정적인 어른! 성숙한 매력이 있어요!';
+            message = i18n.t('resultMature');
         } else if (diff <= 10) {
             emoji = '🧙';
-            message = '노련한 현자! 깊이 있는 영혼입니다!';
+            message = i18n.t('resultWise');
         } else if (diff <= 15) {
             emoji = '📚';
-            message = '인생의 고수! 풍부한 경험이 묻어나요!';
+            message = i18n.t('resultExpert');
         } else {
             emoji = '🎓';
-            message = '살아있는 지혜! 당신은 인생의 멘토입니다!';
+            message = i18n.t('resultMentor');
         }
 
         document.getElementById('message-emoji').textContent = emoji;

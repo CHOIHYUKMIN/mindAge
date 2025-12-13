@@ -23,16 +23,18 @@ function shareToKakao(physicalAge, mentalAge, diffText, resultMessage) {
         return;
     }
 
-    // Get current URL without hash/query
-    const shareUrl = window.location.origin + window.location.pathname;
+    // Get share URL - use production URL if deployed, otherwise use localhost
+    const shareUrl = getShareUrl();
+    const baseUrl = getBaseUrl();
+    const imageUrl = baseUrl + CONFIG.OG_IMAGE;
 
     try {
         window.Kakao.Share.sendDefault({
             objectType: 'feed',
             content: {
-                title: '🎯 마음의 나이 계산기',
-                description: `나의 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세!\n${diffText}\n\n${resultMessage}`,
-                imageUrl: window.location.origin + window.location.pathname.replace('index.html', '') + 'og-image.png',
+                title: CONFIG.APP_TITLE,
+                description: `나의 실물 나이는 ${physicalAge}세, 마음의 나이는 ${mentalAge}세!\\n${diffText}\\n\\n${resultMessage}`,
+                imageUrl: imageUrl,
                 link: {
                     mobileWebUrl: shareUrl,
                     webUrl: shareUrl,
@@ -44,13 +46,6 @@ function shareToKakao(physicalAge, mentalAge, diffText, resultMessage) {
                     link: {
                         mobileWebUrl: shareUrl,
                         webUrl: shareUrl,
-                    },
-                },
-                {
-                    title: '결과 자세히 보기',
-                    link: {
-                        mobileWebUrl: window.location.href,
-                        webUrl: window.location.href,
                     },
                 },
             ],

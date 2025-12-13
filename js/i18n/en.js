@@ -27,10 +27,16 @@ const translations_en = {
     mentalAgeLabel: "Mental Age",
     ageUnit: "yrs",
 
-    // Result Messages
-    resultYoung: "Forever Young! You have a playful spirit",
-    resultWise: "Wise Soul! You have a deep, mature mind",
-    resultBalance: "Perfect Balance! Mature for your age",
+    // Result Messages (9 different cases based on age difference)
+    resultVeryYoung: "Little Prince/Princess! Eternal teenage spirit! 🌟",
+    resultYoung: "Cheerful Youth! Overflowing with energy! ✨",
+    resultFresh: "Vibrant & Lively! Bright and positive energy!",
+    resultCute: "Young at Heart! You have a cute soul!",
+    resultBalance: "Perfect Balance! Aging gracefully!",
+    resultMature: "Stable Adult! You have a mature charm!",
+    resultWise: "Experienced Sage! A deep and thoughtful soul!",
+    resultExpert: "Life Expert! Rich experience shows!",
+    resultMentor: "Living Wisdom! You are a mentor of life!",
 
     // Share
     btnDownload: "Save Image",
