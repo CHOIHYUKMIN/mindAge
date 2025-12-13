@@ -140,6 +140,31 @@ const app = {
     },
 
 
+    // Get archetype image path based on code
+    getArchetypeImage(code) {
+        if (!code) return null;
+
+        // Code format: Level_GenderNumber (e.g., Y_E_M1, B_F1)
+        // Or Level_SubLevel_GenderNumber (e.g., M_S_M1)
+
+        const isMale = code.includes('_M');
+        const isFemale = code.includes('_F');
+
+        // Determine category based on code prefix
+        let isYoung = false;
+        if (code.startsWith('Y_') || code.startsWith('B_')) {
+            isYoung = true;
+        }
+
+        if (isMale) {
+            return isYoung ? 'img/archetypes/archetype_male_young.png' : 'img/archetypes/archetype_male_wise.png';
+        } else if (isFemale) {
+            return isYoung ? 'img/archetypes/archetype_female_young.png' : 'img/archetypes/archetype_female_wise.png';
+        }
+
+        return null; // Fallback
+    },
+
     // Initialize app
     init() {
         console.log('Initializing Mental Age Calculator...');
@@ -201,9 +226,13 @@ const app = {
                 const archetypeContainer = document.getElementById('shared-archetype-info');
                 if (archetypeContainer) {
                     const archetypeTitle = i18n.t('archetypeTitle');
+                    const imagePath = this.getArchetypeImage(archetype.code);
+                    const imageHtml = imagePath ? `<img src="${imagePath}" class="archetype-image" alt="${archetype.name}">` : '';
+
                     archetypeContainer.innerHTML = `
                         <div class="archetype-badge">
                             <div class="archetype-title">${archetypeTitle}</div>
+                            ${imageHtml}
                             <div class="archetype-name">✨ ${archetype.name}</div>
                             <div class="archetype-desc">${archetype.desc}</div>
                         </div>
@@ -501,9 +530,13 @@ const app = {
             const archetypeContainer = document.getElementById('archetype-info');
             if (archetypeContainer) {
                 const archetypeTitle = i18n.t('archetypeTitle');
+                const imagePath = this.getArchetypeImage(this.archetype.code);
+                const imageHtml = imagePath ? `<img src="${imagePath}" class="archetype-image" alt="${this.archetype.name}">` : '';
+
                 archetypeContainer.innerHTML = `
                     <div class="archetype-badge">
                         <div class="archetype-title">${archetypeTitle}</div>
+                        ${imageHtml}
                         <div class="archetype-name">✨ ${this.archetype.name}</div>
                         <div class="archetype-desc">${this.archetype.desc}</div>
                     </div>
