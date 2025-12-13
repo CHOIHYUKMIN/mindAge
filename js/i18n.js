@@ -45,8 +45,8 @@ const i18n = {
         this.updateUI();
         this.updateLanguageButtons();
 
-        // Re-render current question if in questions section
-        if (app.currentSection === 'questions' && app.currentQuestionIndex < this.getQuestions().length) {
+        // Re-render current question if in questions section and app is available
+        if (window.app && app.currentSection === 'questions' && app.currentQuestionIndex < this.getQuestions().length) {
             app.renderQuestion();
         }
     },
