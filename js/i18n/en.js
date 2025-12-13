@@ -29,16 +29,79 @@ const translations_en = {
     ageUnit: "yrs",
     archetypeTitle: "Your Character Type",
 
-    // Result Messages (9 different cases based on age difference)
-    resultVeryYoung: "Little Prince/Princess! Eternal teenage spirit! 🌟",
-    resultYoung: "Cheerful Youth! Overflowing with energy! ✨",
-    resultFresh: "Vibrant & Lively! Bright and positive energy!",
-    resultCute: "Young at Heart! You have a cute soul!",
-    resultBalance: "Perfect Balance! Aging gracefully!",
-    resultMature: "Stable Adult! You have a mature charm!",
-    resultWise: "Experienced Sage! A deep and thoughtful soul!",
-    resultExpert: "Life Expert! Rich experience shows!",
-    resultMentor: "Living Wisdom! You are a mentor of life!",
+    // Result Messages (50 different cases based on age difference)
+    // Very Young (-25 to -20)
+    result_m25: "Forever a teen! Time seems to have stopped! 🌈",
+    result_m24: "Little Prince/Princess! Eternal teenage spirit! 🌟",
+    result_m23: "Full of innocence! The world sparkles for you! ✨",
+    result_m22: "Pure as can be! Crystal clear soul! 💫",
+    result_m21: "Innocent and charming! Cuteness overload! 🎈",
+
+    // Young (-20 to -15)
+    result_m20: "Youth in full bloom! Energy overflowing! 🌸",
+    result_m19: "Cheerful Youth! Overflowing with energy! ✨",
+    result_m18: "Vibrant soul! Full of life! 🎉",
+    result_m17: "Fresh as spring! New beginnings await! 🌱",
+    result_m16: "Refreshing energy! Cool and crisp! 💚",
+
+    // Fresh (-15 to -10)
+    result_m15: "Vibrant & Lively! Bright and positive energy! 🌞",
+    result_m14: "Full of vitality! Icon of positivity! ⚡",
+    result_m13: "Energetic soul! You brighten everything! 💛",
+    result_m12: "Bursting with life! Every day is exciting! 🌺",
+    result_m11: "Youthful vibe! Trendy mindset! 🎨",
+
+    // Youthful (-10 to -5)
+    result_m10: "Young at Heart! You have a cute soul! 🎀",
+    result_m9: "Pure heart! Adult with childlike wonder! 🧸",
+    result_m8: "Young spirit! Full of curiosity! 🎪",
+    result_m7: "Fresh perspective! Trendy soul! 🎭",
+    result_m6: "Cheerful mind! Full of joy! 🎵",
+
+    // Slightly Young (-5 to -2)
+    result_m5: "Youthful sensibility! Vibrant energy! 🌈",
+    result_m4: "Bright soul! Positive energy! ☀️",
+    result_m3: "Light-hearted! Carefree steps! 🦋",
+    result_m2: "Fresh vibes! Cool mindset! 🍃",
+    result_m1: "Young at heart! Full of vitality! 💪",
+
+    // Perfect Balance (0 to 2)
+    result_0: "Perfect Balance! Aging gracefully! ⚖️",
+    result_p1: "Harmonious soul! Balanced mind! 🎯",
+    result_p2: "Stable mindset! Comfortable energy! 🌿",
+
+    // Slightly Mature (3 to 5)
+    result_p3: "Calm charm! Stable presence! 🍂",
+    result_p4: "Mature sensibility! Deep thoughts! 📚",
+    result_p5: "Stable Adult! You have a mature charm! 🎓",
+
+    // Mature (6 to 10)
+    result_p6: "Grown-up appeal! Careful judgment! 🧭",
+    result_p7: "Composed soul! Reliable presence! 🏔️",
+    result_p8: "Deep thinking! Great insight! 🔍",
+    result_p9: "Seasoned wisdom! Experience shines! 💎",
+    result_p10: "Experienced Sage! A deep and thoughtful soul! 🧙",
+
+    // Wise (11 to 15)
+    result_p11: "Wise soul! Perfect insight! 🦉",
+    result_p12: "Wise judgment! Deep thinker! 📖",
+    result_p13: "Life Expert! Rich experience shows! 🎖️",
+    result_p14: "Treasury of wisdom! Valuable advisor! 💫",
+    result_p15: "Living Wisdom! You are a mentor of life! 🌟",
+
+    // Very Wise (16 to 20)
+    result_p16: "Grand sage aura! Deep insight! 🔮",
+    result_p17: "Life master! Experience radiates! 🏆",
+    result_p18: "Embodiment of wisdom! Teacher of all! 📜",
+    result_p19: "Peak maturity! Life senior! 🎭",
+    result_p20: "Treasure of experience! Truly admirable! 👑",
+
+    // Master (21+)
+    result_p21: "Life Master! You know everything! 🌌",
+    result_p22: "Transcendent wisdom! Enlightened state! ✨",
+    result_p23: "Fully matured soul! Essence of life! 🍷",
+    result_p24: "Supreme sage! Wisdom shines bright! 💠",
+    result_p25: "Legendary mentor! You are living history! 📿",
 
     // Share
     btnDownload: "Save Image",

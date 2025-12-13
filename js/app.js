@@ -46,6 +46,79 @@ const app = {
         return pool[idx]; // {code, name, desc}
     },
 
+    // Get message key and emoji based on age difference
+    getMessageKey(diff) {
+        if (diff <= -25) return 'result_m25';
+        if (diff <= -24) return 'result_m24';
+        if (diff <= -23) return 'result_m23';
+        if (diff <= -22) return 'result_m22';
+        if (diff <= -21) return 'result_m21';
+        if (diff <= -20) return 'result_m20';
+        if (diff <= -19) return 'result_m19';
+        if (diff <= -18) return 'result_m18';
+        if (diff <= -17) return 'result_m17';
+        if (diff <= -16) return 'result_m16';
+        if (diff <= -15) return 'result_m15';
+        if (diff <= -14) return 'result_m14';
+        if (diff <= -13) return 'result_m13';
+        if (diff <= -12) return 'result_m12';
+        if (diff <= -11) return 'result_m11';
+        if (diff <= -10) return 'result_m10';
+        if (diff <= -9) return 'result_m9';
+        if (diff <= -8) return 'result_m8';
+        if (diff <= -7) return 'result_m7';
+        if (diff <= -6) return 'result_m6';
+        if (diff <= -5) return 'result_m5';
+        if (diff <= -4) return 'result_m4';
+        if (diff <= -3) return 'result_m3';
+        if (diff <= -2) return 'result_m2';
+        if (diff <= -1) return 'result_m1';
+        if (diff === 0) return 'result_0';
+        if (diff <= 1) return 'result_p1';
+        if (diff <= 2) return 'result_p2';
+        if (diff <= 3) return 'result_p3';
+        if (diff <= 4) return 'result_p4';
+        if (diff <= 5) return 'result_p5';
+        if (diff <= 6) return 'result_p6';
+        if (diff <= 7) return 'result_p7';
+        if (diff <= 8) return 'result_p8';
+        if (diff <= 9) return 'result_p9';
+        if (diff <= 10) return 'result_p10';
+        if (diff <= 11) return 'result_p11';
+        if (diff <= 12) return 'result_p12';
+        if (diff <= 13) return 'result_p13';
+        if (diff <= 14) return 'result_p14';
+        if (diff <= 15) return 'result_p15';
+        if (diff <= 16) return 'result_p16';
+        if (diff <= 17) return 'result_p17';
+        if (diff <= 18) return 'result_p18';
+        if (diff <= 19) return 'result_p19';
+        if (diff <= 20) return 'result_p20';
+        if (diff <= 21) return 'result_p21';
+        if (diff <= 22) return 'result_p22';
+        if (diff <= 23) return 'result_p23';
+        if (diff <= 24) return 'result_p24';
+        return 'result_p25';
+    },
+
+    // Get emoji based on message key
+    getEmoji(messageKey) {
+        const emojiMap = {
+            result_m25: '🌈', result_m24: '🌟', result_m23: '✨', result_m22: '💫', result_m21: '🎈',
+            result_m20: '🌸', result_m19: '✨', result_m18: '🎉', result_m17: '🌱', result_m16: '💚',
+            result_m15: '🌞', result_m14: '⚡', result_m13: '💛', result_m12: '🌺', result_m11: '🎨',
+            result_m10: '🎀', result_m9: '🧸', result_m8: '🎪', result_m7: '🎭', result_m6: '🎵',
+            result_m5: '🌈', result_m4: '☀️', result_m3: '🦋', result_m2: '🍃', result_m1: '💪',
+            result_0: '⚖️', result_p1: '🎯', result_p2: '🌿', result_p3: '🍂', result_p4: '📚',
+            result_p5: '🎓', result_p6: '🧭', result_p7: '🏔️', result_p8: '🔍', result_p9: '💎',
+            result_p10: '🧙', result_p11: '🦉', result_p12: '📖', result_p13: '🎖️', result_p14: '💫',
+            result_p15: '🌟', result_p16: '🔮', result_p17: '🏆', result_p18: '📜', result_p19: '🎭',
+            result_p20: '👑', result_p21: '🌌', result_p22: '✨', result_p23: '🍷', result_p24: '💠',
+            result_p25: '📿'
+        };
+        return emojiMap[messageKey] || '⚖️';
+    },
+
 
     // Initialize app
     init() {
@@ -94,27 +167,9 @@ const app = {
         const diffText = diff > 0 ? `+${diff}` : `${diff}`;
         document.getElementById('shared-diff-value').textContent = `${diffText}${ageUnit}`;
 
-        // Set message based on difference (use i18n)
-        let message;
-        if (diff < -15) {
-            message = i18n.t('resultVeryYoung');
-        } else if (diff < -10) {
-            message = i18n.t('resultYoung');
-        } else if (diff < -5) {
-            message = i18n.t('resultFresh');
-        } else if (diff < -2) {
-            message = i18n.t('resultCute');
-        } else if (diff <= 2) {
-            message = i18n.t('resultBalance');
-        } else if (diff <= 5) {
-            message = i18n.t('resultMature');
-        } else if (diff <= 10) {
-            message = i18n.t('resultWise');
-        } else if (diff <= 15) {
-            message = i18n.t('resultExpert');
-        } else {
-            message = i18n.t('resultMentor');
-        }
+        // Set message based on difference (use i18n with 50 granular levels)
+        const messageKey = this.getMessageKey(diff);
+        const message = i18n.t(messageKey);
 
         document.getElementById('shared-message-text').textContent = message;
 
@@ -393,37 +448,10 @@ const app = {
         const diffText = diff > 0 ? `+${diff}` : `${diff}`;
         document.getElementById('diff-value').textContent = `${diffText}${ageUnit}`;
 
-        // Set message based on difference (use i18n)
-        let emoji, message;
-
-        if (diff < -15) {
-            emoji = '👶';
-            message = i18n.t('resultVeryYoung');
-        } else if (diff < -10) {
-            emoji = '🎈';
-            message = i18n.t('resultYoung');
-        } else if (diff < -5) {
-            emoji = '🌸';
-            message = i18n.t('resultFresh');
-        } else if (diff < -2) {
-            emoji = '😊';
-            message = i18n.t('resultCute');
-        } else if (diff <= 2) {
-            emoji = '⚖️';
-            message = i18n.t('resultBalance');
-        } else if (diff <= 5) {
-            emoji = '🎯';
-            message = i18n.t('resultMature');
-        } else if (diff <= 10) {
-            emoji = '🧙';
-            message = i18n.t('resultWise');
-        } else if (diff <= 15) {
-            emoji = '📚';
-            message = i18n.t('resultExpert');
-        } else {
-            emoji = '🎓';
-            message = i18n.t('resultMentor');
-        }
+        // Set message based on difference (use i18n with 50 granular levels)
+        const messageKey = this.getMessageKey(diff);
+        const emoji = this.getEmoji(messageKey);
+        const message = i18n.t(messageKey);
 
         document.getElementById('message-emoji').textContent = emoji;
         document.getElementById('message-text').textContent = message;

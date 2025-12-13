@@ -29,16 +29,79 @@ const translations_ko = {
     ageUnit: "세",
     archetypeTitle: "당신의 캐릭터 유형",
 
-    // Result Messages (9 different cases based on age difference)
-    resultVeryYoung: "완전 어린왕자/공주! 영원한 10대 감성이네요! 🌟",
-    resultYoung: "발랄한 청춘! 젊음이 넘쳐흘러요! ✨",
-    resultFresh: "생기발랄! 밝고 긍정적인 에너지가 느껴져요!",
-    resultCute: "마음만은 소녀/소년! 귀여운 영혼이에요!",
-    resultBalance: "완벽한 밸런스! 나이를 잘 먹고 계시네요!",
-    resultMature: "안정적인 어른! 성숙한 매력이 있어요!",
-    resultWise: "노련한 현자! 깊이 있는 영혼입니다!",
-    resultExpert: "인생의 고수! 풍부한 경험이 묻어나요!",
-    resultMentor: "살아있는 지혜! 당신은 인생의 멘토입니다!",
+    // Result Messages (50 different cases based on age difference)
+    // Very Young (-25 to -20)
+    result_m25: "영원한 10대! 시간이 멈춘 것 같아요! 🌈",
+    result_m24: "완전 어린왕자/공주! 영원한 10대 감성이네요! 🌟",
+    result_m23: "동심 가득! 세상이 반짝반짝 빛나 보이죠? ✨",
+    result_m22: "순수 그 자체! 맑은 영혼의 소유자! 💫",
+    result_m21: "천진난만! 귀여움이 폭발해요! 🎈",
+
+    // Young (-20 to -15)
+    result_m20: "청춘 만개! 에너지가 넘쳐흘러요! 🌸",
+    result_m19: "발랄한 청춘! 젊음이 넘쳐흘러요! ✨",
+    result_m18: "활기찬 영혼! 생동감이 느껴져요! 🎉",
+    result_m17: "싱그러운 봄날! 새로운 시작의 기운! 🌱",
+    result_m16: "청량감 만점! 상쾌한 에너지! 💚",
+
+    // Fresh (-15 to -10)
+    result_m15: "생기발랄! 밝고 긍정적인 에너지가 느껴져요! 🌞",
+    result_m14: "활력 충만! 긍정의 아이콘! ⚡",
+    result_m13: "에너지 넘치는 영혼! 주변을 밝혀요! 💛",
+    result_m12: "생동감 가득! 활기찬 하루하루! 🌺",
+    result_m11: "젊은 감성! 트렌디한 마인드! 🎨",
+
+    // Youthful (-10 to -5)
+    result_m10: "마음만은 소녀/소년! 귀여운 영혼이에요! 🎀",
+    result_m9: "순수한 마음! 동심을 간직한 어른! 🧸",
+    result_m8: "젊은 마음! 호기심 가득! 🎪",
+    result_m7: "신선한 감각! 트렌디한 영혼! 🎭",
+    result_m6: "유쾌한 마인드! 즐거움이 가득! 🎵",
+
+    // Slightly Young (-5 to -2)
+    result_m5: "젊은 감성! 활기찬 에너지! 🌈",
+    result_m4: "밝은 영혼! 긍정 에너지! ☀️",
+    result_m3: "경쾌한 마음! 가벼운 발걸음! 🦋",
+    result_m2: "상큼한 감성! 신선한 마인드! 🍃",
+    result_m1: "젊은 마음! 활력 넘쳐요! 💪",
+
+    // Perfect Balance (0 to 2)
+    result_0: "완벽한 밸런스! 나이를 잘 먹고 계시네요! ⚖️",
+    result_p1: "조화로운 영혼! 균형잡힌 마음! 🎯",
+    result_p2: "안정적인 마인드! 편안한 에너지! 🌿",
+
+    // Slightly Mature (3 to 5)
+    result_p3: "차분한 매력! 안정감 있어요! 🍂",
+    result_p4: "성숙한 감성! 깊이 있는 마음! 📚",
+    result_p5: "안정적인 어른! 성숙한 매력이 있어요! 🎓",
+
+    // Mature (6 to 10)
+    result_p6: "어른스러운 매력! 신중한 판단력! 🧭",
+    result_p7: "침착한 영혼! 든든한 존재감! 🏔️",
+    result_p8: "깊이 있는 사고! 통찰력 있어요! 🔍",
+    result_p9: "노련한 지혜! 경험이 빛나요! 💎",
+    result_p10: "노련한 현자! 깊이 있는 영혼입니다! 🧙",
+
+    // Wise (11 to 15)
+    result_p11: "지혜로운 영혼! 통찰력 만점! 🦉",
+    result_p12: "현명한 판단! 깊은 사색가! 📖",
+    result_p13: "인생의 고수! 풍부한 경험이 묻어나요! 🎖️",
+    result_p14: "지혜의 보고! 귀한 조언자! 💫",
+    result_p15: "살아있는 지혜! 당신은 인생의 멘토입니다! 🌟",
+
+    // Very Wise (16 to 20)
+    result_p16: "대현자의 풍모! 깊은 통찰력! 🔮",
+    result_p17: "인생의 달인! 경륜이 느껴져요! 🏆",
+    result_p18: "지혜의 화신! 모두의 스승! 📜",
+    result_p19: "노련미 최고! 인생 선배! 🎭",
+    result_p20: "경험의 보물창고! 존경스러워요! 👑",
+
+    // Master (21+)
+    result_p21: "인생의 마스터! 모든 것을 아시는군요! 🌌",
+    result_p22: "초월적 지혜! 깨달음의 경지! ✨",
+    result_p23: "완숙한 영혼! 인생의 정수! 🍷",
+    result_p24: "최고의 현자! 지혜가 빛나요! 💠",
+    result_p25: "전설의 멘토! 당신은 살아있는 역사! 📿",
 
     // Share
     btnDownload: "이미지 저장",
