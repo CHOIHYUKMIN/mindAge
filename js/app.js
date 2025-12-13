@@ -144,25 +144,21 @@ const app = {
     getArchetypeImage(code) {
         if (!code) return null;
 
-        // Code format: Level_GenderNumber (e.g., Y_E_M1, B_F1)
-        // Or Level_SubLevel_GenderNumber (e.g., M_S_M1)
+        let gender = 'male';
+        let group = '';
 
-        const isMale = code.includes('_M');
-        const isFemale = code.includes('_F');
-
-        // Determine category based on code prefix
-        let isYoung = false;
-        if (code.startsWith('Y_') || code.startsWith('B_')) {
-            isYoung = true;
+        // Code format: Group_GenderNumber (e.g., Y_E_M1, B_F1)
+        if (code.includes('_M')) {
+            gender = 'male';
+            group = code.split('_M')[0].toLowerCase();
+        } else if (code.includes('_F')) {
+            gender = 'female';
+            group = code.split('_F')[0].toLowerCase();
+        } else {
+            return null;
         }
 
-        if (isMale) {
-            return isYoung ? 'img/archetypes/archetype_male_young.png' : 'img/archetypes/archetype_male_wise.png';
-        } else if (isFemale) {
-            return isYoung ? 'img/archetypes/archetype_female_young.png' : 'img/archetypes/archetype_female_wise.png';
-        }
-
-        return null; // Fallback
+        return `img/archetypes/${gender}_${group}.png`;
     },
 
     // Initialize app
