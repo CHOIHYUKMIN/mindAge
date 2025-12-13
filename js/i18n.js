@@ -125,15 +125,12 @@ const i18n = {
         document.title = this.t('title').replace(/<br>/g, ' ') + ' | Mental Age Calculator';
     },
 
-    // Update language button states
+    // Update language selector (dropdown)
     updateLanguageButtons() {
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            if (btn.dataset.lang === this.currentLang) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
+        const languageSelect = document.getElementById('language-select');
+        if (languageSelect) {
+            languageSelect.value = this.currentLang;
+        }
     }
 };
 

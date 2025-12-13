@@ -49,9 +49,11 @@
 <body>
     <!-- Language Selector -->
     <div class="language-selector">
-        <button class="lang-btn active" data-lang="ko" onclick="i18n.setLanguage('ko')" title="한국어">🇰🇷</button>
-        <button class="lang-btn" data-lang="en" onclick="i18n.setLanguage('en')" title="English">🇺🇸</button>
-        <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')" title="中文">🇨🇳</button>
+        <select id="language-select" class="lang-select" onchange="i18n.setLanguage(this.value)">
+            <option value="ko" selected>🇰🇷 한국어</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="zh">🇨🇳 中文</option>
+        </select>
     </div>
 
 
@@ -325,6 +327,11 @@
             </div>
         </div>
     </section>
+
+    <!-- Version Footer -->
+    <div class="version-footer">
+        v2.1.0
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>

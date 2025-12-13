@@ -634,47 +634,63 @@ body {
 .language-selector {
     position: fixed;
     top: var(--spacing-lg);
-    left: var(--spacing-lg);
-    /* right → left */
+    right: var(--spacing-lg);
     z-index: 1000;
-    display: flex;
-    gap: 0.25rem;
-    /* 간격 축소 */
+}
+
+.lang-select {
     background: var(--bg-card);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-full);
-    padding: 0.25rem;
-    /* 패딩 축소 */
-}
-
-.lang-btn {
-    background: transparent;
-    color: var(--text-secondary);
-    border: none;
-    padding: 0.4rem 0.6rem;
-    /* 국기용으로 축소 */
-    border-radius: var(--radius-full);
-    font-size: 1.2rem;
-    /* 국기 크기 */
+    color: var(--text-primary);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
     transition: all var(--transition-fast);
-    line-height: 1;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    padding-right: 2.5rem;
+    min-width: 140px;
 }
 
-.lang-btn:hover {
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
-    transform: scale(1.1);
-    /* 호버 효과 */
+.lang-select:hover {
+    border-color: var(--accent-purple);
+    background-color: var(--bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
 
-.lang-btn.active {
+.lang-select:focus {
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.lang-select option {
+    background: var(--bg-dark);
     color: var(--text-primary);
-    background: var(--gradient-primary);
-    font-weight: 600;
-    transform: scale(1.05);
+    padding: 0.5rem;
+}
+
+
+/* ===========================
+   Version Footer
+   =========================== */
+.version-footer {
+    position: fixed;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-sm);
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    opacity: 0.5;
+    z-index: 100;
+    font-family: 'Courier New', monospace;
 }
 
 /* ===========================
@@ -790,17 +806,14 @@ body {
     /* 언어 선택기 조정 */
     .language-selector {
         top: var(--spacing-md);
-        left: var(--spacing-md);
-        /* right → left */
-        padding: 0.2rem;
-        gap: 0.15rem;
+        right: var(--spacing-md);
     }
 
-    .lang-btn {
-        padding: 0.3rem 0.5rem;
-        /* 더 작게 */
-        font-size: 1rem;
-        /* 국기 크기 */
+    .lang-select {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        min-width: 120px;
+        padding-right: 2.2rem;
     }
 
     /* 질문 섹션 조정 */
