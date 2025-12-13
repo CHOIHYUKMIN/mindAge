@@ -216,6 +216,8 @@ const app = {
         document.getElementById('shared-message-text').textContent = message;
 
         // Display shared archetype if available
+        // Display shared archetype if available
+        /*
         if (archetypeCode) {
             const archetype = this.getArchetypeByCode(archetypeCode);
             if (archetype) {
@@ -237,6 +239,7 @@ const app = {
                 }
             }
         }
+        */
 
         // Show shared section
         this.showSection('shared');
@@ -522,6 +525,7 @@ const app = {
         document.getElementById('message-text').textContent = message;
 
         // Display archetype if available
+        /*
         if (this.archetype) {
             const archetypeContainer = document.getElementById('archetype-info');
             if (archetypeContainer) {
@@ -540,6 +544,7 @@ const app = {
                 archetypeContainer.classList.remove('hidden');
             }
         }
+        */
 
         // Store message for sharing
         this.resultMessage = message;

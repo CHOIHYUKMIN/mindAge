@@ -109,8 +109,8 @@ const translations_ko = {
     btnRestart: "다시 테스트하기",
     btnMyTest: "나도 테스트하기 🎈",
     linkCopied: "✓ 링크가 복사되었습니다!",
-    shareDesc: "나의 실물 나이는 {pa}세, 마음의 나이는 {ma}세!",
-    shareTitleArchetype: "나는: {name} ✨",
+    shareDesc: "📸 실물 나이: {pa}세\n🧠 마음의 나이: {ma}세",
+    // shareTitleArchetype: "나는: {name} ✨",
 
     // Errors
     errorNoFace: "얼굴을 찾을 수 없습니다. 정면 얼굴이 잘 보이는 사진을 올려주세요.",

@@ -34,9 +34,11 @@ async function shareToKakao(physicalAge, mentalAge, diffText, resultMessage, arc
     };
 
     // Add archetype code if available
+    /*
     if (archetype && archetype.code) {
         params.arc = archetype.code;
     }
+    */
 
     const shareParams = new URLSearchParams(params);
     const shareUrl = `${baseUrl}?${shareParams.toString()}`;
@@ -48,16 +50,16 @@ async function shareToKakao(physicalAge, mentalAge, diffText, resultMessage, arc
         .replace('{ma}', mentalAge);
     description += `\n${diffText}\n\n${resultMessage}`;
 
-    if (archetype) {
-        description += `\n\n✨ ${archetype.name}\n${archetype.desc}`;
-    }
+    // if (archetype) {
+    //    description += `\n\n✨ ${archetype.name}\n${archetype.desc}`;
+    // }
 
     // Determine title
     let title = CONFIG.APP_TITLE;
-    if (archetype) {
-        // Use archetype name as title
-        title = i18n.t('shareTitleArchetype').replace('{name}', archetype.name);
-    }
+    // if (archetype) {
+    //     // Use archetype name as title
+    //     title = i18n.t('shareTitleArchetype').replace('{name}', archetype.name);
+    // }
 
     try {
         window.Kakao.Share.sendDefault({
