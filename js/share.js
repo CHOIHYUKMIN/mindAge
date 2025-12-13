@@ -23,10 +23,17 @@ function shareToKakao(physicalAge, mentalAge, diffText, resultMessage) {
         return;
     }
 
-    // Get share URL - use production URL if deployed, otherwise use localhost
-    const shareUrl = getShareUrl();
-    const baseUrl = getBaseUrl();
-    const imageUrl = baseUrl + CONFIG.OG_IMAGE;
+    // Create share URL with result parameters
+    const baseUrl = getShareUrl();
+    const diff = mentalAge - physicalAge;
+    const shareParams = new URLSearchParams({
+        shared: 'true',
+        pa: physicalAge,
+        ma: mentalAge,
+        diff: diff
+    });
+    const shareUrl = `${baseUrl}?${shareParams.toString()}`;
+    const imageUrl = getBaseUrl() + CONFIG.OG_IMAGE;
 
     try {
         window.Kakao.Share.sendDefault({
@@ -42,10 +49,17 @@ function shareToKakao(physicalAge, mentalAge, diffText, resultMessage) {
             },
             buttons: [
                 {
-                    title: '나도 테스트하기 🎈',
+                    title: '결과 보기 👀',
                     link: {
                         mobileWebUrl: shareUrl,
                         webUrl: shareUrl,
+                    },
+                },
+                {
+                    title: '나도 테스트하기 🎈',
+                    link: {
+                        mobileWebUrl: baseUrl,
+                        webUrl: baseUrl,
                     },
                 },
             ],

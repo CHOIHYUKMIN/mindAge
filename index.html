@@ -54,6 +54,51 @@
         <button class="lang-btn" data-lang="zh" onclick="i18n.setLanguage('zh')">中文</button>
     </div>
 
+
+    <!-- Shared Result Section -->
+    <section id="shared-section" class="section">
+        <div class="container">
+            <div class="shared-content">
+                <h2 class="shared-title">친구의 테스트 결과 📊</h2>
+
+                <div class="shared-card">
+                    <div class="age-comparison">
+                        <div class="age-circle">
+                            <div class="circle-inner">
+                                <span class="circle-label" data-i18n="physicalAgeLabel">실물 나이</span>
+                                <span class="circle-value" id="shared-physical-age">--</span>
+                                <span class="circle-unit" data-i18n="ageUnit">세</span>
+                            </div>
+                        </div>
+
+                        <div class="vs-badge">VS</div>
+
+                        <div class="age-circle">
+                            <div class="circle-inner">
+                                <span class="circle-label" data-i18n="mentalAgeLabel">마음의 나이</span>
+                                <span class="circle-value" id="shared-mental-age">--</span>
+                                <span class="circle-unit" data-i18n="ageUnit">세</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="age-difference">
+                        <span class="diff-value" id="shared-diff-value">+0</span>
+                    </div>
+
+                    <div class="shared-message">
+                        <p class="message-text" id="shared-message-text">친구가 마음의 나이 테스트를 완료했어요!</p>
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-start" onclick="app.goToStart()">
+                    <span data-i18n="btnMyTest">나도 테스트하기 🎈</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Start Section -->
     <section id="start-section" class="section active">
         <div class="container">
@@ -142,6 +187,15 @@
                 <button class="btn-primary btn-next hidden" id="btn-next" onclick="app.startQuestions()">
                     <span data-i18n="btnNext">다음 단계</span>
                 </button>
+
+                <!-- AdSense Ad -->
+                <div class="ad-container" style="margin-top: 2rem;">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7456046576951897"
+                        data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
             </div>
         </div>
     </section>
@@ -156,6 +210,15 @@
 
             <div class="question-content" id="question-content">
                 <!-- Questions will be dynamically inserted here -->
+            </div>
+
+            <!-- AdSense Ad -->
+            <div class="ad-container" style="margin-top: 2rem;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7456046576951897"
+                    data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
     </section>

@@ -42,6 +42,7 @@ const translations_zh = {
     btnDownload: "保存图片",
     btnCopyLink: "复制链接",
     btnRestart: "重新测试",
+    btnMyTest: "我也要测试 🎈",
     linkCopied: "✓ 链接已复制！",
 
     // Errors

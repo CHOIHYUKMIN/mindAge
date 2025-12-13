@@ -144,6 +144,48 @@ body {
 }
 
 /* ===========================
+   Shared Result Section
+   =========================== */
+.shared-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.shared-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shared-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.shared-message {
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.shared-message .message-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ===========================
    Buttons
    =========================== */
 .btn-primary {
@@ -208,7 +250,7 @@ body {
    =========================== */
 .upload-content {
     text-align: center;
-    margin-top: 80px;
+    width: 100%;
 }
 
 .section-title {
@@ -229,8 +271,8 @@ body {
     backdrop-filter: blur(10px);
     border: 2px dashed rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     transition: all var(--transition-medium);
 }
 
@@ -260,7 +302,7 @@ body {
 
 .preview-area img {
     max-width: 100%;
-    max-height: 400px;
+    max-height: 350px;
     border-radius: var(--radius-md);
     margin-bottom: var(--spacing-md);
 }
@@ -681,18 +723,44 @@ body {
         margin-bottom: var(--spacing-lg);
     }
 
-    /* 업로드 섹션 조정 */
+    /* 업로드 섹션 조정 - 한 화면에 맞춤 */
     .upload-content {
-        margin-top: 60px;
+        width: 100%;
     }
 
-    .upload-card {
-        padding: var(--spacing-lg);
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .section-description {
+        font-size: 0.85rem;
         margin-bottom: var(--spacing-md);
     }
 
+    .upload-card {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+    }
+
     .preview-area img {
-        max-height: 300px;
+        max-height: 250px;
+    }
+
+    .analyzing-area {
+        padding: var(--spacing-md);
+    }
+
+    .age-result {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .result-badge {
+        padding: var(--spacing-sm);
+    }
+
+    .btn-next {
+        margin-top: var(--spacing-sm);
     }
 
     /* 버튼 크기 및 간격 조정 */
@@ -850,12 +918,21 @@ body {
         height: 150px;
     }
 
-    /* 섹션 높이를 유동적으로 조정 */
+    /* 모바일에서 섹션 높이를 유동적으로 조정 */
+    #start-section,
+    #upload-section,
+    #questions-section,
     #result-section {
-        min-height: auto;
-        padding: var(--spacing-md) 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-lg) 0;
     }
 
+    #start-section .container,
+    #upload-section .container,
+    #questions-section .container,
     #result-section .container {
         padding: var(--spacing-sm);
     }

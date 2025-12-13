@@ -13,6 +13,13 @@ const app = {
     init() {
         console.log('Initializing Mental Age Calculator...');
 
+        // Check if this is a shared result link
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('shared') === 'true') {
+            this.showSharedResult(urlParams);
+            return;
+        }
+
         // Set up upload area
         this.setupUploadArea();
 
@@ -27,6 +34,64 @@ const app = {
 
         // Show start section
         this.showSection('start');
+    },
+
+    // Show shared result from URL parameters
+    showSharedResult(urlParams) {
+        const physicalAge = parseInt(urlParams.get('pa'));
+        const mentalAge = parseInt(urlParams.get('ma'));
+        const diff = parseInt(urlParams.get('diff'));
+
+        if (isNaN(physicalAge) || isNaN(mentalAge)) {
+            // Invalid parameters, show start section instead
+            this.showSection('start');
+            return;
+        }
+
+        // Populate shared result UI
+        document.getElementById('shared-physical-age').textContent = physicalAge;
+        document.getElementById('shared-mental-age').textContent = mentalAge;
+
+        const ageUnit = i18n.t('ageUnit');
+        const diffText = diff > 0 ? `+${diff}` : `${diff}`;
+        document.getElementById('shared-diff-value').textContent = `${diffText}${ageUnit}`;
+
+        // Set message based on difference
+        let message;
+        if (diff < -15) {
+            message = '친구는 완전 어린왕자/공주네요! 영원한 10대 감성! 🌟';
+        } else if (diff < -10) {
+            message = '친구는 발랄한 청춘! 젊음이 넘쳐흘러요! ✨';
+        } else if (diff < -5) {
+            message = '친구는 생기발랄! 밝고 긍정적인 에너지예요!';
+        } else if (diff < -2) {
+            message = '친구는 마음만은 소녀/소년! 귀여운 영혼이에요!';
+        } else if (diff <= 2) {
+            message = '친구는 완벽한 밸런스! 나이를 잘 먹고 있어요!';
+        } else if (diff <= 5) {
+            message = '친구는 안정적인 어른! 성숙한 매력이 있어요!';
+        } else if (diff <= 10) {
+            message = '친구는 노련한 현자! 깊이 있는 영혼이에요!';
+        } else if (diff <= 15) {
+            message = '친구는 인생의 고수! 풍부한 경험을 가지고 있어요!';
+        } else {
+            message = '친구는 살아있는 지혜! 인생의 멘토예요!';
+        }
+
+        document.getElementById('shared-message-text').textContent = message;
+
+        // Show shared section
+        this.showSection('shared');
+
+        // Set up upload area for when user decides to take test
+        this.setupUploadArea();
+
+        // Initialize age detection model in background
+        initAgeDetection().then(success => {
+            if (success) {
+                console.log('Age detection ready');
+            }
+        });
     },
 
     // Section navigation

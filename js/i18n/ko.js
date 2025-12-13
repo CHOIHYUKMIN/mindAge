@@ -42,6 +42,7 @@ const translations_ko = {
     btnDownload: "이미지 저장",
     btnCopyLink: "링크 복사",
     btnRestart: "다시 테스트하기",
+    btnMyTest: "나도 테스트하기 🎈",
     linkCopied: "✓ 링크가 복사되었습니다!",
 
     // Errors

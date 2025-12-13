@@ -42,6 +42,7 @@ const translations_en = {
     btnDownload: "Save Image",
     btnCopyLink: "Copy Link",
     btnRestart: "Take Test Again",
+    btnMyTest: "Take My Test 🎈",
     linkCopied: "✓ Link copied to clipboard!",
 
     // Errors
