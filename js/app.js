@@ -506,6 +506,9 @@ const app = {
     }
 };
 
+// Expose app to global scope for HTML onclick handlers
+window.app = app;
+
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => app.init());

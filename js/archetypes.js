@@ -3,7 +3,7 @@
 // levelCode: Y_E, Y_S, Y_M, B, M_M, M_S, M_E
 // gender: "male" | "female"
 
-export const ARCHETYPES = {
+const ARCHETYPES = {
     male: {
         Y_E: [
             { code: "Y_E_M1", name: "불꽃 전사", desc: "불꽃처럼 뜨거운 열정과 모험심" },
