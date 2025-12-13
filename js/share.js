@@ -44,17 +44,17 @@ async function shareToKakao(physicalAge, mentalAge, diffText, resultMessage, arc
     const shareUrl = `${baseUrl}?${shareParams.toString()}`;
     const imageUrl = getBaseUrl() + CONFIG.OG_IMAGE; // static OG image
 
-    // Build title with age results AND diffText (appear right below image)
-    let title = i18n.t('shareDesc')
+    // Title: Display detailed result message first with emoji
+    let title = `✨ ${resultMessage || i18n.t('title')}`;
+
+    // Description: Display age results and assessment
+    let description = i18n.t('shareDesc')
         .replace('{pa}', physicalAge)
         .replace('{ma}', mentalAge);
 
     if (diffText) {
-        title += ` (${diffText})`;
+        description += ` (${diffText})`;
     }
-
-    // Description contains the detailed message
-    let description = resultMessage || '';
 
     // Archetype logic removed for simplicity
 
