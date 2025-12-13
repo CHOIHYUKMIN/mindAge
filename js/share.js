@@ -16,11 +16,28 @@ if (document.readyState === 'loading') {
     initKakao();
 }
 
-// Share to KakaoTalk
-function shareToKakao(physicalAge, mentalAge, diffText, resultMessage) {
+// Share to KakaoTalk with result image
+async function shareToKakao(physicalAge, mentalAge, diffText, resultMessage) {
     if (!window.Kakao || !window.Kakao.isInitialized()) {
         alert('카카오톡 공유를 사용하려면 Kakao JavaScript Key를 설정해주세요.\n\njs/share.js 파일에서 YOUR_KAKAO_JAVASCRIPT_KEY를 실제 키로 변경하세요.');
         return;
+    }
+
+    // First, offer to download the result image
+    const shouldDownload = confirm('카카오톡 공유 전에 결과 이미지를 먼저 다운로드하시겠습니까?\n\n이미지를 다운로드하면 카카오톡 대화에서 직접 이미지를 전송할 수 있습니다.');
+
+    if (shouldDownload) {
+        await downloadResultImage();
+
+        // Wait a moment for download to start
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        const continueShare = confirm('이미지 다운로드가 시작되었습니다.\n\n카카오톡으로 이동하여 다운로드한 이미지를 직접 공유하시겠습니까?\n\n아니오를 누르면 링크 공유를 계속합니다.');
+
+        if (continueShare) {
+            // User will share manually with downloaded image
+            return;
+        }
     }
 
     // Create share URL with result parameters
@@ -94,12 +111,49 @@ async function downloadResultImage() {
     try {
         const resultSection = document.getElementById('result-content');
 
+        // Temporarily hide buttons for cleaner capture
+        const shareButtons = resultSection.querySelector('.share-buttons');
+        const restartBtn = resultSection.querySelector('.btn-restart');
+        const adContainers = resultSection.querySelectorAll('.ad-container');
+
+        const originalShareDisplay = shareButtons ? shareButtons.style.display : '';
+        const originalRestartDisplay = restartBtn ? restartBtn.style.display : '';
+        const originalAdDisplays = Array.from(adContainers).map(ad => ad.style.display);
+
+        if (shareButtons) shareButtons.style.display = 'none';
+        if (restartBtn) restartBtn.style.display = 'none';
+        adContainers.forEach(ad => ad.style.display = 'none');
+
+        // Add watermark
+        const watermark = document.createElement('div');
+        watermark.style.cssText = `
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        `;
+        watermark.innerHTML = `
+            <div style="margin-bottom: 0.5rem; font-weight: 600; font-size: 1rem;">마음의 나이 계산기</div>
+            <div>${window.location.origin}${window.location.pathname}</div>
+        `;
+        resultSection.appendChild(watermark);
+
         // Use html2canvas to capture the result section
         const canvas = await html2canvas(resultSection, {
             backgroundColor: '#0f0f23',
-            scale: 2, // Higher quality
-            logging: false
+            scale: 3, // Higher quality for sharing
+            logging: false,
+            useCORS: true,
+            allowTaint: true
         });
+
+        // Remove watermark and restore buttons
+        watermark.remove();
+        if (shareButtons) shareButtons.style.display = originalShareDisplay;
+        if (restartBtn) restartBtn.style.display = originalRestartDisplay;
+        adContainers.forEach((ad, i) => ad.style.display = originalAdDisplays[i]);
 
         // Convert canvas to blob
         canvas.toBlob((blob) => {

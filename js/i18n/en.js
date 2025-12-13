@@ -20,6 +20,7 @@ const translations_en = {
 
     // Questions
     progressText: "{current} / {total}",
+    customQuestionNotice: "Questions customized for your age and gender",
 
     // Result Screen
     resultTitle: "Results",
@@ -50,99 +51,362 @@ const translations_en = {
     errorDownload: "Failed to save image. Please try again.",
     errorCopyLink: "Failed to copy link.",
 
-    // Questions
-    questions: [
-        {
-            question: "What would you most like to do on the weekend?",
-            options: [
-                "🎉 Go to clubs/festivals with friends",
-                "📚 Read at a café",
-                "🎬 Watch Netflix at home",
-                "⛰️ Hiking or golf"
+    // Age-Gender Customized Questions
+    questions: {
+        // Teens (10-19)
+        teen: {
+            common: [
+                {
+                    question: "What would you most like to do on the weekend?",
+                    options: [
+                        "🎉 Hang out with friends",
+                        "📚 Study/read at café",
+                        "🎮 Game/YouTube at home",
+                        "🏃 Sports or hobbies"
+                    ],
+                    weight: 1.0
+                },
+                {
+                    question: "How do you mainly use social media?",
+                    options: [
+                        "📱 Endless scrolling of Reels/Shorts",
+                        "👥 Check friends' posts",
+                        "📸 Share my daily life",
+                        "🚫 Barely use it"
+                    ],
+                    weight: 1.0
+                },
+                {
+                    question: "During exam period, you usually?",
+                    options: [
+                        "😅 Cram at last minute",
+                        "📖 Study systematically",
+                        "👥 Study group with friends",
+                        "🧘 Review leisurely"
+                    ],
+                    weight: 1.2
+                }
+            ],
+            male: [
+                {
+                    question: "How often do you play games?",
+                    options: [
+                        "🎮 3+ hours daily",
+                        "🕹️ Only on weekends",
+                        "📱 Occasional mobile games",
+                        "🚫 Rarely play"
+                    ],
+                    weight: 1.1
+                },
+                {
+                    question: "How often do you exercise?",
+                    options: [
+                        "⚽ Almost daily",
+                        "🏀 2-3 times a week",
+                        "🏃 Occasionally",
+                        "😴 Rarely"
+                    ],
+                    weight: 1.0
+                }
+            ],
+            female: [
+                {
+                    question: "How much do you care about fashion/beauty?",
+                    options: [
+                        "💄 Daily attention",
+                        "👗 Only special occasions",
+                        "👕 Comfort is best",
+                        "🤷 Not much interest"
+                    ],
+                    weight: 1.1
+                },
+                {
+                    question: "What do you mainly do with friends?",
+                    options: [
+                        "🛍️ Shopping/café",
+                        "🎬 Movies/shows",
+                        "💬 Just chatting",
+                        "🎨 Hobby activities"
+                    ],
+                    weight: 1.0
+                }
             ]
         },
-        {
-            question: "How do you mainly use social media?",
-            options: [
-                "📱 Endless scrolling of Reels/Shorts",
-                "👥 Check friends' posts",
-                "📰 Search for information/news",
-                "🚫 Barely use it"
+
+        // Twenties (20-29)
+        twenties: {
+            common: [
+                {
+                    question: "What would you most like to do on the weekend?",
+                    options: [
+                        "🎉 Go to clubs/festivals with friends",
+                        "📚 Read at a café",
+                        "🎬 Watch Netflix at home",
+                        "⛰️ Hiking or golf"
+                    ],
+                    weight: 1.0
+                },
+                {
+                    question: "When you have a conflict with a friend?",
+                    options: [
+                        "😤 Express feelings immediately",
+                        "⏰ Take time to think",
+                        "💬 Resolve calmly through dialogue",
+                        "🤝 I compromise"
+                    ],
+                    weight: 1.0
+                },
+                {
+                    question: "When you want to buy something?",
+                    options: [
+                        "💳 Impulse buy immediately!",
+                        "🔍 Check reviews on SNS",
+                        "🤔 Think about it for a few days",
+                        "💰 Compare prices and wait for sale"
+                    ],
+                    weight: 1.0
+                }
+            ],
+            male: [
+                {
+                    question: "How do you handle work/school stress?",
+                    options: [
+                        "🍺 Drinks with friends",
+                        "🎮 Gaming",
+                        "🏋️ Exercise",
+                        "🧘 Quiet rest alone"
+                    ],
+                    weight: 1.1
+                },
+                {
+                    question: "About future plans?",
+                    options: [
+                        "🎯 Have specific goals",
+                        "💭 Vaguely thinking",
+                        "🤷 Living day by day",
+                        "😰 Just worrying"
+                    ],
+                    weight: 1.2
+                }
+            ],
+            female: [
+                {
+                    question: "How do you manage self-care?",
+                    options: [
+                        "💆 Regular maintenance",
+                        "💄 Just the basics",
+                        "🏃 Focus on exercise",
+                        "😅 When I have time"
+                    ],
+                    weight: 1.1
+                },
+                {
+                    question: "Your view on relationships?",
+                    options: [
+                        "💕 Seeking romantic love",
+                        "🤝 Prefer comfortable relationship",
+                        "💼 Career comes first",
+                        "🤔 Not sure yet"
+                    ],
+                    weight: 1.2
+                }
             ]
         },
-        {
-            question: "When you have a conflict with a friend?",
-            options: [
-                "😤 Express feelings immediately",
-                "⏰ Take time to think",
-                "💬 Resolve calmly through dialogue",
-                "🤝 I compromise"
+
+        // Thirties (30-39)
+        thirties: {
+            common: [
+                {
+                    question: "What would you most like to do on the weekend?",
+                    options: [
+                        "👨‍👩‍👧 Spend time with family",
+                        "📚 Self-development/reading",
+                        "🏠 Rest at home",
+                        "⛳ Golf/hiking"
+                    ],
+                    weight: 1.0
+                },
+                {
+                    question: "Main topics of conversation with friends?",
+                    options: [
+                        "💼 Work, career",
+                        "💪 Health, finance",
+                        "👶 Parenting, family",
+                        "🎮 Hobbies, interests"
+                    ],
+                    weight: 1.0
+                },
+                {
+                    question: "When you're stressed?",
+                    options: [
+                        "🍷 Wine/beer",
+                        "🏃 Exercise/walk",
+                        "🧘 Meditation/rest",
+                        "💬 Talk with family/friends"
+                    ],
+                    weight: 1.0
+                }
+            ],
+            male: [
+                {
+                    question: "Interest in financial management?",
+                    options: [
+                        "📈 Active investing",
+                        "💰 Stable savings",
+                        "🏠 Real estate interest",
+                        "🤷 Not much interest"
+                    ],
+                    weight: 1.2
+                },
+                {
+                    question: "Health management?",
+                    options: [
+                        "🏋️ Regular exercise",
+                        "🥗 Diet management",
+                        "💊 Just health checkups",
+                        "😅 Don't care much"
+                    ],
+                    weight: 1.1
+                }
+            ],
+            female: [
+                {
+                    question: "Work-life balance?",
+                    options: [
+                        "💼 Career-focused",
+                        "👨‍👩‍👧 Family-focused",
+                        "⚖️ Seeking balance",
+                        "🤔 Still figuring out"
+                    ],
+                    weight: 1.2
+                },
+                {
+                    question: "Self-development?",
+                    options: [
+                        "📚 Continuous learning",
+                        "💪 Health management",
+                        "🎨 Hobby development",
+                        "😴 No time"
+                    ],
+                    weight: 1.1
+                }
             ]
         },
-        {
-            question: "When you want to buy something?",
-            options: [
-                "💳 Impulse buy immediately!",
-                "🔍 Check reviews on SNS",
-                "🤔 Think about it for a few days",
-                "💰 Compare prices and wait for sale"
+
+        // Forties and above (40+)
+        forties: {
+            common: [
+                {
+                    question: "How do you spend your leisure time?",
+                    options: [
+                        "👨‍👩‍👧 With family",
+                        "⛳ Golf/hiking",
+                        "📚 Reading/culture",
+                        "🏠 Rest at home"
+                    ],
+                    weight: 1.0
+                },
+                {
+                    question: "Interest in health?",
+                    options: [
+                        "🏥 Regular checkups essential",
+                        "🏃 Consistent exercise",
+                        "🥗 Diet management",
+                        "💊 Only when needed"
+                    ],
+                    weight: 1.0
+                },
+                {
+                    question: "What's most important in life?",
+                    options: [
+                        "👨‍👩‍👧 Family happiness",
+                        "💪 Health",
+                        "💰 Financial stability",
+                        "🧘 Peace of mind"
+                    ],
+                    weight: 1.0
+                }
+            ],
+            male: [
+                {
+                    question: "Retirement preparation?",
+                    options: [
+                        "📊 Specifically preparing",
+                        "💰 Saving/investing",
+                        "🤔 Vaguely thinking",
+                        "😅 Think it's far away"
+                    ],
+                    weight: 1.2
+                },
+                {
+                    question: "Hobbies?",
+                    options: [
+                        "⛳ Golf",
+                        "🎣 Fishing/hiking",
+                        "📚 Reading/studying",
+                        "🎵 Music/arts"
+                    ],
+                    weight: 1.0
+                }
+            ],
+            female: [
+                {
+                    question: "About children's education?",
+                    options: [
+                        "📚 Actively involved",
+                        "🤝 Respect autonomy",
+                        "⚖️ Seeking balance",
+                        "👶 Still young"
+                    ],
+                    weight: 1.2
+                },
+                {
+                    question: "Personal time management?",
+                    options: [
+                        "💆 Regular self-care",
+                        "🎨 Hobby activities",
+                        "👥 Friend gatherings",
+                        "😅 No time"
+                    ],
+                    weight: 1.1
+                }
             ]
         },
-        {
-            question: "What music genre do you mainly listen to?",
-            options: [
-                "🎵 Latest Hip-hop/EDM/K-POP",
-                "🎸 Indie/Pop",
-                "🎹 Ballad/Jazz",
-                "🎼 Classical/Traditional"
-            ]
-        },
-        {
-            question: "What's your morning routine?",
-            options: [
-                "😴 Snooze alarm 5 times",
-                "📱 Check phone immediately",
-                "🧘 Light stretching",
-                "🏃 Wake up early for walk/exercise"
-            ]
-        },
-        {
-            question: "Main topics of conversation with friends?",
-            options: [
-                "💘 Dating, gossip, dramas",
-                "🎮 Hobbies, interests",
-                "💼 Work, career",
-                "💪 Health, finance, real estate"
-            ]
-        },
-        {
-            question: "When you're stressed?",
-            options: [
-                "👯 Meet friends and chat",
-                "🎮 Games/YouTube",
-                "🏃 Exercise/walk",
-                "🧘 Meditation/quiet rest"
-            ]
-        },
-        {
-            question: "When planning a trip?",
-            options: [
-                "✈️ Spontaneous without plans",
-                "🏨 Just book accommodation",
-                "📝 Plan main itinerary",
-                "📋 Create detailed hourly schedule"
-            ]
-        },
-        {
-            question: "What's most important in life?",
-            options: [
-                "😊 Fun and enjoyment",
-                "🌟 New experiences and challenges",
-                "⚖️ Stability and balance",
-                "🎯 Achievement and responsibility"
-            ]
-        }
-    ]
+
+        // Universal questions (age/gender independent)
+        universal: [
+            {
+                question: "What music genre do you mainly listen to?",
+                options: [
+                    "🎵 Latest Hip-hop/EDM/K-POP",
+                    "🎸 Indie/Pop",
+                    "🎹 Ballad/Jazz",
+                    "🎼 Classical/Traditional"
+                ],
+                weight: 1.0
+            },
+            {
+                question: "What's your morning routine?",
+                options: [
+                    "😴 Snooze alarm 5 times",
+                    "📱 Check phone immediately",
+                    "🧘 Light stretching",
+                    "🏃 Wake up early for walk/exercise"
+                ],
+                weight: 1.0
+            },
+            {
+                question: "When planning a trip?",
+                options: [
+                    "✈️ Spontaneous without plans",
+                    "🏨 Just book accommodation",
+                    "📝 Plan main itinerary",
+                    "📋 Create detailed hourly schedule"
+                ],
+                weight: 1.0
+            }
+        ]
+    }
 };
 
 // Export for use in i18n.js

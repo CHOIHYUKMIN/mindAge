@@ -57,9 +57,52 @@ const i18n = {
         return translation !== undefined ? translation : key;
     },
 
-    // Get questions for current language
-    getQuestions() {
-        return this.translations[this.currentLang].questions || [];
+    // Get questions for current language with age/gender customization
+    getQuestions(ageGroup = null, gender = null) {
+        const questionsData = this.translations[this.currentLang].questions;
+
+        // If questions is an array (old format), return it directly
+        if (Array.isArray(questionsData)) {
+            return questionsData;
+        }
+
+        // New format: age-gender customized questions
+        const selectedQuestions = [];
+
+        // Determine age group
+        let group = ageGroup || 'twenties'; // Default to twenties
+
+        // Ensure the group exists, fallback to twenties
+        if (!questionsData[group]) {
+            group = 'twenties';
+        }
+
+        const groupData = questionsData[group];
+
+        // Add common questions for this age group
+        if (groupData.common && Array.isArray(groupData.common)) {
+            selectedQuestions.push(...groupData.common);
+        }
+
+        // Add gender-specific questions if available
+        if (gender && groupData[gender] && Array.isArray(groupData[gender])) {
+            selectedQuestions.push(...groupData[gender]);
+        }
+
+        // Add universal questions
+        if (questionsData.universal && Array.isArray(questionsData.universal)) {
+            selectedQuestions.push(...questionsData.universal);
+        }
+
+        // If we don't have enough questions, add more from common
+        if (selectedQuestions.length < 10 && groupData.common) {
+            const needed = 10 - selectedQuestions.length;
+            const additional = groupData.common.slice(0, needed);
+            selectedQuestions.push(...additional);
+        }
+
+        // Limit to 10 questions
+        return selectedQuestions.slice(0, 10);
     },
 
     // Update all UI text elements

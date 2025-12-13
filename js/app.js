@@ -5,9 +5,21 @@ const app = {
     uploadedImage: null,
     physicalAge: null,
     mentalAge: null,
+    gender: null,
+    genderProbability: null,
+    ageGroup: null,
     currentQuestionIndex: 0,
     answers: [],
     totalScore: 0,
+    currentQuestionSet: [],
+
+    // Helper: Get age group from physical age
+    getAgeGroup(age) {
+        if (age < 20) return 'teen';
+        if (age < 30) return 'twenties';
+        if (age < 40) return 'thirties';
+        return 'forties';
+    },
 
     // Initialize app
     init() {
@@ -56,26 +68,26 @@ const app = {
         const diffText = diff > 0 ? `+${diff}` : `${diff}`;
         document.getElementById('shared-diff-value').textContent = `${diffText}${ageUnit}`;
 
-        // Set message based on difference
+        // Set message based on difference (use i18n)
         let message;
         if (diff < -15) {
-            message = '친구는 완전 어린왕자/공주네요! 영원한 10대 감성! 🌟';
+            message = i18n.t('resultVeryYoung');
         } else if (diff < -10) {
-            message = '친구는 발랄한 청춘! 젊음이 넘쳐흘러요! ✨';
+            message = i18n.t('resultYoung');
         } else if (diff < -5) {
-            message = '친구는 생기발랄! 밝고 긍정적인 에너지예요!';
+            message = i18n.t('resultFresh');
         } else if (diff < -2) {
-            message = '친구는 마음만은 소녀/소년! 귀여운 영혼이에요!';
+            message = i18n.t('resultCute');
         } else if (diff <= 2) {
-            message = '친구는 완벽한 밸런스! 나이를 잘 먹고 있어요!';
+            message = i18n.t('resultBalance');
         } else if (diff <= 5) {
-            message = '친구는 안정적인 어른! 성숙한 매력이 있어요!';
+            message = i18n.t('resultMature');
         } else if (diff <= 10) {
-            message = '친구는 노련한 현자! 깊이 있는 영혼이에요!';
+            message = i18n.t('resultWise');
         } else if (diff <= 15) {
-            message = '친구는 인생의 고수! 풍부한 경험을 가지고 있어요!';
+            message = i18n.t('resultExpert');
         } else {
-            message = '친구는 살아있는 지혜! 인생의 멘토예요!';
+            message = i18n.t('resultMentor');
         }
 
         document.getElementById('shared-message-text').textContent = message;
@@ -189,6 +201,9 @@ const app = {
         // Reset
         this.uploadedImage = null;
         this.physicalAge = null;
+        this.gender = null;
+        this.genderProbability = null;
+        this.ageGroup = null;
     },
 
     // Analyze image for age
@@ -209,12 +224,37 @@ const app = {
             // Estimate age
             const result = await estimateAge(imageElement);
             this.physicalAge = result.age;
+            this.gender = result.gender;  // Store gender
+            this.genderProbability = result.genderProbability;
+            this.ageGroup = this.getAgeGroup(this.physicalAge);  // Calculate age group
+
+            console.log(`Age: ${this.physicalAge}, Gender: ${this.gender}, Age Group: ${this.ageGroup}`);
 
             // Show result
             setTimeout(() => {
                 document.getElementById('analyzing-area').classList.add('hidden');
                 document.getElementById('age-result').classList.remove('hidden');
+
+                // Display age
                 document.getElementById('physical-age').textContent = this.physicalAge;
+
+                // Display gender if confidence is high enough
+                const genderEmoji = result.gender === 'male' ? '👨' : '👩';
+                const genderText = result.gender === 'male' ?
+                    (i18n.currentLang === 'ko' ? '남성' : i18n.currentLang === 'zh' ? '男性' : 'Male') :
+                    (i18n.currentLang === 'ko' ? '여성' : i18n.currentLang === 'zh' ? '女性' : 'Female');
+                const genderConfidence = (result.genderProbability * 100).toFixed(0);
+
+                // Update result text to include gender
+                const resultValue = document.querySelector('.result-value');
+                resultValue.innerHTML = `
+                    <span data-i18n="resultText">${i18n.t('resultText')}</span>
+                    <strong id="physical-age">${this.physicalAge}</strong>
+                    <span data-i18n="resultTextAge">${i18n.t('resultTextAge')}</span>
+                    <br>
+                    <span style="font-size: 0.9em; opacity: 0.8;">${genderEmoji} ${genderText} (${genderConfidence}%)</span>
+                `;
+
                 document.getElementById('btn-next').classList.remove('hidden');
             }, 1500); // Simulate processing time
 
@@ -229,6 +269,12 @@ const app = {
         this.currentQuestionIndex = 0;
         this.answers = [];
         this.totalScore = 0;
+
+        // Get customized questions based on age group and gender
+        this.currentQuestionSet = i18n.getQuestions(this.ageGroup, this.gender);
+
+        console.log(`Selected ${this.currentQuestionSet.length} questions for ${this.ageGroup} ${this.gender || 'any'}`);
+
         this.showSection('questions');
         this.renderQuestion();
     },
@@ -236,8 +282,12 @@ const app = {
     // Render current question
     renderQuestion() {
         const questionIndex = this.currentQuestionIndex;
-        const questions = getQuestions(); // Get questions from i18n
-        const question = questions[questionIndex];
+        const questions = this.currentQuestionSet;
+        const questionData = questions[questionIndex];
+
+        // Handle both old format (direct question object) and new format (with weight)
+        const question = questionData.question || questionData.q || questionData;
+        const options = questionData.options || questionData.o || [];
 
         // Update progress
         const progress = ((questionIndex + 1) / questions.length) * 100;
@@ -248,9 +298,9 @@ const app = {
         const questionContent = document.getElementById('question-content');
         questionContent.innerHTML = `
             <div class="question-card">
-                <h2 class="question-title">${question.question}</h2>
+                <h2 class="question-title">${question}</h2>
                 <div class="options">
-                    ${question.options.map((option, index) => `
+                    ${options.map((option, index) => `
                         <button class="option-btn" onclick="app.selectOption(${index})">
                             ${option}
                         </button>
@@ -262,16 +312,22 @@ const app = {
 
     // Select option
     selectOption(optionIndex) {
-        const questions = getQuestions();
+        const questions = this.currentQuestionSet;
+        const questionData = questions[this.currentQuestionIndex];
 
         // Get score from questionScores
-        const score = getQuestionScore(this.currentQuestionIndex, optionIndex);
+        const baseScore = getQuestionScore(this.currentQuestionIndex, optionIndex);
+
+        // Apply weight if available
+        const weight = questionData.weight || 1.0;
+        const score = Math.round(baseScore * weight);
 
         // Save answer
         this.answers.push({
             questionIndex: this.currentQuestionIndex,
             optionIndex: optionIndex,
-            score: score
+            score: score,
+            weight: weight
         });
 
         this.totalScore += score;
@@ -279,7 +335,7 @@ const app = {
         // Move to next question or show result
         this.currentQuestionIndex++;
 
-        if (this.currentQuestionIndex < getQuestions().length) {
+        if (this.currentQuestionIndex < questions.length) {
             // Next question
             setTimeout(() => {
                 this.renderQuestion();
@@ -292,7 +348,7 @@ const app = {
 
     // Calculate mental age and show result
     calculateAndShowResult() {
-        this.mentalAge = calculateMentalAge(this.totalScore, getQuestions().length);
+        this.mentalAge = calculateMentalAge(this.totalScore, this.currentQuestionSet.length);
 
         // Show result section
         this.showSection('result');
@@ -407,9 +463,13 @@ const app = {
         this.uploadedImage = null;
         this.physicalAge = null;
         this.mentalAge = null;
+        this.gender = null;
+        this.genderProbability = null;
+        this.ageGroup = null;
         this.currentQuestionIndex = 0;
         this.answers = [];
         this.totalScore = 0;
+        this.currentQuestionSet = [];
 
         // Reset UI
         document.getElementById('upload-area').classList.remove('hidden');
