@@ -15,7 +15,11 @@ const CONFIG = {
     // 앱 정보
     APP_NAME: '마음의 나이 계산기',
     APP_TITLE: '🎯 마음의 나이 계산기',
-    APP_DESCRIPTION: 'AI가 당신의 얼굴로 실물 나이를 추측하고, 10가지 질문으로 마음의 나이를 알려드려요'
+    APP_DESCRIPTION: 'AI가 당신의 얼굴로 실물 나이를 추측하고, 10가지 질문으로 마음의 나이를 알려드려요',
+
+    // 버전 관리 (한 곳에서 관리)
+    VERSION: '2.3.1',
+    VERSION_NAME: 'Christmas Edition 🎄'
 };
 
 // Get the current URL based on environment

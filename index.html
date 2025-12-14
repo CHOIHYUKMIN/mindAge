@@ -45,9 +45,16 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&family=Poppins:wght@700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css?v=2.3.0">
-    <link rel="stylesheet" href="css/animations.css?v=2.3.0">
+    <!-- Version Config (inline for early loading) -->
+    <script>
+        const CONFIG = { VERSION: '2.3.1' }; // 임시 정의, config.js에서 덮어씀
+    </script>
+
+    <!-- Stylesheets (버전 관리) -->
+    <script>
+        document.write(`<link rel="stylesheet" href="css/style.css?v=${CONFIG.VERSION}">`);
+        document.write(`<link rel="stylesheet" href="css/animations.css?v=${CONFIG.VERSION}">`);
+    </script>
 
     <!-- Kakao SDK -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -361,24 +368,55 @@
             style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem; font-size: 0.9rem;">문의하기</a>
     </div>
 
-    <!-- Version Footer -->
-    <div class="version-footer">
-        v2.3.1 (Christmas Edition 🎄)
+    <!-- Version Footer (동적으로 업데이트됨) -->
+    <div class="version-footer" id="version-footer">
+        Loading...
     </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script src="js/config.js?v=2.3.0"></script>
-    <script src="js/i18n/ko.js?v=2.3.0"></script>
-    <script src="js/i18n/en.js?v=2.3.0"></script>
-    <script src="js/i18n/zh.js?v=2.3.0"></script>
-    <script src="js/questions.js?v=2.3.0"></script>
-    <script src="js/ageDetection.js?v=2.3.0"></script>
-    <script src="js/share.js?v=2.3.0"></script>
-    <script src="js/i18n.js?v=2.3.0"></script>
-    <script src="js/snow.js?v=2.3.0"></script>
-    <script type="module" src="js/app.js?v=2.3.0"></script>
+
+    <!-- Config must load first -->
+    <script src="js/config.js"></script>
+
+    <!-- Version-managed scripts -->
+    <script>
+        // 버전 기반 캐시 무효화를 위한 동적 스크립트 로딩
+        (function () {
+            const version = CONFIG.VERSION;
+            const scripts = [
+                'js/i18n/ko.js',
+                'js/i18n/en.js',
+                'js/i18n/zh.js',
+                'js/questions.js',
+                'js/ageDetection.js',
+                'js/share.js',
+                'js/i18n.js',
+                'js/snow.js'
+            ];
+
+            scripts.forEach(src => {
+                const script = document.createElement('script');
+                script.src = `${src}?v=${version}`;
+                document.write(script.outerHTML);
+            });
+
+            // app.js는 module이므로 별도 처리
+            const appScript = document.createElement('script');
+            appScript.type = 'module';
+            appScript.src = `js/app.js?v=${version}`;
+            document.write(appScript.outerHTML);
+
+            // 버전 푸터 업데이트
+            document.addEventListener('DOMContentLoaded', () => {
+                const versionFooter = document.getElementById('version-footer');
+                if (versionFooter) {
+                    versionFooter.textContent = `v${CONFIG.VERSION} (${CONFIG.VERSION_NAME})`;
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>
