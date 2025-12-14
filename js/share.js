@@ -58,7 +58,7 @@ async function shareToKakao(physicalAge, mentalAge, diffText, resultMessage, arc
 
     const shareParams = new URLSearchParams(params);
     const shareUrl = `${baseUrl}?${shareParams.toString()}`;
-    const imageUrl = getBaseUrl() + CONFIG.OG_IMAGE; // static OG image
+    const imageUrl = CONFIG.OG_IMAGE; // Already an absolute URL
 
     // Title: Display detailed result message first with emoji
     let title = `✨ ${resultMessage || i18n.t('title')}`;
