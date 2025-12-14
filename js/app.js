@@ -184,6 +184,15 @@ const app = {
             }
         });
 
+        // Set up event listeners for iOS compatibility
+        const btnNext = document.getElementById('btn-next');
+        if (btnNext) {
+            btnNext.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.startQuestions();
+            }, { passive: false });
+        }
+
         // Show start section
         this.showSection('start');
     },
@@ -404,7 +413,12 @@ const app = {
                     <span style="font-size: 0.9em; opacity: 0.8;">${genderEmoji} ${genderText} (${genderConfidence}%)</span>
                 `;
 
-                document.getElementById('btn-next').classList.remove('hidden');
+                // Show next button with iOS Safari compatibility
+                const btnNext = document.getElementById('btn-next');
+                btnNext.classList.remove('hidden');
+                btnNext.style.display = 'inline-block'; // Force display for iOS
+                // Force reflow to ensure iOS Safari applies the changes
+                void btnNext.offsetHeight;
             }, 1500); // Simulate processing time
 
         } catch (error) {
