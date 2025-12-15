@@ -117,6 +117,7 @@ function rgbToHsl(r, g, b) {
 // Extract skin tone from face region
 function extractSkinTone(imageElement, landmarks) {
     if (!landmarks || !landmarks.positions) {
+        console.warn('No landmarks provided for skin tone extraction');
         return null;
     }
 
@@ -125,9 +126,22 @@ function extractSkinTone(imageElement, landmarks) {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
 
-        canvas.width = imageElement.width;
-        canvas.height = imageElement.height;
-        ctx.drawImage(imageElement, 0, 0);
+        // Use natural dimensions of the image
+        const width = imageElement.naturalWidth || imageElement.width;
+        const height = imageElement.naturalHeight || imageElement.height;
+
+        if (!width || !height) {
+            console.error('Invalid image dimensions:', width, height);
+            return null;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        console.log(`Canvas size: ${width}x${height}`);
+
+        // Draw image on canvas
+        ctx.drawImage(imageElement, 0, 0, width, height);
 
         const points = landmarks.positions;
 
@@ -139,6 +153,8 @@ function extractSkinTone(imageElement, landmarks) {
             points[28], // Nose
             points[33]  // Nose tip
         ];
+
+        console.log('Sample points:', samplePoints.map(p => `(${Math.floor(p.x)}, ${Math.floor(p.y)})`));
 
         let totalR = 0, totalG = 0, totalB = 0;
         let validSamples = 0;
@@ -154,21 +170,30 @@ function extractSkinTone(imageElement, landmarks) {
                     const py = y + dy;
 
                     if (px >= 0 && px < canvas.width && py >= 0 && py < canvas.height) {
-                        const pixel = ctx.getImageData(px, py, 1, 1).data;
-                        totalR += pixel[0];
-                        totalG += pixel[1];
-                        totalB += pixel[2];
-                        validSamples++;
+                        try {
+                            const pixel = ctx.getImageData(px, py, 1, 1).data;
+                            totalR += pixel[0];
+                            totalG += pixel[1];
+                            totalB += pixel[2];
+                            validSamples++;
+                        } catch (e) {
+                            console.error('Error reading pixel:', e);
+                        }
                     }
                 }
             }
         });
 
-        if (validSamples === 0) return null;
+        if (validSamples === 0) {
+            console.error('No valid samples extracted');
+            return null;
+        }
 
         const avgR = Math.round(totalR / validSamples);
         const avgG = Math.round(totalG / validSamples);
         const avgB = Math.round(totalB / validSamples);
+
+        console.log(`Extracted skin tone from ${validSamples} samples: RGB(${avgR}, ${avgG}, ${avgB})`);
 
         return { r: avgR, g: avgG, b: avgB };
 

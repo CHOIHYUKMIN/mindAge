@@ -1114,9 +1114,16 @@ body {
    =========================== */
 .additional-analysis {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-md);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* Mobile: single column */
+@media (max-width: 640px) {
+    .additional-analysis {
+        grid-template-columns: 1fr;
+    }
 }
 
 .analysis-card {
@@ -1124,7 +1131,7 @@ body {
     backdrop-filter: blur(10px);
     border: 2px solid rgba(102, 126, 234, 0.2);
     border-radius: var(--radius-md);
-    padding: var(--spacing-md);
+    padding: 1rem;
     transition: all var(--transition-medium);
 }
 
@@ -1136,10 +1143,10 @@ body {
 
 .analysis-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--accent-purple);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 0.5rem;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -1150,14 +1157,14 @@ body {
 }
 
 .analysis-emoji {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .analysis-name {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     background: var(--gradient-accent);
     -webkit-background-clip: text;
@@ -1167,10 +1174,10 @@ body {
 }
 
 .analysis-desc {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-top: var(--spacing-sm);
+    line-height: 1.5;
+    margin-top: 0.4rem;
 }
 
 /* Color Palette Styles */
@@ -1197,14 +1204,15 @@ body {
 
 .color-swatches {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.3rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 0.5rem;
 }
 
 .color-swatch {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: var(--radius-sm);
     border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -1221,39 +1229,11 @@ body {
 /* Responsive for Analysis Cards */
 @media (max-width: 768px) {
     .analysis-card {
-        padding: var(--spacing-sm);
-    }
-
-    .analysis-emoji {
-        font-size: 1.8rem;
-    }
-
-    .analysis-name {
-        font-size: 1.1rem;
-    }
-
-    .analysis-desc {
-        font-size: 0.8rem;
-    }
-
-    .color-main {
-        width: 70px;
-        height: 70px;
-    }
-
-    .color-swatch {
-        width: 35px;
-        height: 35px;
-    }
-}
-
-@media (max-width: 480px) {
-    .analysis-card {
         padding: 0.75rem;
     }
 
     .analysis-title {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .analysis-emoji {
@@ -1269,12 +1249,47 @@ body {
     }
 
     .color-main {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
     }
 
     .color-swatch {
         width: 30px;
         height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .analysis-card {
+        padding: 0.6rem;
+    }
+
+    .analysis-title {
+        font-size: 0.7rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .analysis-emoji {
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .analysis-name {
+        font-size: 0.95rem;
+    }
+
+    .analysis-desc {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    .color-main {
+        width: 60px;
+        height: 60px;
+    }
+
+    .color-swatch {
+        width: 28px;
+        height: 28px;
     }
 }
