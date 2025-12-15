@@ -390,8 +390,269 @@ export const QUESTIONS = {
             2: { label: { ko: '취미·여행', en: 'Hobbies/Travel', zh: '爱好/旅行' }, score: 4 },
             3: { label: { ko: '아직 미정', en: 'Not decided yet', zh: '还没决定' }, score: 2 }
         }
+    },
+
+    // 일상생활 - 10대 나머지 (d_t6~d_t10)
+    d_t6: {
+        id: 'd_t6',
+        text: { ko: '학교 성적에 대한 스트레스는?', en: 'How stressed are you about school grades?', zh: '对学校成绩的压力有多大？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '매우 높음', en: 'Very high', zh: '非常高' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '거의 없음', en: 'Almost none', zh: '几乎没有' }, score: 1 }
+        }
+    },
+    d_t7: {
+        id: 'd_t7',
+        text: { ko: '부모님과 대화하는 빈도는?', en: 'How often do you talk with parents?', zh: '和父母交谈的频率？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '매일', en: 'Daily', zh: '每天' }, score: 5 },
+            2: { label: { ko: '주 2-3회', en: '2-3 times/week', zh: '每周2-3次' }, score: 3 },
+            3: { label: { ko: '거의 안 함', en: 'Rarely', zh: '很少' }, score: 1 }
+        }
+    },
+    d_t8: {
+        id: 'd_t8',
+        text: { ko: '용돈 관리는 어떻게 하나요?', en: 'How do you manage your allowance?', zh: '如何管理零花钱？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '계획적으로 저축', en: 'Save systematically', zh: '有计划地储蓄' }, score: 5 },
+            2: { label: { ko: '필요할 때 사용', en: 'Spend when needed', zh: '需要时使用' }, score: 3 },
+            3: { label: { ko: '다 써버림', en: 'Spend all', zh: '全部花掉' }, score: 1 }
+        }
+    },
+    d_t9: {
+        id: 'd_t9',
+        text: { ko: '미래에 대한 걱정은?', en: 'How worried are you about the future?', zh: '对未来的担忧程度？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '많이 걱정됨', en: 'Very worried', zh: '非常担心' }, score: 5 },
+            2: { label: { ko: '가끔 생각함', en: 'Sometimes think about it', zh: '偶尔想' }, score: 3 },
+            3: { label: { ko: '별로 안 함', en: 'Not much', zh: '不太' }, score: 1 }
+        }
+    },
+    d_t10: {
+        id: 'd_t10',
+        text: { ko: '독서 습관은?', en: 'What are your reading habits?', zh: '阅读习惯如何？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주 읽음', en: 'Read often', zh: '经常阅读' }, score: 5 },
+            2: { label: { ko: '가끔 읽음', en: 'Read sometimes', zh: '偶尔阅读' }, score: 3 },
+            3: { label: { ko: '거의 안 읽음', en: 'Rarely read', zh: '很少阅读' }, score: 1 }
+        }
+    },
+
+    // 일상생활 - 20대 나머지 (d_20_6~d_20_10)
+    d_20_6: {
+        id: 'd_20_6',
+        text: { ko: '자기계발에 투자하는 시간은?', en: 'How much time do you invest in self-development?', zh: '投资在自我发展上的时间？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '주 5시간 이상', en: '5+ hours/week', zh: '每周5小时以上' }, score: 5 },
+            2: { label: { ko: '주 2-4시간', en: '2-4 hours/week', zh: '每周2-4小时' }, score: 3 },
+            3: { label: { ko: '거의 없음', en: 'Almost none', zh: '几乎没有' }, score: 1 }
+        }
+    },
+    d_20_7: {
+        id: 'd_20_7',
+        text: { ko: '연애 관계에서 중요하게 생각하는 것은?', en: 'What matters most in relationships?', zh: '在恋爱关系中最重视什么？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '신뢰와 소통', en: 'Trust & communication', zh: '信任和沟通' }, score: 5 },
+            2: { label: { ko: '외모와 매력', en: 'Appearance & charm', zh: '外貌和魅力' }, score: 2 },
+            3: { label: { ko: '경제력', en: 'Financial stability', zh: '经济能力' }, score: 4 }
+        }
+    },
+    d_20_8: {
+        id: 'd_20_8',
+        text: { ko: '스트레스 받을 때 주로 하는 행동은?', en: 'What do you do when stressed?', zh: '压力大时通常做什么？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '친구와 대화', en: 'Talk with friends', zh: '和朋友聊天' }, score: 4 },
+            2: { label: { ko: '혼자 해결', en: 'Solve alone', zh: '自己解决' }, score: 5 },
+            3: { label: { ko: '술·게임', en: 'Drinking/Gaming', zh: '喝酒/游戏' }, score: 2 }
+        }
+    },
+    d_20_9: {
+        id: 'd_20_9',
+        text: { ko: '부모님께 경제적으로 독립했나요?', en: 'Are you financially independent from parents?', zh: '在经济上独立于父母吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '완전 독립', en: 'Fully independent', zh: '完全独立' }, score: 5 },
+            2: { label: { ko: '부분 독립', en: 'Partially independent', zh: '部分独立' }, score: 3 },
+            3: { label: { ko: '의존 중', en: 'Still dependent', zh: '仍然依赖' }, score: 1 }
+        }
+    },
+    d_20_10: {
+        id: 'd_20_10',
+        text: { ko: '주말 아침에 주로 하는 일은?', en: 'What do you usually do on weekend mornings?', zh: '周末早上通常做什么？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '늦잠', en: 'Sleep in', zh: '睡懒觉' }, score: 2 },
+            2: { label: { ko: '운동', en: 'Exercise', zh: '运动' }, score: 5 },
+            3: { label: { ko: '브런치', en: 'Brunch', zh: '早午餐' }, score: 3 }
+        }
+    },
+
+    // 일상생활 - 30대 나머지 (d_30_6~d_30_10)
+    d_30_6: {
+        id: 'd_30_6',
+        text: { ko: '자녀 계획이 있나요?', en: 'Do you have plans for children?', zh: '有生育计划吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음/이미 있음', en: 'Yes/Already have', zh: '有/已经有了' }, score: 5 },
+            2: { label: { ko: '고민 중', en: 'Considering', zh: '考虑中' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No plans', zh: '没有计划' }, score: 1 }
+        }
+    },
+    d_30_7: {
+        id: 'd_30_7',
+        text: { ko: '내 집 마련 계획은?', en: 'Do you have plans to buy a house?', zh: '有买房计划吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '이미 있음/준비 중', en: 'Already own/Preparing', zh: '已有/准备中' }, score: 5 },
+            2: { label: { ko: '계획 중', en: 'Planning', zh: '计划中' }, score: 3 },
+            3: { label: { ko: '아직 없음', en: 'No plans yet', zh: '还没有' }, score: 1 }
+        }
+    },
+    d_30_8: {
+        id: 'd_30_8',
+        text: { ko: '부모님 건강에 대한 관심도는?', en: 'How concerned are you about parents\' health?', zh: '对父母健康的关注程度？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '매우 관심 많음', en: 'Very concerned', zh: '非常关注' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '별로 없음', en: 'Not much', zh: '不太' }, score: 1 }
+        }
+    },
+    d_30_9: {
+        id: 'd_30_9',
+        text: { ko: '일과 삶의 균형은?', en: 'How is your work-life balance?', zh: '工作与生活的平衡如何？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '균형 잡힘', en: 'Well balanced', zh: '平衡良好' }, score: 5 },
+            2: { label: { ko: '일 중심', en: 'Work-focused', zh: '以工作为主' }, score: 3 },
+            3: { label: { ko: '불균형', en: 'Imbalanced', zh: '不平衡' }, score: 2 }
+        }
+    },
+    d_30_10: {
+        id: 'd_30_10',
+        text: { ko: '보험 가입 상태는?', en: 'What is your insurance coverage status?', zh: '保险投保情况？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '충분히 가입', en: 'Well covered', zh: '充分投保' }, score: 5 },
+            2: { label: { ko: '일부 가입', en: 'Partially covered', zh: '部分投保' }, score: 3 },
+            3: { label: { ko: '거의 없음', en: 'Minimal coverage', zh: '几乎没有' }, score: 1 }
+        }
+    },
+
+    // 일상생활 - 40대 나머지 (d_40_6~d_40_10)
+    d_40_6: {
+        id: 'd_40_6',
+        text: { ko: '자녀 교육비 준비는?', en: 'How prepared are you for children\'s education costs?', zh: '子女教育费用准备情况？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '충분히 준비', en: 'Well prepared', zh: '充分准备' }, score: 5 },
+            2: { label: { ko: '준비 중', en: 'Preparing', zh: '准备中' }, score: 3 },
+            3: { label: { ko: '부족함', en: 'Insufficient', zh: '不足' }, score: 2 }
+        }
+    },
+    d_40_7: {
+        id: 'd_40_7',
+        text: { ko: '정기적인 취미 활동이 있나요?', en: 'Do you have regular hobbies?', zh: '有定期的爱好活动吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Occasionally', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 1 }
+        }
+    },
+    d_40_8: {
+        id: 'd_40_8',
+        text: { ko: '배우자와의 관계 만족도는?', en: 'How satisfied are you with your spouse relationship?', zh: '对配偶关系的满意度？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '매우 만족', en: 'Very satisfied', zh: '非常满意' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '불만족', en: 'Unsatisfied', zh: '不满意' }, score: 1 }
+        }
+    },
+    d_40_9: {
+        id: 'd_40_9',
+        text: { ko: '직장에서의 위치는?', en: 'What is your position at work?', zh: '在公司的职位？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '관리직 이상', en: 'Manager or above', zh: '经理以上' }, score: 5 },
+            2: { label: { ko: '중간 직급', en: 'Mid-level', zh: '中层' }, score: 3 },
+            3: { label: { ko: '일반 직원', en: 'Staff', zh: '普通员工' }, score: 2 }
+        }
+    },
+    d_40_10: {
+        id: 'd_40_10',
+        text: { ko: '부모님 용돈을 드리나요?', en: 'Do you give allowance to parents?', zh: '给父母零花钱吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '정기적으로', en: 'Regularly', zh: '定期' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Occasionally', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '못 드림', en: 'Cannot afford', zh: '无法给' }, score: 1 }
+        }
+    },
+
+    // 일상생활 - 50대 나머지 (d_50_6~d_50_10)
+    d_50_6: {
+        id: 'd_50_6',
+        text: { ko: '손주와 보내는 시간은?', en: 'How much time do you spend with grandchildren?', zh: '和孙子孙女在一起的时间？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음/거의 없음', en: 'None/Rarely', zh: '没有/很少' }, score: 1 }
+        }
+    },
+    d_50_7: {
+        id: 'd_50_7',
+        text: { ko: '종교 활동 참여도는?', en: 'How active are you in religious activities?', zh: '宗教活动参与程度？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적', en: 'Very active', zh: '非常积极' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Occasionally', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+    d_50_8: {
+        id: 'd_50_8',
+        text: { ko: '노후 자금 준비는?', en: 'How prepared are you financially for retirement?', zh: '退休资金准备情况？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '충분함', en: 'Well prepared', zh: '充分' }, score: 5 },
+            2: { label: { ko: '부족함', en: 'Insufficient', zh: '不足' }, score: 2 },
+            3: { label: { ko: '매우 부족', en: 'Very insufficient', zh: '非常不足' }, score: 1 }
+        }
+    },
+    d_50_9: {
+        id: 'd_50_9',
+        text: { ko: '배우자와 여행 계획은?', en: 'Do you have travel plans with spouse?', zh: '和配偶的旅行计划？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주 다님', en: 'Travel often', zh: '经常旅行' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Occasionally', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '거의 없음', en: 'Rarely', zh: '很少' }, score: 1 }
+        }
+    },
+    d_50_10: {
+        id: 'd_50_10',
+        text: { ko: '사회 봉사 활동 참여는?', en: 'Do you participate in volunteer work?', zh: '参与社会志愿活动吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '정기적으로', en: 'Regularly', zh: '定期' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Occasionally', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 1 }
+        }
     }
 };
 
-// 나머지 질문들은 동일한 패턴으로 추가 예정 (w_t1~w_50_5, e_t1~e_50_5)
+// 나머지 질문들은 동일한 패턴으로 추가 예정 (w_t1~w_50_10, e_t1~e_50_10)
 // 총 150개 질문 (3 시나리오 × 5 연령대 × 10 질문)
+

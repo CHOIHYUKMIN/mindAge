@@ -250,35 +250,45 @@
                 <span id="age-group-text">--</span>
             </div>
 
-            <!-- Scenario Cards -->
-            <div class="scenario-cards">
-                <div class="scenario-card" data-scenario="daily" onclick="app.selectScenario('daily')">
-                    <div class="scenario-icon">🏠</div>
-                    <h3 class="scenario-name" data-i18n="scenarioDaily">일상생활</h3>
-                    <p class="scenario-description" data-i18n="scenarioDailyDesc">
-                        평소 생활 습관과 일상적인 선택을 통해 마음의 나이를 분석합니다
-                    </p>
-                    <div class="scenario-badge">10개 질문</div>
-                </div>
+            <!-- Scenario Selection (Radio Buttons) -->
+            <div class="scenario-selection">
+                <label class="scenario-option">
+                    <input type="radio" name="scenario" value="daily" checked>
+                    <span class="scenario-radio-content">
+                        <span class="scenario-radio-icon">🏠</span>
+                        <span class="scenario-radio-text">
+                            <strong data-i18n="scenarioDaily">일상생활</strong>
+                            <small data-i18n="scenarioDailyDesc">평소 생활 습관과 일상적인 선택</small>
+                        </span>
+                    </span>
+                </label>
 
-                <div class="scenario-card" data-scenario="work" onclick="app.selectScenario('work')">
-                    <div class="scenario-icon">💼</div>
-                    <h3 class="scenario-name" data-i18n="scenarioWork">회사·직장 생활</h3>
-                    <p class="scenario-description" data-i18n="scenarioWorkDesc">
-                        직장에서의 태도와 업무 스타일로 마음의 나이를 분석합니다
-                    </p>
-                    <div class="scenario-badge">10개 질문</div>
-                </div>
+                <label class="scenario-option">
+                    <input type="radio" name="scenario" value="work">
+                    <span class="scenario-radio-content">
+                        <span class="scenario-radio-icon">💼</span>
+                        <span class="scenario-radio-text">
+                            <strong data-i18n="scenarioWork">회사·직장 생활</strong>
+                            <small data-i18n="scenarioWorkDesc">직장에서의 태도와 업무 스타일</small>
+                        </span>
+                    </span>
+                </label>
 
-                <div class="scenario-card" data-scenario="entertainment" onclick="app.selectScenario('entertainment')">
-                    <div class="scenario-icon">🎬</div>
-                    <h3 class="scenario-name" data-i18n="scenarioEntertainment">연예·엔터테인먼트</h3>
-                    <p class="scenario-description" data-i18n="scenarioEntertainmentDesc">
-                        여가 활동과 취미 생활을 통해 마음의 나이를 분석합니다
-                    </p>
-                    <div class="scenario-badge">10개 질문</div>
-                </div>
+                <label class="scenario-option">
+                    <input type="radio" name="scenario" value="entertainment">
+                    <span class="scenario-radio-content">
+                        <span class="scenario-radio-icon">🎬</span>
+                        <span class="scenario-radio-text">
+                            <strong data-i18n="scenarioEntertainment">연예·엔터테인먼트</strong>
+                            <small data-i18n="scenarioEntertainmentDesc">여가 활동과 취미 생활</small>
+                        </span>
+                    </span>
+                </label>
             </div>
+
+            <button class="btn-primary" onclick="app.selectScenarioFromRadio()" style="margin-top: 2rem;">
+                <span data-i18n="btnStartQuestions">질문 시작하기</span>
+            </button>
         </div>
     </section>
 

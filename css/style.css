@@ -1361,9 +1361,7 @@ body {
     }
 }
 
-/* ===========================
-   Scenario Selection Styles
-   =========================== */
+/* Age Group Badge */
 .age-group-badge {
     display: inline-flex;
     align-items: center;
@@ -1382,113 +1380,82 @@ body {
     font-size: 1.5rem;
 }
 
-.scenario-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+/* ===========================
+   Scenario Selection Styles (Radio Buttons)
+   =========================== */
+.scenario-selection {
+    max-width: 600px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.scenario-card {
-    background: var(--card-bg);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    text-align: center;
+.scenario-option {
+    display: block;
     cursor: pointer;
-    transition: all var(--transition-normal);
-    border: 2px solid transparent;
     position: relative;
-    overflow: hidden;
 }
 
-.scenario-card::before {
-    content: '';
+.scenario-option input[type="radio"] {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gradient-accent);
     opacity: 0;
-    transition: opacity var(--transition-normal);
-    z-index: 0;
 }
 
-.scenario-card:hover::before {
-    opacity: 0.1;
+.scenario-radio-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--card-bg);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
 }
 
-.scenario-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-purple);
-    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
-}
-
-.scenario-card.selected {
+.scenario-option input[type="radio"]:checked+.scenario-radio-content {
     border-color: var(--accent-purple);
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
 }
 
-.scenario-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
+.scenario-option:hover .scenario-radio-content {
+    transform: translateX(8px);
+    border-color: rgba(102, 126, 234, 0.5);
 }
 
-.scenario-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
+.scenario-radio-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.scenario-radio-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.scenario-radio-text strong {
+    font-size: 1.1rem;
     color: var(--text-primary);
-    position: relative;
-    z-index: 1;
 }
 
-.scenario-description {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.scenario-badge {
-    display: inline-block;
-    padding: 0.4rem 1rem;
-    background: rgba(102, 126, 234, 0.2);
-    border-radius: 20px;
+.scenario-radio-text small {
     font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-purple);
-    position: relative;
-    z-index: 1;
+    color: var(--text-secondary);
+    opacity: 0.8;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .scenario-cards {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .scenario-radio-icon {
+        font-size: 2rem;
     }
 
-    .scenario-card {
-        padding: 1.5rem;
+    .scenario-radio-text strong {
+        font-size: 1rem;
     }
 
-    .scenario-icon {
-        font-size: 3rem;
-    }
-
-    .scenario-name {
-        font-size: 1.3rem;
-    }
-
-    .scenario-description {
-        font-size: 0.9rem;
+    .scenario-radio-text small {
+        font-size: 0.8rem;
     }
 }

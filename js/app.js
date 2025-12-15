@@ -869,6 +869,14 @@ const app = {
         this.showSection('scenario');
     },
 
+    // 라디오 버튼에서 시나리오 선택
+    selectScenarioFromRadio() {
+        const selected = document.querySelector('input[name="scenario"]:checked');
+        if (selected) {
+            this.selectScenario(selected.value);
+        }
+    },
+
     // 시나리오 선택
     selectScenario(scenarioId) {
         if (typeof SCENARIOS === 'undefined') {
