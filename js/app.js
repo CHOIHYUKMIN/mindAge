@@ -530,6 +530,12 @@ const app = {
                 if (this.personalColor) {
                     if (additionalInfo) additionalInfo += ' | ';
                     additionalInfo += `${this.personalColor.emoji} ${this.personalColor.name[i18n.currentLang]}`;
+
+                    // Add color chips (first 3 colors)
+                    const colorChips = this.personalColor.colors.slice(0, 3).map(color =>
+                        `<span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:${color};margin-left:4px;vertical-align:middle;border:1px solid rgba(255,255,255,0.3);box-shadow:0 1px 3px rgba(0,0,0,0.2);"></span>`
+                    ).join('');
+                    additionalInfo += colorChips;
                 }
 
                 // Update result text to include gender, emotion, face shape, and personal color
