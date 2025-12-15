@@ -412,14 +412,14 @@ const app = {
                 this.faceShape = analyzeFaceShape(result.landmarks);
             }
 
-            // Analyze image colors
-            if (typeof analyzeImageColors === 'function') {
-                this.imageColors = await analyzeImageColors(imageElement);
+            // Analyze personal color from skin tone
+            if (result.landmarks && typeof analyzePersonalColor === 'function') {
+                this.personalColor = analyzePersonalColor(imageElement, result.landmarks);
             }
 
             console.log(`Age: ${this.physicalAge}, Gender: ${this.gender}, Emotion: ${this.emotion}, Age Group: ${this.ageGroup}`);
             if (this.faceShape) console.log(`Face Shape: ${this.faceShape.name.ko}`);
-            if (this.imageColors) console.log(`Dominant Color: ${this.imageColors.dominant.hex}`);
+            if (this.personalColor) console.log(`Personal Color: ${this.personalColor.season} (${this.personalColor.name.ko})`);
 
             // Show result
             setTimeout(() => {
@@ -652,29 +652,29 @@ const app = {
             `;
         }
 
-        // Image Colors
-        if (this.imageColors && this.imageColors.dominant) {
+        // Personal Color Analysis
+        if (this.personalColor) {
             const colorTitle = {
-                ko: '당신의 대표 색상',
-                en: 'Your Signature Color',
-                zh: '你的代表色'
-            }[i18n.currentLang] || '당신의 대표 색상';
-
-            const colorName = this.imageColors.dominant.name[i18n.currentLang];
+                ko: '퍼스널 컬러 분석',
+                en: 'Personal Color Analysis',
+                zh: '个人色彩分析'
+            }[i18n.currentLang] || '퍼스널 컬러 분석';
 
             analysisHTML += `
                 <div class="analysis-card">
                     <div class="analysis-title">${colorTitle}</div>
                     <div class="analysis-content">
-                        <div class="color-palette">
-                            <div class="color-main" style="background-color: ${this.imageColors.dominant.hex}"></div>
-                            <div class="color-swatches">
-                                ${this.imageColors.palette.slice(0, 4).map(color =>
-                `<div class="color-swatch" style="background-color: ${color.hex}"></div>`
+                        <div class="analysis-emoji">${this.personalColor.emoji}</div>
+                        <div class="analysis-name">${this.personalColor.name[i18n.currentLang]}</div>
+                        <div class="analysis-desc">${this.personalColor.description[i18n.currentLang]}</div>
+                        <div class="color-swatches" style="margin-top: 1rem;">
+                            ${this.personalColor.colors.map((color, index) =>
+                `<div class="color-swatch" style="background-color: ${color}" title="${this.personalColor.colorNames[i18n.currentLang][index]}"></div>`
             ).join('')}
-                            </div>
                         </div>
-                        <div class="analysis-name">${colorName}</div>
+                        <div class="analysis-desc" style="margin-top: 1rem; font-size: 0.9rem;">
+                            ${this.personalColor.recommendations[i18n.currentLang]}
+                        </div>
                     </div>
                 </div>
             `;
