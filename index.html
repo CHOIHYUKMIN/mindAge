@@ -203,7 +203,13 @@
 
                 <div class="analyzing-area hidden" id="analyzing-area">
                     <div class="loader"></div>
-                    <p class="analyzing-text" data-i18n="analyzing">AI가 당신의 얼굴을 분석하고 있어요...</p>
+                    <p class="analyzing-text" id="analyzing-text" data-i18n="analyzing">AI가 당신의 얼굴을 분석하고 있어요...</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="analysis-progress"></div>
+                        </div>
+                        <div class="progress-text" id="progress-text">0%</div>
+                    </div>
                 </div>
 
                 <div class="age-result hidden" id="age-result">

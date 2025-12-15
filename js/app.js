@@ -388,6 +388,25 @@ const app = {
         document.getElementById('age-result').classList.add('hidden');
         document.getElementById('btn-next').classList.add('hidden');
 
+        // Progress elements
+        const progressFill = document.getElementById('analysis-progress');
+        const progressText = document.getElementById('progress-text');
+        const analyzingText = document.getElementById('analyzing-text');
+
+        // Helper function to update progress
+        const updateProgress = (percent, message) => {
+            progressFill.style.width = `${percent}%`;
+            progressText.textContent = `${percent}%`;
+            if (message) {
+                const messages = {
+                    ko: message.ko,
+                    en: message.en,
+                    zh: message.zh
+                };
+                analyzingText.textContent = messages[i18n.currentLang] || messages.ko;
+            }
+        };
+
         try {
             // Wait for image to load
             if (!imageElement.complete) {
@@ -396,6 +415,13 @@ const app = {
                 });
             }
 
+            // Step 1: Age and Gender detection (0-33%)
+            updateProgress(10, {
+                ko: '얼굴을 감지하고 있어요...',
+                en: 'Detecting face...',
+                zh: '正在检测面部...'
+            });
+
             // Estimate age, gender, emotion, and landmarks
             const result = await estimateAge(imageElement);
             this.physicalAge = result.age;
@@ -403,10 +429,38 @@ const app = {
             this.genderProbability = result.genderProbability;
             this.ageGroup = this.getAgeGroup(this.physicalAge);
 
+            updateProgress(33, {
+                ko: '나이와 성별을 분석했어요!',
+                en: 'Age and gender analyzed!',
+                zh: '年龄和性别分析完成！'
+            });
+
+            // Step 2: Emotion analysis (33-66%)
+            await new Promise(resolve => setTimeout(resolve, 300));
+            updateProgress(50, {
+                ko: '감정을 분석하고 있어요...',
+                en: 'Analyzing emotions...',
+                zh: '正在分析情绪...'
+            });
+
             // Store emotion data
             this.emotion = result.dominantEmotion;
             this.emotionConfidence = result.emotionConfidence;
             this.expressions = result.expressions;
+
+            updateProgress(66, {
+                ko: '감정 분석 완료!',
+                en: 'Emotion analysis complete!',
+                zh: '情绪分析完成！'
+            });
+
+            // Step 3: Face shape and personal color (66-100%)
+            await new Promise(resolve => setTimeout(resolve, 300));
+            updateProgress(80, {
+                ko: '얼굴형과 퍼스널 컬러를 분석하고 있어요...',
+                en: 'Analyzing face shape and personal color...',
+                zh: '正在分析脸型和个人色彩...'
+            });
 
             // Analyze face shape from landmarks
             if (result.landmarks && typeof analyzeFaceShape === 'function') {
@@ -417,6 +471,12 @@ const app = {
             if (typeof analyzePersonalColor === 'function') {
                 this.personalColor = analyzePersonalColor(imageElement, result.landmarks, result.detection);
             }
+
+            updateProgress(100, {
+                ko: '모든 분석이 완료되었어요!',
+                en: 'All analysis complete!',
+                zh: '所有分析完成！'
+            });
 
             console.log(`Age: ${this.physicalAge}, Gender: ${this.gender}, Emotion: ${this.emotion}, Age Group: ${this.ageGroup}`);
             if (this.faceShape) console.log(`Face Shape: ${this.faceShape.name.ko}`);
