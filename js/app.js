@@ -414,8 +414,8 @@ const app = {
             }
 
             // Analyze personal color from skin tone
-            if (result.landmarks && typeof analyzePersonalColor === 'function') {
-                this.personalColor = analyzePersonalColor(imageElement, result.landmarks);
+            if (typeof analyzePersonalColor === 'function') {
+                this.personalColor = analyzePersonalColor(imageElement, result.landmarks, result.detection);
             }
 
             console.log(`Age: ${this.physicalAge}, Gender: ${this.gender}, Emotion: ${this.emotion}, Age Group: ${this.ageGroup}`);

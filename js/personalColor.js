@@ -204,11 +204,22 @@ function extractSkinTone(imageElement, landmarks) {
 }
 
 // Determine personal color season based on skin tone
-function analyzePersonalColor(imageElement, landmarks) {
-    const skinTone = extractSkinTone(imageElement, landmarks);
+function analyzePersonalColor(imageElement, landmarks, faceDetection) {
+    let skinTone = null;
+
+    // Try to extract from landmarks first
+    if (landmarks && landmarks.positions) {
+        skinTone = extractSkinTone(imageElement, landmarks);
+    }
+
+    // Fallback: use face detection box if landmarks failed
+    if (!skinTone && faceDetection && faceDetection.box) {
+        console.log('Landmarks not available, using face detection box');
+        skinTone = extractSkinToneFromBox(imageElement, faceDetection.box);
+    }
 
     if (!skinTone) {
-        console.warn('Could not extract skin tone');
+        console.warn('Could not extract skin tone - no landmarks or face box');
         return null;
     }
 
@@ -249,4 +260,68 @@ function analyzePersonalColor(imageElement, landmarks) {
         isLight: isLight,
         ...result
     };
+}
+
+// Extract skin tone from face detection box (fallback method)
+function extractSkinToneFromBox(imageElement, box) {
+    try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const width = imageElement.naturalWidth || imageElement.width;
+        const height = imageElement.naturalHeight || imageElement.height;
+
+        if (!width || !height) {
+            console.error('Invalid image dimensions');
+            return null;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(imageElement, 0, 0, width, height);
+
+        // Sample from center of face box (likely to be skin)
+        const centerX = Math.floor(box.x + box.width / 2);
+        const centerY = Math.floor(box.y + box.height / 2);
+
+        // Sample multiple points around center
+        const sampleRadius = Math.min(box.width, box.height) / 6;
+        let totalR = 0, totalG = 0, totalB = 0;
+        let validSamples = 0;
+
+        for (let angle = 0; angle < 360; angle += 45) {
+            const rad = (angle * Math.PI) / 180;
+            const x = Math.floor(centerX + Math.cos(rad) * sampleRadius);
+            const y = Math.floor(centerY + Math.sin(rad) * sampleRadius);
+
+            if (x >= 0 && x < width && y >= 0 && y < height) {
+                try {
+                    const pixel = ctx.getImageData(x, y, 1, 1).data;
+                    totalR += pixel[0];
+                    totalG += pixel[1];
+                    totalB += pixel[2];
+                    validSamples++;
+                } catch (e) {
+                    console.error('Error reading pixel:', e);
+                }
+            }
+        }
+
+        if (validSamples === 0) {
+            console.error('No valid samples from face box');
+            return null;
+        }
+
+        const avgR = Math.round(totalR / validSamples);
+        const avgG = Math.round(totalG / validSamples);
+        const avgB = Math.round(totalB / validSamples);
+
+        console.log(`Extracted skin tone from face box (${validSamples} samples): RGB(${avgR}, ${avgG}, ${avgB})`);
+
+        return { r: avgR, g: avgG, b: avgB };
+
+    } catch (error) {
+        console.error('Skin tone extraction from box error:', error);
+        return null;
+    }
 }

@@ -99,7 +99,8 @@ async function estimateAge(imageElement) {
             expressions: expressions,
             dominantEmotion: dominantEmotion,
             emotionConfidence: emotionConfidence,
-            landmarks: landmarks
+            landmarks: landmarks,
+            detection: detectionWithAge.detection // Add detection box for personal color analysis
         };
 
     } catch (error) {
