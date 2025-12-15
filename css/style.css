@@ -1115,34 +1115,34 @@ body {
 .additional-analysis {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
 }
 
 .analysis-card {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(102, 126, 234, 0.2);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
     transition: all var(--transition-medium);
 }
 
 .analysis-card:hover {
     border-color: rgba(102, 126, 234, 0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
 }
 
 .analysis-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--accent-purple);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .analysis-content {
@@ -1150,24 +1150,24 @@ body {
 }
 
 .analysis-emoji {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-sm);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .analysis-name {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     background: var(--gradient-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.25rem;
 }
 
 .analysis-desc {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-top: var(--spacing-sm);
@@ -1197,63 +1197,43 @@ body {
 
 .color-swatches {
     display: flex;
-    gap: var(--spacing-xs);
+    gap: 0.4rem;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .color-swatch {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: var(--radius-sm);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: all var(--transition-fast);
     cursor: pointer;
 }
 
 .color-swatch:hover {
-    transform: translateY(-4px) scale(1.1);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive for Analysis Cards */
 @media (max-width: 768px) {
+    .analysis-card {
+        padding: var(--spacing-sm);
+    }
+
     .analysis-emoji {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
     }
 
     .analysis-name {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .analysis-desc {
-        font-size: 0.95rem;
-    }
-
-    .color-main {
-        width: 80px;
-        height: 80px;
-    }
-
-    .color-swatch {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .analysis-card {
-        padding: var(--spacing-md);
-    }
-
-    .analysis-emoji {
-        font-size: 2rem;
-    }
-
-    .analysis-name {
-        font-size: 1.2rem;
+        font-size: 0.8rem;
     }
 
     .color-main {
@@ -1264,5 +1244,37 @@ body {
     .color-swatch {
         width: 35px;
         height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .analysis-card {
+        padding: 0.75rem;
+    }
+
+    .analysis-title {
+        font-size: 0.8rem;
+    }
+
+    .analysis-emoji {
+        font-size: 1.5rem;
+    }
+
+    .analysis-name {
+        font-size: 1rem;
+    }
+
+    .analysis-desc {
+        font-size: 0.75rem;
+    }
+
+    .color-main {
+        width: 60px;
+        height: 60px;
+    }
+
+    .color-swatch {
+        width: 30px;
+        height: 30px;
     }
 }
