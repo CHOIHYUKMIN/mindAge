@@ -351,6 +351,7 @@ const app = {
 
             // Show preview
             const previewImage = document.getElementById('preview-image');
+            previewImage.crossOrigin = 'anonymous'; // Allow canvas to read pixels
             previewImage.src = this.uploadedImage;
 
             // Hide upload area, show preview
