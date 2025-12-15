@@ -230,6 +230,58 @@
         </div>
     </section>
 
+    <!-- Scenario Selection Section -->
+    <section id="scenario-section" class="section">
+        <div class="container">
+            <button class="btn-back" onclick="app.goToUpload()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <h2 class="section-title" data-i18n="scenarioTitle">어떤 상황의 마음 나이를 알고 싶으신가요?</h2>
+            <p class="section-description" data-i18n="scenarioDesc">
+                당신의 연령대에 맞는 질문으로 분석합니다
+            </p>
+
+            <!-- Age Group Display -->
+            <div class="age-group-badge" id="age-group-display">
+                <span class="age-icon">🎂</span>
+                <span id="age-group-text">--</span>
+            </div>
+
+            <!-- Scenario Cards -->
+            <div class="scenario-cards">
+                <div class="scenario-card" data-scenario="daily" onclick="app.selectScenario('daily')">
+                    <div class="scenario-icon">🏠</div>
+                    <h3 class="scenario-name" data-i18n="scenarioDaily">일상생활</h3>
+                    <p class="scenario-description" data-i18n="scenarioDailyDesc">
+                        평소 생활 습관과 일상적인 선택을 통해 마음의 나이를 분석합니다
+                    </p>
+                    <div class="scenario-badge">10개 질문</div>
+                </div>
+
+                <div class="scenario-card" data-scenario="work" onclick="app.selectScenario('work')">
+                    <div class="scenario-icon">💼</div>
+                    <h3 class="scenario-name" data-i18n="scenarioWork">회사·직장 생활</h3>
+                    <p class="scenario-description" data-i18n="scenarioWorkDesc">
+                        직장에서의 태도와 업무 스타일로 마음의 나이를 분석합니다
+                    </p>
+                    <div class="scenario-badge">10개 질문</div>
+                </div>
+
+                <div class="scenario-card" data-scenario="entertainment" onclick="app.selectScenario('entertainment')">
+                    <div class="scenario-icon">🎬</div>
+                    <h3 class="scenario-name" data-i18n="scenarioEntertainment">연예·엔터테인먼트</h3>
+                    <p class="scenario-description" data-i18n="scenarioEntertainmentDesc">
+                        여가 활동과 취미 생활을 통해 마음의 나이를 분석합니다
+                    </p>
+                    <div class="scenario-badge">10개 질문</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Questions Section -->
     <section id="questions-section" class="section">
         <div class="container">

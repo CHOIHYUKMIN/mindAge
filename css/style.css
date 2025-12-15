@@ -937,125 +937,119 @@ body {
 
     .circle-value {
         font-size: 1.6rem;
-        /* Smaller value */
     }
 
     .circle-unit {
         font-size: 0.7rem;
     }
+}
 
-    .vs-badge {
-        font-size: 0.9rem;
-        /* Smaller VS badge */
-        margin: 0;
-    }
+.age-difference {
+    margin: var(--spacing-sm) 0;
+}
 
-    .age-difference {
-        margin: var(--spacing-sm) 0;
-    }
+.diff-value {
+    font-size: 1.75rem;
+}
 
-    .diff-value {
-        font-size: 1.75rem;
-    }
+.result-message {
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
 
-    .result-message {
-        padding: var(--spacing-sm) var(--spacing-md);
-        margin: var(--spacing-md) 0;
-    }
+.message-emoji {
+    font-size: 2.5rem;
+    margin-bottom: 0.25rem;
+}
 
-    .message-emoji {
-        font-size: 2.5rem;
-        margin-bottom: 0.25rem;
-    }
+.message-text {
+    font-size: 1rem;
+    line-height: 1.5;
+}
 
-    .message-text {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
+/* Archetype mobile styles */
+.archetype-badge {
+    padding: var(--spacing-md);
+}
 
-    /* Archetype mobile styles */
-    .archetype-badge {
-        padding: var(--spacing-md);
-    }
+.archetype-title {
+    font-size: 0.75rem;
+}
 
-    .archetype-title {
-        font-size: 0.75rem;
-    }
+.archetype-name {
+    font-size: 1.3rem;
+}
 
-    .archetype-name {
-        font-size: 1.3rem;
-    }
+.archetype-desc {
+    font-size: 0.9rem;
+}
 
-    .archetype-desc {
-        font-size: 0.9rem;
-    }
+/* 광고 영역 축소 */
+.ad-container {
+    margin: var(--spacing-sm) 0 !important;
+    min-height: 50px;
+}
 
-    /* 광고 영역 축소 */
-    .ad-container {
-        margin: var(--spacing-sm) 0 !important;
-        min-height: 50px;
-    }
+/* 공유 버튼 그리드 레이아웃 유지하되 간격 축소 */
+.share-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin: var(--spacing-sm) 0;
+}
 
-    /* 공유 버튼 그리드 레이아웃 유지하되 간격 축소 */
-    .share-buttons {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
-        margin: var(--spacing-sm) 0;
-    }
+.btn-share {
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+}
 
-    .btn-share {
-        padding: 0.65rem 1rem;
-        font-size: 0.85rem;
-    }
+.btn-share svg {
+    width: 16px;
+    height: 16px;
+}
 
-    .btn-share svg {
-        width: 16px;
-        height: 16px;
-    }
+.btn-restart {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    margin-top: var(--spacing-sm);
+}
 
-    .btn-restart {
-        padding: 0.75rem 1.25rem;
-        font-size: 0.9rem;
-        margin-top: var(--spacing-sm);
-    }
+/* 장식 요소 조정 */
+.shape-1,
+.shape-2,
+.shape-3 {
+    filter: blur(40px);
+}
 
-    /* 장식 요소 조정 */
-    .shape-1,
-    .shape-2,
-    .shape-3 {
-        filter: blur(40px);
-    }
+.shape-1 {
+    width: 200px;
+    height: 200px;
+}
 
-    .shape-1 {
-        width: 200px;
-        height: 200px;
-    }
+.shape-2 {
+    width: 180px;
+    height: 180px;
+}
 
-    .shape-2 {
-        width: 180px;
-        height: 180px;
-    }
+.shape-3 {
+    width: 150px;
+    height: 150px;
+}
 
-    .shape-3 {
-        width: 150px;
-        height: 150px;
-    }
+/* 모바일에서 섹션 높이를 유동적으로 조정 */
+#start-section,
+#upload-section,
+#questions-section,
+#result-section {
+    min-height: auto;
+    padding: var(--spacing-md) 0;
+}
 
-    /* 모바일에서 섹션 높이를 유동적으로 조정 */
-    #start-section,
-    #upload-section,
-    #questions-section,
-    #result-section {
-        min-height: auto;
-        padding: var(--spacing-md) 0;
-    }
-
-    #start-section .container,
-    #upload-section .container,
-    #questions-section .container,
-    #result-section .container {
-        padding: var(--spacing-sm);
-    }
+#start-section .container,
+#upload-section .container,
+#questions-section .container,
+#result-section .container {
+    padding: var(--spacing-sm);
+}
 }
 
 /* 작은 모바일 화면 (360px 이하) */
@@ -1364,5 +1358,137 @@ body {
     .color-swatch {
         width: 28px;
         height: 28px;
+    }
+}
+
+/* ===========================
+   Scenario Selection Styles
+   =========================== */
+.age-group-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    border-radius: 30px;
+    margin: 1.5rem auto;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.age-icon {
+    font-size: 1.5rem;
+}
+
+.scenario-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scenario-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.scenario-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: 0;
+}
+
+.scenario-card:hover::before {
+    opacity: 0.1;
+}
+
+.scenario-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-purple);
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+}
+
+.scenario-card.selected {
+    border-color: var(--accent-purple);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+}
+
+.scenario-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.scenario-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+}
+
+.scenario-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.scenario-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(102, 126, 234, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-purple);
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .scenario-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .scenario-card {
+        padding: 1.5rem;
+    }
+
+    .scenario-icon {
+        font-size: 3rem;
+    }
+
+    .scenario-name {
+        font-size: 1.3rem;
+    }
+
+    .scenario-description {
+        font-size: 0.9rem;
     }
 }
