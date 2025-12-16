@@ -18,8 +18,8 @@ const CONFIG = {
     APP_DESCRIPTION: 'AI가 당신의 얼굴로 실물 나이를 추측하고, 10가지 질문으로 마음의 나이를 알려드려요',
 
     // 버전 관리 (한 곳에서 관리)
-    VERSION: '2.6.0',
-    VERSION_NAME: 'Personal Color Stable 🎨'
+    VERSION: '3.0.0',
+    VERSION_NAME: 'Mental Age System v3 🧠'
 };
 
 // Get the current URL based on environment
