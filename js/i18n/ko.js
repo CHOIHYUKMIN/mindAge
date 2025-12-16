@@ -25,8 +25,14 @@ const translations_ko = {
     scenarioDailyDesc: "평소 생활 습관과 일상적인 선택",
     scenarioWork: "직장생활",
     scenarioWorkDesc: "직장에서의 태도와 업무 스타일",
-    scenarioEntertainment: "연예생활",
-    scenarioEntertainmentDesc: "여가 활동과 취미 생활",
+    scenarioSchool: "학교생활",
+    scenarioSchoolDesc: "학교에서의 태도와 학습 스타일",
+    scenarioRomance: "연애생활",
+    scenarioRomanceDesc: "연애와 관계에 대한 태도",
+    scenarioSocial: "사회생활",
+    scenarioSocialDesc: "사회 활동과 대인 관계",
+    scenarioFamily: "가족생활",
+    scenarioFamilyDesc: "가족 관계와 부부 생활",
     btnStartQuestions: "질문 시작하기",
 
     // Questions

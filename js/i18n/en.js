@@ -25,8 +25,14 @@ const translations_en = {
     scenarioDailyDesc: "Your daily habits and routine choices",
     scenarioWork: "Work Life",
     scenarioWorkDesc: "Your attitude and work style at the office",
-    scenarioEntertainment: "Entertainment Life",
-    scenarioEntertainmentDesc: "Your leisure activities and hobbies",
+    scenarioSchool: "School Life",
+    scenarioSchoolDesc: "Your attitude and learning style at school",
+    scenarioRomance: "Romance Life",
+    scenarioRomanceDesc: "Your attitude towards romance and relationships",
+    scenarioSocial: "Social Life",
+    scenarioSocialDesc: "Your social activities and relationships",
+    scenarioFamily: "Family Life",
+    scenarioFamilyDesc: "Your family and couple relationships",
     btnStartQuestions: "Start Questions",
 
     // Questions

@@ -25,8 +25,14 @@ const translations_zh = {
     scenarioDailyDesc: "平时的生活习惯和日常选择",
     scenarioWork: "职场生活",
     scenarioWorkDesc: "在职场的态度和工作风格",
-    scenarioEntertainment: "娱乐生活",
-    scenarioEntertainmentDesc: "休闲活动和兴趣爱好",
+    scenarioSchool: "学校生活",
+    scenarioSchoolDesc: "在学校的态度和学习风格",
+    scenarioRomance: "恋爱生活",
+    scenarioRomanceDesc: "对恋爱和关系的态度",
+    scenarioSocial: "社会生活",
+    scenarioSocialDesc: "社会活动和人际关系",
+    scenarioFamily: "家庭生活",
+    scenarioFamilyDesc: "家庭关系和夫妻生活",
     btnStartQuestions: "开始问题",
 
     // Questions
