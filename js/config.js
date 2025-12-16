@@ -25,38 +25,50 @@ const CONFIG = {
         christmas: {
             name: 'Christmas Edition 🎄',
             emoji: { start: '🎄', end: '🎅' },
-            startDate: { month: 12, day: 1 },   // 12월 1일
-            endDate: { month: 12, day: 25 }     // 12월 25일
+            particle: { type: 'snow', color: '#ffffff' },
+            buttonColor: '#c41e3a', // 크리스마스 레드
+            startDate: { month: 12, day: 1 },
+            endDate: { month: 12, day: 25 }
         },
         newyear: {
             name: 'New Year Edition 🎆',
             emoji: { start: '🎆', end: '🌅' },
-            startDate: { month: 12, day: 26 },  // 12월 26일
-            endDate: { month: 1, day: 15 }      // 1월 15일
+            particle: { type: 'firework', color: '#ffd700' },
+            buttonColor: '#ffd700', // 골드
+            startDate: { month: 12, day: 26 },
+            endDate: { month: 1, day: 15 }
         },
         valentine: {
             name: 'Valentine Edition 💝',
             emoji: { start: '💝', end: '💕' },
-            startDate: { month: 2, day: 1 },    // 2월 1일
-            endDate: { month: 2, day: 14 }      // 2월 14일
+            particle: { type: 'heart', color: '#ff69b4' },
+            buttonColor: '#ff1493', // 딥 핑크
+            startDate: { month: 2, day: 1 },
+            endDate: { month: 2, day: 14 }
         },
         spring: {
             name: 'Spring Edition 🌸',
             emoji: { start: '🌸', end: '🌺' },
-            startDate: { month: 3, day: 1 },    // 3월 1일
-            endDate: { month: 5, day: 31 }      // 5월 31일
+            particle: { type: 'sakura', color: '#ffb7c5' },
+            buttonColor: '#ff69b4', // 파스텔 핑크
+            startDate: { month: 3, day: 1 },
+            endDate: { month: 5, day: 31 }
         },
         summer: {
             name: 'Summer Edition 🌊',
             emoji: { start: '🌊', end: '☀️' },
-            startDate: { month: 6, day: 1 },    // 6월 1일
-            endDate: { month: 8, day: 31 }      // 8월 31일
+            particle: { type: 'bubble', color: '#00bfff' },
+            buttonColor: '#1e90ff', // 도지 블루
+            startDate: { month: 6, day: 1 },
+            endDate: { month: 8, day: 31 }
         },
         autumn: {
             name: 'Autumn Edition 🍂',
             emoji: { start: '🍂', end: '🍁' },
-            startDate: { month: 9, day: 1 },    // 9월 1일
-            endDate: { month: 11, day: 30 }     // 11월 30일
+            particle: { type: 'leaf', color: '#ff8c00' },
+            buttonColor: '#ff8c00', // 다크 오렌지
+            startDate: { month: 9, day: 1 },
+            endDate: { month: 11, day: 30 }
         }
     },
 
