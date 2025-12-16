@@ -1,7 +1,10 @@
 // Chinese Simplified translations
 const translations_zh = {
-    // Start Screen
-    title: "<span class='emoji-icon'>🎄</span> 你的心理年龄<br>是多少岁？ <span class='emoji-icon'>🎅</span>",
+    // Start Screen - 动态标题（季节性表情符号自动更改）
+    get title() {
+        const season = CONFIG.getCurrentSeason();
+        return `<span class='emoji-icon'>${season.emoji.start}</span> 你的心理年龄<br>是多少岁？ <span class='emoji-icon'>${season.emoji.end}</span>`;
+    },
     subtitle: "AI通过你的照片估算实际年龄，<br>10个问题揭示你的心理年龄",
     btnStart: "开始测试",
 

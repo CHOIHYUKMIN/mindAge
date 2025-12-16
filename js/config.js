@@ -19,7 +19,83 @@ const CONFIG = {
 
     // 버전 관리 (한 곳에서 관리)
     VERSION: '4.0.0',
-    VERSION_NAME: 'Christmas edition 🎄',
+
+    // 시즌별 테마 설정
+    SEASONAL_THEMES: {
+        christmas: {
+            name: 'Christmas Edition 🎄',
+            emoji: { start: '🎄', end: '🎅' },
+            startDate: { month: 12, day: 1 },   // 12월 1일
+            endDate: { month: 12, day: 25 }     // 12월 25일
+        },
+        newyear: {
+            name: 'New Year Edition 🎆',
+            emoji: { start: '🎆', end: '🌅' },
+            startDate: { month: 12, day: 26 },  // 12월 26일
+            endDate: { month: 1, day: 15 }      // 1월 15일
+        },
+        valentine: {
+            name: 'Valentine Edition 💝',
+            emoji: { start: '💝', end: '💕' },
+            startDate: { month: 2, day: 1 },    // 2월 1일
+            endDate: { month: 2, day: 14 }      // 2월 14일
+        },
+        spring: {
+            name: 'Spring Edition 🌸',
+            emoji: { start: '🌸', end: '🌺' },
+            startDate: { month: 3, day: 1 },    // 3월 1일
+            endDate: { month: 5, day: 31 }      // 5월 31일
+        },
+        summer: {
+            name: 'Summer Edition 🌊',
+            emoji: { start: '🌊', end: '☀️' },
+            startDate: { month: 6, day: 1 },    // 6월 1일
+            endDate: { month: 8, day: 31 }      // 8월 31일
+        },
+        autumn: {
+            name: 'Autumn Edition 🍂',
+            emoji: { start: '🍂', end: '🍁' },
+            startDate: { month: 9, day: 1 },    // 9월 1일
+            endDate: { month: 11, day: 30 }     // 11월 30일
+        }
+    },
+
+    // 현재 시즌 자동 감지
+    getCurrentSeason() {
+        const now = new Date();
+        const month = now.getMonth() + 1; // 0-11 → 1-12
+        const day = now.getDate();
+
+        for (const [key, theme] of Object.entries(this.SEASONAL_THEMES)) {
+            const start = theme.startDate;
+            const end = theme.endDate;
+
+            // 연말-연초 처리 (12월 26일 ~ 1월 15일)
+            if (start.month > end.month) {
+                if ((month === start.month && day >= start.day) ||
+                    (month === end.month && day <= end.day)) {
+                    return theme;
+                }
+            } else {
+                // 일반적인 경우
+                if ((month > start.month || (month === start.month && day >= start.day)) &&
+                    (month < end.month || (month === end.month && day <= end.day))) {
+                    return theme;
+                }
+            }
+        }
+
+        // 기본 테마
+        return {
+            name: 'Standard Edition ✨',
+            emoji: { start: '�', end: '✨' }
+        };
+    },
+
+    // VERSION_NAME은 동적으로 설정
+    get VERSION_NAME() {
+        return this.getCurrentSeason().name;
+    }
 };
 
 // Get the current URL based on environment

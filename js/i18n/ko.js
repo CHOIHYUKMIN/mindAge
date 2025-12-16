@@ -1,7 +1,10 @@
 // Korean translations
 const translations_ko = {
-    // Start Screen
-    title: "<span class='emoji-icon'>🎄</span> 당신의 마음은<br>몇 살인가요? <span class='emoji-icon'>🎅</span>",
+    // Start Screen - 동적 타이틀 (시즌별 이모지 자동 변경)
+    get title() {
+        const season = CONFIG.getCurrentSeason();
+        return `<span class='emoji-icon'>${season.emoji.start}</span> 당신의 마음은<br>몇 살인가요? <span class='emoji-icon'>${season.emoji.end}</span>`;
+    },
     subtitle: "AI가 당신의 얼굴로 실물 나이를 추측하고,<br>10가지 질문으로 마음의 나이를 알려드려요",
     btnStart: "테스트 시작하기",
 

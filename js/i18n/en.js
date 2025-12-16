@@ -1,7 +1,10 @@
 // English translations
 const translations_en = {
-    // Start Screen
-    title: "<span class='emoji-icon'>🎄</span> How Old is<br>Your Mind? <span class='emoji-icon'>🎅</span>",
+    // Start Screen - Dynamic title (seasonal emoji auto-change)
+    get title() {
+        const season = CONFIG.getCurrentSeason();
+        return `<span class='emoji-icon'>${season.emoji.start}</span> How Old is<br>Your Mind? <span class='emoji-icon'>${season.emoji.end}</span>`;
+    },
     subtitle: "AI estimates your physical age from your photo,<br>and 10 questions reveal your mental age",
     btnStart: "Start Test",
 
