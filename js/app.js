@@ -1332,11 +1332,25 @@ const app = {
             // 상세 정보 포맷팅
             const genderText = item.gender === 'male' ? (i18n.currentLang === 'ko' ? '남성' : 'Male') : (i18n.currentLang === 'ko' ? '여성' : 'Female');
             const emotionText = item.emotion ? (i18n.t(`emotion_${item.emotion}`) || item.emotion) : '-';
-            // faceShape와 personalColor는 i18n 키가 있을 경우 번역, 없으면 원본
+            // faceShape 처리
             let faceShapeText = '-';
             if (item.faceShape) {
-                // faceShape.js의 매핑 로직을 참고하거나 간단히 표시
-                faceShapeText = item.faceShape;
+                if (typeof item.faceShape === 'object') {
+                    faceShapeText = item.faceShape[i18n.currentLang] || item.faceShape.ko || item.faceShape.en || '-';
+                } else if (typeof item.faceShape === 'string') {
+                    // 번역 키인 경우
+                    faceShapeText = i18n.t(item.faceShape) || item.faceShape;
+                }
+            }
+
+            // personalColor 처리
+            let personalColorText = '-';
+            if (item.personalColor) {
+                if (typeof item.personalColor === 'object') {
+                    personalColorText = item.personalColor[i18n.currentLang] || item.personalColor.ko || item.personalColor.en || '-';
+                } else if (typeof item.personalColor === 'string') {
+                    personalColorText = i18n.t(item.personalColor) || item.personalColor;
+                }
             }
 
             html += `
@@ -1373,17 +1387,12 @@ const app = {
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">얼굴형:</span>
-                            <span class="detail-value">${item.faceShape || '-'}</span>
+                            <span class="detail-value">${faceShapeText}</span>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">퍼스널 컬러:</span>
-                            <span class="detail-value">${item.personalColor || '-'}</span>
+                            <span class="detail-value">${personalColorText}</span>
                         </div>
-                        ${item.archetype ? `
-                        <div class="detail-row" style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px;">
-                            <span class="detail-label">캐릭터:</span>
-                            <span class="detail-value">${item.archetype.name[i18n.currentLang] || item.archetype.name.ko}</span>
-                        </div>` : ''}
                     </div>
                 </div>
             `;
