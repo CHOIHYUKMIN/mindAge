@@ -1335,10 +1335,14 @@ const app = {
             // faceShape 처리
             let faceShapeText = '-';
             if (item.faceShape) {
-                if (typeof item.faceShape === 'object') {
+                if (item.faceShape.name) {
+                    // { code: '...', name: { ko: '...', en: '...' } } 형태
+                    faceShapeText = item.faceShape.name[i18n.currentLang] || item.faceShape.name.ko || item.faceShape.name.en || '-';
+                } else if (typeof item.faceShape === 'object') {
+                    // 단순히 { ko: '...', en: '...' } 형태일 경우
                     faceShapeText = item.faceShape[i18n.currentLang] || item.faceShape.ko || item.faceShape.en || '-';
-                } else if (typeof item.faceShape === 'string') {
-                    // 번역 키인 경우
+                } else {
+                    // 문자열인 경우
                     faceShapeText = i18n.t(item.faceShape) || item.faceShape;
                 }
             }
@@ -1346,12 +1350,24 @@ const app = {
             // personalColor 처리
             let personalColorText = '-';
             if (item.personalColor) {
-                if (typeof item.personalColor === 'object') {
+                if (item.personalColor.name) {
+                    // { season: '...', name: { ko: '...', en: '...' } } 형태
+                    personalColorText = item.personalColor.name[i18n.currentLang] || item.personalColor.name.ko || item.personalColor.name.en || '-';
+                } else if (typeof item.personalColor === 'object') {
                     personalColorText = item.personalColor[i18n.currentLang] || item.personalColor.ko || item.personalColor.en || '-';
-                } else if (typeof item.personalColor === 'string') {
+                } else {
                     personalColorText = i18n.t(item.personalColor) || item.personalColor;
                 }
             }
+
+            // 디버깅용 로그
+            console.log('Rendering Data:', {
+                id: item.id,
+                faceShape: item.faceShape,
+                faceShapeText,
+                personalColor: item.personalColor,
+                personalColorText
+            });
 
             html += `
                 <div class="history-item" data-id="${item.id}">
