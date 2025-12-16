@@ -1520,14 +1520,26 @@ const app = {
             event.stopPropagation();
         }
 
-        if (!confirm(i18n.t('historyDeleteConfirm') || '삭제하시겠습니까?')) return;
+        console.log('Attempting to delete record:', id);
+
+        // Access i18n safely from global scope
+        const i18nObj = window.i18n || i18n;
+        const confirmMsg = (i18nObj && i18nObj.t && i18nObj.t('historyDeleteConfirm')) || '삭제하시겠습니까?';
+
+        if (!confirm(confirmMsg)) {
+            console.log('Delete cancelled by user');
+            return;
+        }
 
         // Ensure ID is a number
         const numericId = Number(id);
 
         try {
-            await HistoryDB.deleteRecord(numericId);
+            // Use global HistoryDB if available
+            const db = window.HistoryDB || HistoryDB;
+            await db.deleteRecord(numericId);
             await this.renderHistory();
+            console.log('Record deleted successfully');
         } catch (error) {
             console.error('Failed to delete history record:', error);
         }

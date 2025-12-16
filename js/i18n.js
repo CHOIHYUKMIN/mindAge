@@ -134,6 +134,9 @@ const i18n = {
     }
 };
 
+// Expose to global scope
+window.i18n = i18n;
+
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => i18n.init());
