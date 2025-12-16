@@ -1211,6 +1211,149 @@ const app = {
         } catch (error) {
             console.error('Failed to save to history:', error);
         }
+    },
+
+    // 📊 History UI Logic
+    async openHistory() {
+        const modal = document.getElementById('history-modal');
+        if (!modal) return;
+
+        modal.style.display = 'flex';
+        // Add animation class
+        const content = modal.querySelector('.policy-modal-content');
+        if (content) {
+            content.style.animation = 'slideUp 0.3s ease forwards';
+        }
+
+        // Load data
+        await this.renderHistory();
+    },
+
+    closeHistory() {
+        const modal = document.getElementById('history-modal');
+        if (!modal) return;
+
+        // Add close animation
+        const content = modal.querySelector('.policy-modal-content');
+        if (content) {
+            content.style.animation = 'slideDown 0.3s ease forwards';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        } else {
+            modal.style.display = 'none';
+        }
+    },
+
+    async renderHistory() {
+        try {
+            const stats = await HistoryDB.getStatistics();
+            const history = await HistoryDB.getAllHistory();
+
+            this.updateHistoryStats(stats);
+            this.updateHistoryList(history);
+        } catch (error) {
+            console.error('Failed to render history:', error);
+        }
+    },
+
+    updateHistoryStats(stats) {
+        const statsEl = document.getElementById('history-stats');
+        if (!statsEl || !stats) {
+            if (statsEl) statsEl.innerHTML = '';
+            return;
+        }
+
+        const avgDiff = stats.averageDifference;
+        const diffSign = avgDiff > 0 ? '+' : '';
+        const diffClass = avgDiff > 0 ? 'diff-positive' : (avgDiff < 0 ? 'diff-negative' : 'diff-neutral');
+
+        statsEl.innerHTML = `
+            <div class="stat-item">
+                <span class="stat-label" data-i18n="historyTotalTests">${i18n.t('historyTotalTests')}</span>
+                <span class="stat-value">${stats.totalTests}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label" data-i18n="historyAvgMentalAge">${i18n.t('historyAvgMentalAge')}</span>
+                <span class="stat-value">${stats.averageMentalAge}${i18n.t('ageUnit')}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label" data-i18n="historyAvgDiff">${i18n.t('historyAvgDiff')}</span>
+                <span class="stat-value ${diffClass}">${diffSign}${avgDiff}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label" data-i18n="historyYoungest">${i18n.t('historyYoungest')}</span>
+                <span class="stat-value">${stats.youngestMentalAge}${i18n.t('ageUnit')}</span>
+            </div>
+        `;
+    },
+
+    updateHistoryList(history) {
+        const listEl = document.getElementById('history-list');
+        if (!listEl) return;
+
+        if (!history || history.length === 0) {
+            listEl.innerHTML = `<div class="history-empty">${i18n.t('historyEmpty')}</div>`;
+            return;
+        }
+
+        let html = '';
+        history.forEach(item => {
+            const date = new Date(item.timestamp).toLocaleDateString();
+            const time = new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            const diff = item.ageDifference;
+            const diffSign = diff > 0 ? '+' : '';
+            const diffClass = diff > 0 ? 'diff-positive' : (diff < 0 ? 'diff-negative' : 'diff-neutral');
+
+            const scenarioName = i18n.t(`scenario${item.scenario.charAt(0).toUpperCase() + item.scenario.slice(1)}`) || item.scenario;
+
+            html += `
+                <div class="history-item">
+                    <div class="history-info">
+                        <div class="history-date">${date} ${time}</div>
+                        <div class="history-ages">
+                            ${i18n.t('historyPhysicalAge')}: ${item.physicalAge} / ${i18n.t('historyMentalAge')}: ${item.mentalAge}
+                        </div>
+                        <div class="history-scenario">${scenarioName}</div>
+                    </div>
+                    <div class="history-diff ${diffClass}">
+                        ${diffSign}${diff}
+                    </div>
+                    <div class="history-actions">
+                        <button class="btn-delete-record" onclick="app.deleteHistoryRecord(${item.id})">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+
+        listEl.innerHTML = html;
+    },
+
+    async deleteHistoryRecord(id) {
+        if (!confirm('삭제하시겠습니까?')) return;
+
+        try {
+            await HistoryDB.deleteRecord(id);
+            await this.renderHistory();
+        } catch (error) {
+            console.error('Failed to delete history record:', error);
+        }
+    },
+
+    async clearHistory() {
+        if (!confirm(i18n.t('historyClearConfirm'))) return;
+
+        try {
+            await HistoryDB.clearAll();
+            await this.renderHistory();
+        } catch (error) {
+            console.error('Failed to clear history:', error);
+        }
     }
 };
 

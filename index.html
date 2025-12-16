@@ -53,6 +53,7 @@
         document.write(`<link rel="stylesheet" href="css/style.css?v=${CONFIG.VERSION}">`);
         document.write(`<link rel="stylesheet" href="css/animations.css?v=${CONFIG.VERSION}">`);
         document.write(`<link rel="stylesheet" href="css/policy-modal.css?v=${CONFIG.VERSION}">`);
+        document.write(`<link rel="stylesheet" href="css/history.css?v=${CONFIG.VERSION}">`);
     </script>
 
     <!-- Kakao SDK -->
@@ -395,6 +396,11 @@
                 <button class="btn-restart" onclick="app.restart()">
                     <span data-i18n="btnRestart">다시 테스트하기</span>
                 </button>
+
+                <!-- History Button -->
+                <button class="btn-history" onclick="app.openHistory()">
+                    <span data-i18n="btnHistory">📊 내 기록 보기</span>
+                </button>
             </div>
         </div>
     </section>
@@ -428,6 +434,33 @@
                     <a href="#" onclick="loadTerms('zh'); return false;">中文</a>
                 </div>
                 <div id="terms-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="history-modal" class="policy-modal" style="display:none;">
+        <div class="policy-modal-content history-content">
+            <button class="policy-modal-close" onclick="app.closeHistory()">&times;</button>
+            <div class="policy-modal-body">
+                <h1 data-i18n="historyTitle">내 마음 나이 기록</h1>
+
+                <div id="history-stats" class="history-stats">
+                    <!-- Stats will be inserted automatically -->
+                </div>
+
+                <div class="history-list-header">
+                    <h3 data-i18n="historyRecords">기록</h3>
+                    <button class="btn-clear-history" onclick="app.clearHistory()" data-i18n="historyClearAll">전체
+                        삭제</button>
+                </div>
+
+                <div id="history-list" class="history-list">
+                    <!-- History items will be inserted automatically -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close-modal" onclick="app.closeHistory()" data-i18n="historyClose">닫기</button>
             </div>
         </div>
     </div>
