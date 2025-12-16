@@ -1124,8 +1124,8 @@ const app = {
 
         // 마음의 나이 산출
         // weightedScore는 1~5 범위, 3이 중간값
-        // 점수 차이 1당 약 5년 차이로 매핑
-        const mindAge = Math.round(base + (weightedScore - 3) * 5);
+        // 점수 차이 1당 약 12.5년 차이로 매핑 (±25년 범위)
+        const mindAge = Math.round(base + (weightedScore - 3) * 12.5);
 
         this.mindAge = Math.max(10, Math.min(99, mindAge));  // 10~99 범위로 제한
         this.mentalAge = this.mindAge;  // mentalAge도 설정 (결과 표시용)
