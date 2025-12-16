@@ -1369,30 +1369,39 @@ const app = {
                 personalColorText
             });
 
+            // 날짜 포맷 간소화 (MM.DD)
+            const dateObj = new Date(item.timestamp);
+            const shortDate = `${dateObj.getMonth() + 1}.${dateObj.getDate()}`;
+
             html += `
                 <div class="history-item" data-id="${item.id}">
                     <div class="history-header">
-                        <div class="history-info">
-                            <div class="history-date">${date} ${time}</div>
-                            <div class="history-ages">
-                                ${i18n.t('historyPhysicalAge')}: ${item.physicalAge} / ${i18n.t('historyMentalAge')}: ${item.mentalAge}
-                            </div>
-                            <div class="history-scenario">${scenarioName}</div>
+                        <div class="history-left">
+                            <span class="history-date-short">${shortDate}</span>
+                            <span class="history-summary">
+                                <span class="age-label">${i18n.t('historyPhysicalAge')}</span> <strong>${item.physicalAge}</strong>
+                                <span class="divider">/</span>
+                                <span class="age-label">${i18n.t('historyMentalAge')}</span> <strong>${item.mentalAge}</strong>
+                            </span>
                         </div>
                         <div class="history-right">
-                            <div class="history-diff ${diffClass}">
-                                ${diffSign}${diff}
-                            </div>
-                            <div class="history-actions">
-                                <button class="btn-delete-record" data-action="delete" data-id="${item.id}">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="pointer-events: none;">
-                                        <path d="M18 6L6 18M6 6l12 12"></path>
-                                    </svg>
-                                </button>
-                            </div>
+                            <span class="history-diff-badge ${diffClass}">${diffSign}${diff}</span>
+                            <button class="btn-delete-record" data-action="delete" data-id="${item.id}">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="pointer-events: none;">
+                                    <path d="M18 6L6 18M6 6l12 12"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                     <div class="history-details">
+                         <div class="detail-row">
+                            <span class="detail-label">시나리오:</span>
+                            <span class="detail-value">${scenarioName}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">일시:</span>
+                            <span class="detail-value">${date} ${time}</span>
+                        </div>
                         <div class="detail-row">
                             <span class="detail-label">성별:</span>
                             <span class="detail-value">${genderText}</span>
