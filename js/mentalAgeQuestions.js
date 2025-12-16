@@ -50,9 +50,9 @@ export const QUESTIONS_TEEN_MALE = {
         id: 'tm_3',
         category: 'relationship',
         text: {
-            ko: '친구와 다퉜을 때 어떻게 하나요?',
-            en: 'What do you do when you fight with a friend?',
-            zh: '和朋友吵架时你会怎么做？'
+            ko: '연인과 다툴 때 어떻게 하나요?',
+            en: 'What do you do when you fight with your partner?',
+            zh: '和伴侣吵架时你会怎么做？'
         },
         options: {
             1: { label: { ko: '관계를 끊음', en: 'Cut off the relationship', zh: '断绝关系' }, score: 1 },

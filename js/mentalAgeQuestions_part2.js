@@ -8,9 +8,9 @@ export const QUESTIONS_20_FEMALE = {
         id: 'twf_1',
         category: 'emotion',
         text: {
-            ko: '직장이나 학교에서 부당한 대우를 받았을 때 어떻게 하나요?',
-            en: 'What do you do when treated unfairly at work or school?',
-            zh: '在工作或学校受到不公平对待时你会怎么做？'
+            ko: '직장에서 부당한 대우를 받았을 때 어떻게 하나요?',
+            en: 'What do you do when treated unfairly at work?',
+            zh: '在工作中受到不公平对待时你会怎么做？'
         },
         options: {
             1: { label: { ko: '참고 넘어감', en: 'Endure and move on', zh: '忍耐并继续' }, score: 1 },
@@ -170,20 +170,20 @@ export const QUESTIONS_20_FEMALE = {
 // 30대 남성 (Thirties Male)
 // ============================================
 export const QUESTIONS_30_MALE = {
-    thm_1: {
-        id: 'thm_1',
+    twm_1: {
+        id: 'twm_1',
         category: 'emotion',
         text: {
-            ko: '업무 스트레스를 어떻게 관리하나요?',
-            en: 'How do you manage work stress?',
-            zh: '你如何管理工作压力？'
+            ko: '직장에서 스트레스를 받을 때 어떻게 대처하나요?',
+            en: 'How do you cope with stress at work?',
+            zh: '在工作时你如何应对压力？'
         },
         options: {
-            1: { label: { ko: '술로 푼다', en: 'Drink alcohol', zh: '喝酒' }, score: 1 },
-            2: { label: { ko: '집에 가져와 가족에게 풀음', en: 'Bring it home to family', zh: '带回家向家人发泄' }, score: 2 },
-            3: { label: { ko: '혼자 삭임', en: 'Suppress alone', zh: '独自压抑' }, score: 3 },
-            4: { label: { ko: '운동이나 취미로 해소', en: 'Relieve through exercise or hobbies', zh: '通过运动或爱好缓解' }, score: 4 },
-            5: { label: { ko: '근본 원인을 해결하려 노력', en: 'Try to solve root cause', zh: '努力解决根本原因' }, score: 5 }
+            1: { label: { ko: '술이나 게임으로 풀음', en: 'Drink or play games', zh: '喝酒或玩游戏' }, score: 1 },
+            2: { label: { ko: '그냥 참음', en: 'Just endure', zh: '只是忍耐' }, score: 2 },
+            3: { label: { ko: '친구와 수다', en: 'Chat with friends', zh: '和朋友聊天' }, score: 3 },
+            4: { label: { ko: '운동이나 취미활동', en: 'Exercise or hobbies', zh: '运动或爱好' }, score: 4 },
+            5: { label: { ko: '원인 분석 후 해결책 모색', en: 'Analyze and find solutions', zh: '分析并寻找解决方案' }, score: 5 }
         }
     },
     thm_2: {
