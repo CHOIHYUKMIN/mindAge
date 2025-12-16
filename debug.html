@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Debug Test</title>
+</head>
+
+<body>
+    <h1>Debug Test</h1>
+    <div id="output"></div>
+    <script type="module">
+        const output = document.getElementById('output');
+
+        try {
+            output.innerHTML += '<p>Loading mentalAgeQuestions_complete.js...</p>';
+            const questions = await import('./js/mentalAgeQuestions_complete.js');
+            output.innerHTML += '<p>✅ Questions loaded: ' + Object.keys(questions).join(', ') + '</p>';
+
+            output.innerHTML += '<p>Loading scenarios.js...</p>';
+            const scenarios = await import('./js/scenarios.js');
+            output.innerHTML += '<p>✅ Scenarios loaded: ' + Object.keys(scenarios.SCENARIOS).join(', ') + '</p>';
+
+            output.innerHTML += '<p>Loading app.js...</p>';
+            const app = await import('./js/app.js');
+            output.innerHTML += '<p>✅ App loaded successfully!</p>';
+
+            output.innerHTML += '<p style="color: green; font-weight: bold;">All modules loaded successfully!</p>';
+        } catch (error) {
+            output.innerHTML += '<p style="color: red;">❌ Error: ' + error.message + '</p>';
+            output.innerHTML += '<pre>' + error.stack + '</pre>';
+        }
+    </script>
+</body>
+
+</html>

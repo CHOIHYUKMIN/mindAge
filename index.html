@@ -205,10 +205,10 @@
                     <div class="loader"></div>
                     <p class="analyzing-text" id="analyzing-text" data-i18n="analyzing">AI가 당신의 얼굴을 분석하고 있어요...</p>
                     <div class="progress-container">
+                        <div class="analysis-progress-text" id="analysis-progress-text">0%</div>
                         <div class="progress-bar">
                             <div class="progress-fill" id="analysis-progress"></div>
                         </div>
-                        <div class="progress-text" id="progress-text">0%</div>
                     </div>
                 </div>
 
@@ -223,81 +223,57 @@
                     </div>
                 </div>
 
-                <button class="btn-primary btn-next hidden" id="btn-next" onclick="app.startQuestions()">
+                <button class="btn-primary btn-next hidden" id="btn-next" onclick="app.goToScenario()">
                     <span data-i18n="btnNext">다음 단계</span>
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Scenario Selection Section -->
-    <section id="scenario-section" class="section">
-        <div class="container">
-            <button class="btn-back" onclick="app.goToUpload()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-            </button>
+    <!-- Scenario Selection Modal -->
+    <div id="scenario-modal" class="scenario-modal">
+        <div class="scenario-modal-content">
+            <h2 class="scenario-modal-title" data-i18n="scenarioTitle">어떤 상황의 마음 나이를 알고 싶으신가요?</h2>
+            <p class="scenario-modal-desc" data-i18n="scenarioDesc">당신의 연령대에 맞는 질문으로 분석합니다</p>
 
-            <h2 class="section-title" data-i18n="scenarioTitle">어떤 상황의 마음 나이를 알고 싶으신가요?</h2>
-            <p class="section-description" data-i18n="scenarioDesc">
-                당신의 연령대에 맞는 질문으로 분석합니다
-            </p>
 
-            <!-- Age Group Display -->
-            <div class="age-group-badge" id="age-group-display">
-                <span class="age-icon">🎂</span>
-                <span id="age-group-text">--</span>
+
+            <!-- Scenario Cards -->
+            <div class="scenario-cards">
+                <button class="scenario-card" onclick="app.selectScenario('daily')">
+                    <span class="scenario-card-icon">🏠</span>
+                    <strong class="scenario-card-title" data-i18n="scenarioDaily">일상생활</strong>
+                    <small class="scenario-card-desc" data-i18n="scenarioDailyDesc">평소 생활 습관과 일상적인 선택</small>
+                </button>
+
+                <button class="scenario-card" onclick="app.selectScenario('work')">
+                    <span class="scenario-card-icon">💼</span>
+                    <strong class="scenario-card-title" data-i18n="scenarioWork">직장생활</strong>
+                    <small class="scenario-card-desc" data-i18n="scenarioWorkDesc">직장에서의 태도와 업무 스타일</small>
+                </button>
+
+                <button class="scenario-card" onclick="app.selectScenario('entertainment')">
+                    <span class="scenario-card-icon">🎬</span>
+                    <strong class="scenario-card-title" data-i18n="scenarioEntertainment">연예생활</strong>
+                    <small class="scenario-card-desc" data-i18n="scenarioEntertainmentDesc">여가 활동과 취미 생활</small>
+                </button>
             </div>
-
-            <!-- Scenario Selection (Radio Buttons) -->
-            <div class="scenario-selection">
-                <label class="scenario-option">
-                    <input type="radio" name="scenario" value="daily" checked>
-                    <span class="scenario-radio-content">
-                        <span class="scenario-radio-icon">🏠</span>
-                        <span class="scenario-radio-text">
-                            <strong data-i18n="scenarioDaily">일상생활</strong>
-                            <small data-i18n="scenarioDailyDesc">평소 생활 습관과 일상적인 선택</small>
-                        </span>
-                    </span>
-                </label>
-
-                <label class="scenario-option">
-                    <input type="radio" name="scenario" value="work">
-                    <span class="scenario-radio-content">
-                        <span class="scenario-radio-icon">💼</span>
-                        <span class="scenario-radio-text">
-                            <strong data-i18n="scenarioWork">회사·직장 생활</strong>
-                            <small data-i18n="scenarioWorkDesc">직장에서의 태도와 업무 스타일</small>
-                        </span>
-                    </span>
-                </label>
-
-                <label class="scenario-option">
-                    <input type="radio" name="scenario" value="entertainment">
-                    <span class="scenario-radio-content">
-                        <span class="scenario-radio-icon">🎬</span>
-                        <span class="scenario-radio-text">
-                            <strong data-i18n="scenarioEntertainment">연예·엔터테인먼트</strong>
-                            <small data-i18n="scenarioEntertainmentDesc">여가 활동과 취미 생활</small>
-                        </span>
-                    </span>
-                </label>
-            </div>
-
-            <button class="btn-primary" onclick="app.selectScenarioFromRadio()" style="margin-top: 2rem;">
-                <span data-i18n="btnStartQuestions">질문 시작하기</span>
-            </button>
         </div>
-    </section>
+    </div>
 
     <!-- Questions Section -->
     <section id="questions-section" class="section">
         <div class="container">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
-                <span class="progress-text" id="progress-text">1 / 10</span>
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                <button class="btn-back" id="btn-back" onclick="app.goToPreviousQuestion()" style="display: none;">
+                    ← 이전
+                </button>
+                <div style="flex: 1;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                        <span class="progress-text" id="progress-text">1 / 10</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Customized Question Notice -->

@@ -1,4 +1,18 @@
-// Removed ARCHETYPES import - now using i18n
+// Import scenario and question data
+import { SCENARIOS } from './scenarios.js';
+import {
+    WEIGHTS,
+    QUESTIONS_TEEN_MALE,
+    QUESTIONS_TEEN_FEMALE,
+    QUESTIONS_20_MALE,
+    QUESTIONS_20_FEMALE,
+    QUESTIONS_30_MALE,
+    QUESTIONS_30_FEMALE,
+    QUESTIONS_40_MALE,
+    QUESTIONS_40_FEMALE,
+    QUESTIONS_50_MALE,
+    QUESTIONS_50_FEMALE
+} from './mentalAgeQuestions_complete.js';
 
 // Main Application Logic
 const app = {
@@ -402,7 +416,7 @@ const app = {
 
         // Progress elements
         const progressFill = document.getElementById('analysis-progress');
-        const progressText = document.getElementById('progress-text');
+        const progressText = document.getElementById('analysis-progress-text');
         const analyzingText = document.getElementById('analyzing-text');
 
         // Helper function to update progress
@@ -853,7 +867,7 @@ const app = {
     // Scenario System Functions
     // ============================================
 
-    // 시나리오 선택 화면으로 이동
+    // 시나리오 선택 모달 표시
     goToScenario() {
         // 연령대 자동 감지 (물리적 나이 기반)
         if (typeof getAgeGroupByAge === 'function' && this.physicalAge) {
@@ -866,15 +880,55 @@ const app = {
             }
         }
 
-        this.showSection('scenario');
+        // 모달 표시
+        const modal = document.getElementById('scenario-modal');
+        if (modal) {
+            modal.classList.add('active');
+        }
     },
 
-    // 라디오 버튼에서 시나리오 선택
-    selectScenarioFromRadio() {
-        const selected = document.querySelector('input[name="scenario"]:checked');
-        if (selected) {
-            this.selectScenario(selected.value);
+    // 연령·성별에 맞는 질문 세트 선택
+    getQuestionSet() {
+        const ageGroup = this.ageGroup;  // teen, twenties, thirties, forties, fifties, sixties
+        const gender = this.gender;      // 'male' | 'female'
+
+        // 연령·성별 매핑
+        const questionMap = {
+            teen: {
+                male: QUESTIONS_TEEN_MALE,
+                female: QUESTIONS_TEEN_FEMALE
+            },
+            twenties: {
+                male: QUESTIONS_20_MALE,
+                female: QUESTIONS_20_FEMALE
+            },
+            thirties: {
+                male: QUESTIONS_30_MALE,
+                female: QUESTIONS_30_FEMALE
+            },
+            forties: {
+                male: QUESTIONS_40_MALE,
+                female: QUESTIONS_40_FEMALE
+            },
+            fifties: {
+                male: QUESTIONS_50_MALE,
+                female: QUESTIONS_50_FEMALE
+            },
+            sixties: {
+                // 50대 질문 재사용
+                male: QUESTIONS_50_MALE,
+                female: QUESTIONS_50_FEMALE
+            }
+        };
+
+        const questionSet = questionMap[ageGroup]?.[gender];
+        if (!questionSet) {
+            console.error('No question set for', ageGroup, gender);
+            // 기본값으로 20대 질문 사용
+            return gender === 'male' ? QUESTIONS_20_MALE : QUESTIONS_20_FEMALE;
         }
+
+        return questionSet;
     },
 
     // 시나리오 선택
@@ -891,11 +945,16 @@ const app = {
             return;
         }
 
-        // 연령대에 맞는 질문 로드
-        const ageGroupId = this.ageGroupObj?.id || 'twenties';
-        this.currentScenarioQuestions = this.currentScenario.questionsByAge[ageGroupId] || [];
+        // 연령·성별에 맞는 질문 세트 가져오기
+        const questionSet = this.getQuestionSet();
 
-        console.log(`Selected scenario: ${scenarioId}, Age group: ${ageGroupId}, Questions: ${this.currentScenarioQuestions.length}`);
+        // 질문 ID 배열 생성 (10개)
+        this.currentScenarioQuestions = Object.keys(questionSet);
+
+        // 전체 질문 객체 저장 (나중에 참조용)
+        this.currentQuestionSet = questionSet;
+
+        console.log(`Selected scenario: ${scenarioId}, Age group: ${this.ageGroup}, Gender: ${this.gender}, Questions: ${this.currentScenarioQuestions.length}`);
 
         // 질문 인덱스 초기화
         this.currentQuestionIndex = 0;
@@ -905,6 +964,12 @@ const app = {
             this.scenarioAnswers[scenarioId] = {};
         }
 
+        // 모달 닫기
+        const modal = document.getElementById('scenario-modal');
+        if (modal) {
+            modal.classList.remove('active');
+        }
+
         // 질문 섹션으로 이동
         this.showSection('questions');
         this.renderScenarioQuestion();
@@ -912,13 +977,13 @@ const app = {
 
     // 시나리오 질문 렌더링
     renderScenarioQuestion() {
-        if (typeof QUESTIONS === 'undefined') {
-            console.error('QUESTIONS not loaded');
+        if (!this.currentQuestionSet) {
+            console.error('Question set not loaded');
             return;
         }
 
         const questionId = this.currentScenarioQuestions[this.currentQuestionIndex];
-        const question = QUESTIONS[questionId];
+        const question = this.currentQuestionSet[questionId];
 
         if (!question) {
             console.error('Question not found:', questionId);
@@ -932,14 +997,20 @@ const app = {
 
         // 질문 텍스트 표시
         const questionText = question.text[i18n.currentLang] || question.text.ko;
-        const questionCard = document.querySelector('.question-card');
+        const questionContent = document.getElementById('question-content');
 
-        if (questionCard) {
-            questionCard.innerHTML = `
-                <h3 class="question-text">${questionText}</h3>
-                <div class="options" id="question-options"></div>
-            `;
+        if (!questionContent) {
+            console.error('question-content not found');
+            return;
         }
+
+        // Create or update question card
+        questionContent.innerHTML = `
+            <div class="question-card">
+                <h2 class="question-title">${questionText}</h2>
+                <div class="options" id="question-options"></div>
+            </div>
+        `;
 
         // 옵션 렌더링
         const optionsContainer = document.getElementById('question-options');
@@ -961,6 +1032,9 @@ const app = {
                 optionsContainer.appendChild(optionBtn);
             }
         }
+
+        // 뒤로가기 버튼 업데이트
+        this.updateBackButton();
     },
 
     // 시나리오 답변 선택
@@ -973,54 +1047,145 @@ const app = {
         options.forEach(btn => btn.classList.remove('selected'));
         event.target.classList.add('selected');
 
-        // 0.5초 후 다음 질문으로
-        setTimeout(() => {
-            if (this.currentQuestionIndex < this.currentScenarioQuestions.length - 1) {
-                this.currentQuestionIndex++;
-                this.renderScenarioQuestion();
+        // 바로 다음 질문으로
+        if (this.currentQuestionIndex < this.currentScenarioQuestions.length - 1) {
+            this.currentQuestionIndex++;
+            this.renderScenarioQuestion();
+            this.updateBackButton();
+        } else {
+            // 모든 질문 완료 - 마음의 나이 계산
+            this.calculateMindAge();
+            this.goToResult();
+        }
+    },
+
+    // 이전 질문으로 돌아가기
+    goToPreviousQuestion() {
+        if (this.currentQuestionIndex > 0) {
+            this.currentQuestionIndex--;
+            this.renderScenarioQuestion();
+            this.updateBackButton();
+        }
+    },
+
+    // 뒤로가기 버튼 표시 업데이트
+    updateBackButton() {
+        const backBtn = document.getElementById('btn-back');
+        if (backBtn) {
+            if (this.currentQuestionIndex > 0) {
+                backBtn.style.display = 'block';
             } else {
-                // 모든 질문 완료 - 마음의 나이 계산
-                this.calculateMindAge();
-                this.goToResult();
+                backBtn.style.display = 'none';
             }
-        }, 500);
+        }
     },
 
     // 마음의 나이 계산
     calculateMindAge() {
-        if (typeof QUESTIONS === 'undefined') {
-            console.error('QUESTIONS not loaded');
+        if (!this.currentQuestionSet) {
+            console.error('Question set not loaded');
             return;
         }
 
         const base = this.physicalAge || 25;
-        let weightedSum = 0;
-        let totalWeight = 0;
 
-        // 현재 시나리오의 답변만 계산
+        // 영역별 점수 누적
+        const categoryScores = {
+            emotion: [],
+            responsibility: [],
+            relationship: [],
+            values: [],
+            self: []
+        };
+
+        // 현재 시나리오의 답변 수집
         const scenarioId = this.currentScenario.id;
         const answers = this.scenarioAnswers[scenarioId] || {};
-        const scenarioWeight = this.currentScenario.weight || 1.0;
-        const ageWeight = this.ageGroupObj?.weight || 1.0;
 
+        // 각 답변의 점수를 카테고리별로 분류
         for (const [qid, answer] of Object.entries(answers)) {
-            const question = QUESTIONS[qid];
+            const question = this.currentQuestionSet[qid];
             if (question && question.options && question.options[answer]) {
                 const score = question.options[answer].score || 0;
-                weightedSum += score * scenarioWeight * ageWeight;
-                totalWeight += scenarioWeight * ageWeight;
+                const category = question.category;
+
+                if (category && categoryScores[category]) {
+                    categoryScores[category].push(score);
+                }
             }
         }
 
-        // 점수 평균을 물리적 나이에 더해 마음의 나이 도출
-        const avgScore = totalWeight > 0 ? weightedSum / totalWeight : 0;
-        const mindAge = Math.round(base + (avgScore - 2.5) * 2);  // 점수 2.5를 중간값으로 설정
+        // 각 카테고리의 평균 점수 계산
+        const categoryAverages = {};
+        for (const [category, scores] of Object.entries(categoryScores)) {
+            if (scores.length > 0) {
+                categoryAverages[category] = scores.reduce((a, b) => a + b, 0) / scores.length;
+            } else {
+                categoryAverages[category] = 3; // 기본값 (중간값)
+            }
+        }
+
+        // 가중치 적용하여 최종 점수 계산
+        const weightedScore =
+            (categoryAverages.emotion * WEIGHTS.emotion) +
+            (categoryAverages.responsibility * WEIGHTS.responsibility) +
+            (categoryAverages.relationship * WEIGHTS.relationship) +
+            (categoryAverages.values * WEIGHTS.values) +
+            (categoryAverages.self * WEIGHTS.self);
+
+        // 마음의 나이 산출
+        // weightedScore는 1~5 범위, 3이 중간값
+        // 점수 차이 1당 약 5년 차이로 매핑
+        const mindAge = Math.round(base + (weightedScore - 3) * 5);
 
         this.mindAge = Math.max(10, Math.min(99, mindAge));  // 10~99 범위로 제한
+        this.mentalAge = this.mindAge;  // mentalAge도 설정 (결과 표시용)
 
-        console.log(`Mind Age Calculation: base=${base}, avgScore=${avgScore.toFixed(2)}, mindAge=${this.mindAge}`);
+        console.log(`Mind Age Calculation:`, {
+            base,
+            categoryAverages,
+            weightedScore: weightedScore.toFixed(2),
+            mindAge: this.mindAge
+        });
 
         return this.mindAge;
+    },
+
+    // 결과 화면으로 이동
+    goToResult() {
+        // Get archetype based on gender and age difference
+        const diff = this.mentalAge - this.physicalAge;
+        this.archetype = this.getArchetype(this.gender, diff);
+        console.log('Selected archetype:', this.archetype);
+
+        // Show result section
+        this.showSection('result');
+
+        // Populate result
+        document.getElementById('result-physical-age').textContent = this.physicalAge;
+        document.getElementById('result-mental-age').textContent = this.mentalAge;
+
+        // Calculate difference
+        const ageUnit = i18n.t('ageUnit');
+        const diffText = diff > 0 ? `+${diff}` : `${diff}`;
+        document.getElementById('diff-value').textContent = `${diffText}${ageUnit}`;
+
+        // Set message based on difference (use i18n with 50 granular levels)
+        const messageKey = this.getMessageKey(diff);
+        const emoji = this.getEmoji(messageKey);
+        const message = i18n.t(messageKey);
+
+        document.getElementById('message-emoji').textContent = emoji;
+        document.getElementById('message-text').textContent = message;
+
+        // Display additional analysis results
+        this.displayAdditionalAnalysis();
+
+        // Store message for sharing
+        this.resultMessage = message;
+
+        // Add confetti effect
+        this.createConfetti();
     }
 };
 

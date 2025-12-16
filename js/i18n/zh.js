@@ -18,6 +18,17 @@ const translations_zh = {
     resultText: "你的实际年龄是",
     resultTextAge: "岁",
 
+    // Scenario Selection
+    scenarioTitle: "您想了解哪方面的心理年龄？",
+    scenarioDesc: "根据您的年龄段定制的问题进行分析",
+    scenarioDaily: "日常生活",
+    scenarioDailyDesc: "平时的生活习惯和日常选择",
+    scenarioWork: "职场生活",
+    scenarioWorkDesc: "在职场的态度和工作风格",
+    scenarioEntertainment: "娱乐生活",
+    scenarioEntertainmentDesc: "休闲活动和兴趣爱好",
+    btnStartQuestions: "开始问题",
+
     // Questions
     progressText: "{current} / {total}",
     customQuestionNotice: "根据您的年龄和性别定制的问题",

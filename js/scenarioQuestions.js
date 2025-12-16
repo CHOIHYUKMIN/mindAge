@@ -650,9 +650,1376 @@ export const QUESTIONS = {
             2: { label: { ko: '가끔', en: 'Occasionally', zh: '偶尔' }, score: 3 },
             3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 1 }
         }
+    },
+
+
+    // ============================================
+    // 직장·회사 생활 (w_t1 ~ w_50_10)
+    // ============================================
+
+    // 10대 - 아르바이트/진로 (w_t1~w_t10)
+    w_t1: {
+        id: 'w_t1',
+        text: {
+            ko: '아르바이트 경험이 있나요?',
+            en: 'Do you have part-time job experience?',
+            zh: '有兼职经验吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+
+    w_t2: {
+        id: 'w_t2',
+        text: {
+            ko: '장래 희망 직업이 정해졌나요?',
+            en: 'Have you decided on a future career?',
+            zh: '决定了未来职业吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '정해짐', en: 'Decided', zh: '已决定' }, score: 5 },
+            2: { label: { ko: '고민 중', en: 'Considering', zh: '考虑中' }, score: 3 },
+            3: { label: { ko: '모름', en: 'Not sure', zh: '不确定' }, score: 1 }
+        }
+    },
+
+    w_t3: {
+        id: 'w_t3',
+        text: {
+            ko: '진로 상담을 받아본 적이 있나요?',
+            en: 'Have you received career counseling?',
+            zh: '接受过职业咨询吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+
+    w_t4: {
+        id: 'w_t4',
+        text: {
+            ko: '직업 선택 시 가장 중요한 것은?',
+            en: 'What matters most in choosing a career?',
+            zh: '选择职业时最重要的是？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적성', en: 'Aptitude', zh: '适性' }, score: 5 },
+            2: { label: { ko: '연봉', en: 'Salary', zh: '薪水' }, score: 3 },
+            3: { label: { ko: '안정성', en: 'Stability', zh: '稳定性' }, score: 4 }
+        }
+    },
+
+    w_t5: {
+        id: 'w_t5',
+        text: {
+            ko: '인턴십에 관심이 있나요?',
+            en: 'Are you interested in internships?',
+            zh: '对实习感兴趣吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '매우', en: 'Very', zh: '非常' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '없음', en: 'Not really', zh: '不太' }, score: 1 }
+        }
+    },
+
+    w_t6: {
+        id: 'w_t6',
+        text: {
+            ko: '팀 프로젝트 경험은?',
+            en: 'Team project experience?',
+            zh: '团队项目经验？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '많음', en: 'A lot', zh: '很多' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Some', zh: '一些' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+
+    w_t7: {
+        id: 'w_t7',
+        text: {
+            ko: '리더 역할을 맡아본 적이 있나요?',
+            en: 'Have you taken a leadership role?',
+            zh: '担任过领导角色吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+
+    w_t8: {
+        id: 'w_t8',
+        text: {
+            ko: '자격증 취득 계획이 있나요?',
+            en: 'Do you plan to get certifications?',
+            zh: '有考证计划吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '고민 중', en: 'Considering', zh: '考虑中' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 1 }
+        }
+    },
+
+    w_t9: {
+        id: 'w_t9',
+        text: {
+            ko: '대학 전공 선택은?',
+            en: 'How did you choose your major?',
+            zh: '如何选择专业？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적성 고려', en: 'Based on aptitude', zh: '根据适性' }, score: 5 },
+            2: { label: { ko: '취업률', en: 'Job prospects', zh: '就业率' }, score: 3 },
+            3: { label: { ko: '부모 권유', en: 'Parents suggestion', zh: '父母建议' }, score: 2 }
+        }
+    },
+
+    w_t10: {
+        id: 'w_t10',
+        text: {
+            ko: '창업에 관심이 있나요?',
+            en: 'Interested in starting a business?',
+            zh: '对创业感兴趣吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 4 },
+            2: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+
+    // 20대 - 첫 직장/커리어 시작 (w_20_1~w_20_10)
+    w_20_1: {
+        id: 'w_20_1',
+        text: {
+            ko: '현재 직장 상태는?',
+            en: 'Current employment status?',
+            zh: '目前就业状态？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '재직 중', en: 'Employed', zh: '在职' }, score: 5 },
+            2: { label: { ko: '구직 중', en: 'Job seeking', zh: '求职中' }, score: 3 },
+            3: { label: { ko: '학생', en: 'Student', zh: '学生' }, score: 2 }
+        }
+    },
+
+    w_20_2: {
+        id: 'w_20_2',
+        text: {
+            ko: '업무 스트레스 수준은?',
+            en: 'Work stress level?',
+            zh: '工作压力水平？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '높음', en: 'High', zh: '高' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '낮음', en: 'Low', zh: '低' }, score: 1 }
+        }
+    },
+
+    w_20_3: {
+        id: 'w_20_3',
+        text: {
+            ko: '야근 빈도는?',
+            en: 'Overtime frequency?',
+            zh: '加班频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '거의 없음', en: 'Rarely', zh: '很少' }, score: 1 }
+        }
+    },
+
+    w_20_4: {
+        id: 'w_20_4',
+        text: {
+            ko: '이직 계획이 있나요?',
+            en: 'Do you plan to change jobs?',
+            zh: '有换工作计划吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 4 },
+            2: { label: { ko: '고민 중', en: 'Considering', zh: '考虑中' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 5 }
+        }
+    },
+
+    w_20_5: {
+        id: 'w_20_5',
+        text: {
+            ko: '직장 동료와의 관계는?',
+            en: 'Relationship with colleagues?',
+            zh: '与同事的关系？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '좋음', en: 'Good', zh: '好' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Okay', zh: '一般' }, score: 3 },
+            3: { label: { ko: '나쁨', en: 'Bad', zh: '不好' }, score: 1 }
+        }
+    },
+
+    w_20_6: {
+        id: 'w_20_6',
+        text: {
+            ko: '업무 외 자기계발 시간은?',
+            en: 'Time for self-development outside work?',
+            zh: '工作外自我发展时间？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '많음', en: 'A lot', zh: '很多' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Some', zh: '一些' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+
+    w_20_7: {
+        id: 'w_20_7',
+        text: {
+            ko: '상사와의 관계는?',
+            en: 'Relationship with boss?',
+            zh: '与上司的关系？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '좋음', en: 'Good', zh: '好' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Okay', zh: '一般' }, score: 3 },
+            3: { label: { ko: '나쁨', en: 'Bad', zh: '不好' }, score: 1 }
+        }
+    },
+
+    w_20_8: {
+        id: 'w_20_8',
+        text: {
+            ko: '연봉 협상 경험은?',
+            en: 'Salary negotiation experience?',
+            zh: '薪资谈判经验？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+
+    w_20_9: {
+        id: 'w_20_9',
+        text: {
+            ko: '회사 복지 만족도는?',
+            en: 'Satisfaction with company benefits?',
+            zh: '对公司福利的满意度？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '만족', en: 'Satisfied', zh: '满意' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Okay', zh: '一般' }, score: 3 },
+            3: { label: { ko: '불만', en: 'Unsatisfied', zh: '不满' }, score: 1 }
+        }
+    },
+
+    w_20_10: {
+        id: 'w_20_10',
+        text: {
+            ko: '퇴근 후 업무 연락에 대한 태도는?',
+            en: 'Attitude toward work calls after hours?',
+            zh: '下班后工作联系的态度？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '받지 않음', en: 'Don\'t answer', zh: '不接' }, score: 2 },
+            2: { label: { ko: '상황에 따라', en: 'Depends', zh: '看情况' }, score: 4 },
+            3: { label: { ko: '항상 받음', en: 'Always answer', zh: '总是接' }, score: 5 }
+        }
+    },
+
+    // 30대 - 중간 관리자/전문가 (w_30_1~w_30_10)
+    w_30_1: {
+        id: 'w_30_1',
+        text: { ko: '현재 직급은?', en: 'Current position?', zh: '目前职位？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '팀장급 이상', en: 'Team leader+', zh: '组长以上' }, score: 5 },
+            2: { label: { ko: '중간 직급', en: 'Mid-level', zh: '中层' }, score: 3 },
+            3: { label: { ko: '사원급', en: 'Staff', zh: '员工' }, score: 2 }
+        }
+    },
+    w_30_2: {
+        id: 'w_30_2',
+        text: { ko: '부하 직원이 있나요?', en: 'Do you have subordinates?', zh: '有下属吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+    w_30_3: {
+        id: 'w_30_3',
+        text: { ko: '업무와 가정의 균형은?', en: 'Work-life balance?', zh: '工作与家庭的平衡？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '균형', en: 'Balanced', zh: '平衡' }, score: 5 },
+            2: { label: { ko: '일 중심', en: 'Work-focused', zh: '以工作为主' }, score: 3 },
+            3: { label: { ko: '불균형', en: 'Imbalanced', zh: '不平衡' }, score: 2 }
+        }
+    },
+    w_30_4: {
+        id: 'w_30_4',
+        text: { ko: '승진 기회에 대한 생각은?', en: 'Thoughts on promotion opportunities?', zh: '对晋升机会的看法？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적', en: 'Actively pursuing', zh: '积极追求' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '관심 없음', en: 'Not interested', zh: '不感兴趣' }, score: 1 }
+        }
+    },
+    w_30_5: {
+        id: 'w_30_5',
+        text: { ko: '회사 내 인맥 관리는?', en: 'How do you manage workplace relationships?', zh: '如何管理职场人脉？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적', en: 'Actively', zh: '积极' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '소극적', en: 'Passive', zh: '消极' }, score: 1 }
+        }
+    },
+    w_30_6: {
+        id: 'w_30_6',
+        text: { ko: '업무 관련 스트레스 해소법은?', en: 'How do you relieve work stress?', zh: '如何缓解工作压力？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '운동', en: 'Exercise', zh: '运动' }, score: 5 },
+            2: { label: { ko: '취미', en: 'Hobbies', zh: '爱好' }, score: 4 },
+            3: { label: { ko: '음주', en: 'Drinking', zh: '喝酒' }, score: 2 }
+        }
+    },
+    w_30_7: {
+        id: 'w_30_7',
+        text: { ko: '이직 경험은?', en: 'Job change experience?', zh: '换工作经验？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '3회 이상', en: '3+ times', zh: '3次以上' }, score: 4 },
+            2: { label: { ko: '1-2회', en: '1-2 times', zh: '1-2次' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 5 }
+        }
+    },
+    w_30_8: {
+        id: 'w_30_8',
+        text: { ko: '회의 시 발언 빈도는?', en: 'How often do you speak in meetings?', zh: '会议中发言频率？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '거의 없음', en: 'Rarely', zh: '很少' }, score: 1 }
+        }
+    },
+    w_30_9: {
+        id: 'w_30_9',
+        text: { ko: '업무 외 네트워킹 활동은?', en: 'Networking activities outside work?', zh: '工作外的社交活动？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적', en: 'Active', zh: '积极' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+    w_30_10: {
+        id: 'w_30_10',
+        text: { ko: '현재 직장 만족도는?', en: 'Current job satisfaction?', zh: '目前工作满意度？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '만족', en: 'Satisfied', zh: '满意' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Okay', zh: '一般' }, score: 3 },
+            3: { label: { ko: '불만', en: 'Unsatisfied', zh: '不满' }, score: 1 }
+        }
+    },
+
+    // 40대 - 고위 관리자/임원 (w_40_1~w_40_10)
+    w_40_1: {
+        id: 'w_40_1',
+        text: { ko: '현재 직책은?', en: 'Current title?', zh: '目前职务？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '임원급', en: 'Executive', zh: '高管' }, score: 5 },
+            2: { label: { ko: '부장급', en: 'Director', zh: '部长' }, score: 4 },
+            3: { label: { ko: '팀장급', en: 'Manager', zh: '经理' }, score: 3 }
+        }
+    },
+    w_40_2: {
+        id: 'w_40_2',
+        text: { ko: '관리하는 팀 규모는?', en: 'Size of team you manage?', zh: '管理的团队规模？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '10명 이상', en: '10+ people', zh: '10人以上' }, score: 5 },
+            2: { label: { ko: '5-10명', en: '5-10 people', zh: '5-10人' }, score: 4 },
+            3: { label: { ko: '5명 미만', en: 'Less than 5', zh: '5人以下' }, score: 2 }
+        }
+    },
+    w_40_3: {
+        id: 'w_40_3',
+        text: { ko: '의사결정 권한은?', en: 'Decision-making authority?', zh: '决策权限？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '높음', en: 'High', zh: '高' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '낮음', en: 'Low', zh: '低' }, score: 1 }
+        }
+    },
+    w_40_4: {
+        id: 'w_40_4',
+        text: { ko: '퇴직 준비는?', en: 'Retirement preparation?', zh: '退休准备？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '준비 중', en: 'Preparing', zh: '准备中' }, score: 5 },
+            2: { label: { ko: '고민 중', en: 'Considering', zh: '考虑中' }, score: 3 },
+            3: { label: { ko: '아직', en: 'Not yet', zh: '还没' }, score: 1 }
+        }
+    },
+    w_40_5: {
+        id: 'w_40_5',
+        text: { ko: '후배 양성에 관심이 있나요?', en: 'Interested in mentoring juniors?', zh: '对培养后辈感兴趣吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '많음', en: 'Very', zh: '很多' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '없음', en: 'Not really', zh: '不太' }, score: 1 }
+        }
+    },
+    w_40_6: {
+        id: 'w_40_6',
+        text: { ko: '업무 시간은?', en: 'Working hours?', zh: '工作时间？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '10시간 이상', en: '10+ hours', zh: '10小时以上' }, score: 5 },
+            2: { label: { ko: '8-10시간', en: '8-10 hours', zh: '8-10小时' }, score: 3 },
+            3: { label: { ko: '8시간 이하', en: 'Less than 8', zh: '8小时以下' }, score: 2 }
+        }
+    },
+    w_40_7: {
+        id: 'w_40_7',
+        text: { ko: '회사 경영 참여도는?', en: 'Involvement in company management?', zh: '参与公司管理程度？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '높음', en: 'High', zh: '高' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '낮음', en: 'Low', zh: '低' }, score: 1 }
+        }
+    },
+    w_40_8: {
+        id: 'w_40_8',
+        text: { ko: '업무 스트레스 관리는?', en: 'How do you manage work stress?', zh: '如何管理工作压力？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '잘함', en: 'Well', zh: '很好' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Okay', zh: '一般' }, score: 3 },
+            3: { label: { ko: '어려움', en: 'Difficult', zh: '困难' }, score: 1 }
+        }
+    },
+    w_40_9: {
+        id: 'w_40_9',
+        text: { ko: '재취업 계획이 있나요?', en: 'Do you plan to work after retirement?', zh: '有再就业计划吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '고민 중', en: 'Considering', zh: '考虑中' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 1 }
+        }
+    },
+    w_40_10: {
+        id: 'w_40_10',
+        text: { ko: '업무 만족도는?', en: 'Job satisfaction?', zh: '工作满意度？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '높음', en: 'High', zh: '高' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '낮음', en: 'Low', zh: '低' }, score: 1 }
+        }
+    },
+
+    // 50대 - 은퇴 준비/전문 컨설턴트 (w_50_1~w_50_10)
+    w_50_1: {
+        id: 'w_50_1',
+        text: { ko: '현재 근무 상태는?', en: 'Current work status?', zh: '目前工作状态？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '재직 중', en: 'Employed', zh: '在职' }, score: 5 },
+            2: { label: { ko: '은퇴', en: 'Retired', zh: '退休' }, score: 3 },
+            3: { label: { ko: '재취업', en: 'Re-employed', zh: '再就业' }, score: 4 }
+        }
+    },
+    w_50_2: {
+        id: 'w_50_2',
+        text: { ko: '은퇴 후 계획은?', en: 'Plans after retirement?', zh: '退休后计划？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '창업', en: 'Start business', zh: '创业' }, score: 5 },
+            2: { label: { ko: '여가', en: 'Leisure', zh: '休闲' }, score: 3 },
+            3: { label: { ko: '재취업', en: 'Re-employment', zh: '再就业' }, score: 4 }
+        }
+    },
+    w_50_3: {
+        id: 'w_50_3',
+        text: { ko: '후배 멘토링 활동은?', en: 'Mentoring activities?', zh: '指导后辈活动？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적', en: 'Active', zh: '积极' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Occasionally', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+    w_50_4: {
+        id: 'w_50_4',
+        text: { ko: '전문성 유지를 위한 노력은?', en: 'Efforts to maintain expertise?', zh: '为保持专业性的努力？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '많음', en: 'A lot', zh: '很多' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Some', zh: '一些' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+    w_50_5: {
+        id: 'w_50_5',
+        text: { ko: '업계 네트워크 활동은?', en: 'Industry networking activities?', zh: '行业社交活动？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적', en: 'Active', zh: '积极' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+    w_50_6: {
+        id: 'w_50_6',
+        text: { ko: '컨설팅 활동에 관심이 있나요?', en: 'Interested in consulting?', zh: '对咨询工作感兴趣吗？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '고민 중', en: 'Considering', zh: '考虑中' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 1 }
+        }
+    },
+    w_50_7: {
+        id: 'w_50_7',
+        text: { ko: '강의·교육 활동은?', en: 'Teaching/training activities?', zh: '讲课/培训活动？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '하고 있음', en: 'Currently doing', zh: '正在做' }, score: 5 },
+            2: { label: { ko: '계획 중', en: 'Planning', zh: '计划中' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+    w_50_8: {
+        id: 'w_50_8',
+        text: { ko: '경력을 활용한 봉사 활동은?', en: 'Volunteer work using your career?', zh: '利用职业经验的志愿活动？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '하고 있음', en: 'Currently doing', zh: '正在做' }, score: 5 },
+            2: { label: { ko: '계획 중', en: 'Planning', zh: '计划中' }, score: 3 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 1 }
+        }
+    },
+    w_50_9: {
+        id: 'w_50_9',
+        text: { ko: '업무 관련 건강 관리는?', en: 'Health management for work?', zh: '为工作的健康管理？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '철저함', en: 'Thorough', zh: '彻底' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '소홀함', en: 'Neglected', zh: '疏忽' }, score: 1 }
+        }
+    },
+    w_50_10: {
+        id: 'w_50_10',
+        text: { ko: '일과 여가의 균형은?', en: 'Work-leisure balance?', zh: '工作与休闲的平衡？' },
+        type: 'single',
+        options: {
+            1: { label: { ko: '균형', en: 'Balanced', zh: '平衡' }, score: 5 },
+            2: { label: { ko: '일 중심', en: 'Work-focused', zh: '以工作为主' }, score: 3 },
+            3: { label: { ko: '여가 중심', en: 'Leisure-focused', zh: '以休闲为主' }, score: 2 }
+        }
+    }
+    ,
+    // ============================================
+    // 연예·엔터테인먼트 질문 (e_t1 ~ e_50_10)
+    // ============================================
+
+    // 10대 - 게임/SNS/아이돌 (e_t1~e_t10)
+    e_t1: {
+        id: 'e_t1',
+        text: {
+            ko: '하루에 게임하는 시간은?',
+            en: 'How many hours do you play games daily?',
+            zh: '每天玩游戏的时间？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '3시간 이상', en: '3+ hours', zh: '3小时以上' }, score: 2 },
+            2: { label: { ko: '1-2시간', en: '1-2 hours', zh: '1-2小时' }, score: 3 },
+            3: { label: { ko: '거의 안 함', en: 'Rarely', zh: '很少' }, score: 5 }
+        }
+    },
+
+    e_t2: {
+        id: 'e_t2',
+        text: {
+            ko: '좋아하는 아이돌/연예인이 있나요?',
+            en: 'Do you have a favorite idol/celebrity?',
+            zh: '有喜欢的偶像/明星吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 2 },
+            2: { label: { ko: '관심 없음', en: 'Not interested', zh: '不感兴趣' }, score: 5 }
+        }
+    },
+
+    e_t3: {
+        id: 'e_t3',
+        text: {
+            ko: '유튜브 시청 시간은?',
+            en: 'How much time do you spend on YouTube?',
+            zh: '看YouTube的时间？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '3시간 이상', en: '3+ hours', zh: '3小时以上' }, score: 2 },
+            2: { label: { ko: '1-2시간', en: '1-2 hours', zh: '1-2小时' }, score: 3 },
+            3: { label: { ko: '1시간 미만', en: 'Less than 1 hour', zh: '不到1小时' }, score: 5 }
+        }
+    },
+
+    e_t4: {
+        id: 'e_t4',
+        text: {
+            ko: '영화는 주로 어디서 보나요?',
+            en: 'Where do you usually watch movies?',
+            zh: '通常在哪里看电影？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '극장', en: 'Theater', zh: '电影院' }, score: 5 },
+            2: { label: { ko: 'OTT (넷플릭스 등)', en: 'OTT (Netflix etc)', zh: 'OTT平台' }, score: 3 },
+            3: { label: { ko: '거의 안 봄', en: 'Rarely watch', zh: '很少看' }, score: 2 }
+        }
+    },
+
+    e_t5: {
+        id: 'e_t5',
+        text: {
+            ko: '음악은 주로 어떻게 듣나요?',
+            en: 'How do you usually listen to music?',
+            zh: '通常如何听音乐？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '스트리밍 (멜론, 스포티파이)', en: 'Streaming', zh: '流媒体' }, score: 3 },
+            2: { label: { ko: '유튜브', en: 'YouTube', zh: 'YouTube' }, score: 2 },
+            3: { label: { ko: '음원 구매', en: 'Purchase', zh: '购买' }, score: 5 }
+        }
+    },
+
+    e_t6: {
+        id: 'e_t6',
+        text: {
+            ko: '콘서트나 공연을 본 경험은?',
+            en: 'Have you been to concerts or shows?',
+            zh: '看过演唱会或演出吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주 감', en: 'Often', zh: '经常去' }, score: 4 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'Never', zh: '没有' }, score: 2 }
+        }
+    },
+
+    e_t7: {
+        id: 'e_t7',
+        text: {
+            ko: '좋아하는 장르는?',
+            en: 'What\'s your favorite genre?',
+            zh: '喜欢的类型？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '액션/스릴러', en: 'Action/Thriller', zh: '动作/惊悚' }, score: 3 },
+            2: { label: { ko: '로맨스/드라마', en: 'Romance/Drama', zh: '浪漫/剧情' }, score: 2 },
+            3: { label: { ko: '다큐/교양', en: 'Documentary', zh: '纪录片' }, score: 5 }
+        }
+    },
+
+    e_t8: {
+        id: 'e_t8',
+        text: {
+            ko: '웹툰/만화를 보나요?',
+            en: 'Do you read webtoons/comics?',
+            zh: '看网络漫画吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주 봄', en: 'Often', zh: '经常看' }, score: 2 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 봄', en: 'Never', zh: '不看' }, score: 5 }
+        }
+    },
+
+    e_t9: {
+        id: 'e_t9',
+        text: {
+            ko: '스포츠 관람 경험은?',
+            en: 'Have you watched sports events?',
+            zh: '看过体育比赛吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 4 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'Never', zh: '没有' }, score: 2 }
+        }
+    },
+
+    e_t10: {
+        id: 'e_t10',
+        text: {
+            ko: '친구들과 노래방 가는 빈도는?',
+            en: 'How often do you go to karaoke with friends?',
+            zh: '和朋友去KTV的频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 2 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '거의 안 감', en: 'Rarely', zh: '很少去' }, score: 5 }
+        }
+    },
+
+    // 20대 - OTT/카페/여행 (e_20_1~e_20_10)
+    e_20_1: {
+        id: 'e_20_1',
+        text: {
+            ko: 'OTT 구독 서비스는 몇 개 사용하나요?',
+            en: 'How many OTT subscriptions do you have?',
+            zh: '订阅了几个OTT服务？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '3개 이상', en: '3+', zh: '3个以上' }, score: 3 },
+            2: { label: { ko: '1-2개', en: '1-2', zh: '1-2个' }, score: 4 },
+            3: { label: { ko: '없음', en: 'None', zh: '没有' }, score: 2 }
+        }
+    },
+
+    e_20_2: {
+        id: 'e_20_2',
+        text: {
+            ko: '한 달에 영화관 방문 횟수는?',
+            en: 'How often do you visit movie theaters monthly?',
+            zh: '每月去电影院的次数？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '3회 이상', en: '3+ times', zh: '3次以上' }, score: 4 },
+            2: { label: { ko: '1-2회', en: '1-2 times', zh: '1-2次' }, score: 3 },
+            3: { label: { ko: '거의 안 감', en: 'Rarely', zh: '很少去' }, score: 2 }
+        }
+    },
+
+    e_20_3: {
+        id: 'e_20_3',
+        text: {
+            ko: '여행은 얼마나 자주 가나요?',
+            en: 'How often do you travel?',
+            zh: '多久旅行一次？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '분기별 1회', en: 'Quarterly', zh: '每季度一次' }, score: 4 },
+            2: { label: { ko: '연 1-2회', en: '1-2 times/year', zh: '每年1-2次' }, score: 3 },
+            3: { label: { ko: '거의 안 감', en: 'Rarely', zh: '很少去' }, score: 2 }
+        }
+    },
+
+    e_20_4: {
+        id: 'e_20_4',
+        text: {
+            ko: '카페에서 보내는 시간은?',
+            en: 'How much time do you spend at cafes?',
+            zh: '在咖啡馆度过的时间？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '주 3회 이상', en: '3+ times/week', zh: '每周3次以上' }, score: 3 },
+            2: { label: { ko: '주 1-2회', en: '1-2 times/week', zh: '每周1-2次' }, score: 4 },
+            3: { label: { ko: '거의 안 감', en: 'Rarely', zh: '很少去' }, score: 5 }
+        }
+    },
+
+    e_20_5: {
+        id: 'e_20_5',
+        text: {
+            ko: '전시회나 박물관 방문 빈도는?',
+            en: 'How often do you visit exhibitions or museums?',
+            zh: '参观展览或博物馆的频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '거의 안 감', en: 'Rarely', zh: '很少去' }, score: 1 }
+        }
+    },
+
+    e_20_6: {
+        id: 'e_20_6',
+        text: {
+            ko: '음악 페스티벌 참여 경험은?',
+            en: 'Have you attended music festivals?',
+            zh: '参加过音乐节吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 3 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 4 },
+            3: { label: { ko: '없음', en: 'Never', zh: '没有' }, score: 2 }
+        }
+    },
+
+    e_20_7: {
+        id: 'e_20_7',
+        text: {
+            ko: '독서 습관은?',
+            en: 'What are your reading habits?',
+            zh: '阅读习惯？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '월 2권 이상', en: '2+ books/month', zh: '每月2本以上' }, score: 5 },
+            2: { label: { ko: '월 1권', en: '1 book/month', zh: '每月1本' }, score: 4 },
+            3: { label: { ko: '거의 안 읽음', en: 'Rarely read', zh: '很少读' }, score: 2 }
+        }
+    },
+
+    e_20_8: {
+        id: 'e_20_8',
+        text: {
+            ko: '운동이나 헬스 활동은?',
+            en: 'Do you exercise or go to the gym?',
+            zh: '运动或健身活动？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '주 3회 이상', en: '3+ times/week', zh: '每周3次以上' }, score: 5 },
+            2: { label: { ko: '주 1-2회', en: '1-2 times/week', zh: '每周1-2次' }, score: 4 },
+            3: { label: { ko: '거의 안 함', en: 'Rarely', zh: '很少' }, score: 2 }
+        }
+    },
+
+    e_20_9: {
+        id: 'e_20_9',
+        text: {
+            ko: '술자리 빈도는?',
+            en: 'How often do you drink with friends?',
+            zh: '和朋友喝酒的频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '주 2회 이상', en: '2+ times/week', zh: '每周2次以上' }, score: 2 },
+            2: { label: { ko: '주 1회', en: 'Once/week', zh: '每周一次' }, score: 3 },
+            3: { label: { ko: '월 1-2회', en: '1-2 times/month', zh: '每月1-2次' }, score: 5 }
+        }
+    },
+
+    e_20_10: {
+        id: 'e_20_10',
+        text: {
+            ko: '새로운 취미를 시작하는 빈도는?',
+            en: 'How often do you start new hobbies?',
+            zh: '开始新爱好的频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 3 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 4 },
+            3: { label: { ko: '거의 없음', en: 'Rarely', zh: '很少' }, score: 5 }
+        }
+    },
+
+    // 30대 - 가족여행/문화생활 (e_30_1~e_30_10)
+    e_30_1: {
+        id: 'e_30_1',
+        text: {
+            ko: '가족과 함께하는 여가 활동은?',
+            en: 'What leisure activities do you do with family?',
+            zh: '和家人一起的休闲活动？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '주말마다', en: 'Every weekend', zh: '每个周末' }, score: 5 },
+            2: { label: { ko: '월 1-2회', en: '1-2 times/month', zh: '每月1-2次' }, score: 4 },
+            3: { label: { ko: '거의 없음', en: 'Rarely', zh: '很少' }, score: 2 }
+        }
+    },
+
+    e_30_2: {
+        id: 'e_30_2',
+        text: {
+            ko: '문화생활 지출은 한 달에 얼마나?',
+            en: 'How much do you spend on culture/entertainment monthly?',
+            zh: '每月文化生活支出？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '10만원 이상', en: '100k+ KRW', zh: '10万韩元以上' }, score: 4 },
+            2: { label: { ko: '5-10만원', en: '50-100k KRW', zh: '5-10万韩元' }, score: 3 },
+            3: { label: { ko: '5만원 미만', en: 'Less than 50k', zh: '不到5万' }, score: 2 }
+        }
+    },
+
+    e_30_3: {
+        id: 'e_30_3',
+        text: {
+            ko: '자녀와 함께 문화 활동을 하나요?',
+            en: 'Do you do cultural activities with children?',
+            zh: '和孩子一起进行文化活动吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음/해당없음', en: 'Never/N/A', zh: '没有/不适用' }, score: 2 }
+        }
+    },
+
+    e_30_4: {
+        id: 'e_30_4',
+        text: {
+            ko: '취미 생활에 투자하는 시간은?',
+            en: 'How much time do you invest in hobbies?',
+            zh: '投资在爱好上的时间？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '주 5시간 이상', en: '5+ hours/week', zh: '每周5小时以上' }, score: 4 },
+            2: { label: { ko: '주 2-4시간', en: '2-4 hours/week', zh: '每周2-4小时' }, score: 3 },
+            3: { label: { ko: '거의 없음', en: 'Almost none', zh: '几乎没有' }, score: 2 }
+        }
+    },
+
+    e_30_5: {
+        id: 'e_30_5',
+        text: {
+            ko: '연극이나 뮤지컬 관람 빈도는?',
+            en: 'How often do you watch plays or musicals?',
+            zh: '看话剧或音乐剧的频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '분기별 1회 이상', en: 'Quarterly+', zh: '每季度一次以上' }, score: 5 },
+            2: { label: { ko: '연 1-2회', en: '1-2 times/year', zh: '每年1-2次' }, score: 4 },
+            3: { label: { ko: '거의 안 봄', en: 'Rarely', zh: '很少看' }, score: 2 }
+        }
+    },
+
+    e_30_6: {
+        id: 'e_30_6',
+        text: {
+            ko: '해외여행 빈도는?',
+            en: 'How often do you travel abroad?',
+            zh: '出国旅行的频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '연 2회 이상', en: '2+ times/year', zh: '每年2次以上' }, score: 5 },
+            2: { label: { ko: '연 1회', en: 'Once/year', zh: '每年一次' }, score: 4 },
+            3: { label: { ko: '거의 안 감', en: 'Rarely', zh: '很少去' }, score: 2 }
+        }
+    },
+
+    e_30_7: {
+        id: 'e_30_7',
+        text: {
+            ko: '요리나 베이킹 취미가 있나요?',
+            en: 'Do you have cooking or baking hobbies?',
+            zh: '有烹饪或烘焙爱好吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+
+    e_30_8: {
+        id: 'e_30_8',
+        text: {
+            ko: '스포츠 활동 참여는?',
+            en: 'Do you participate in sports activities?',
+            zh: '参与体育活动吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '정기적으로', en: 'Regularly', zh: '定期' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 2 }
+        }
+    },
+
+    e_30_9: {
+        id: 'e_30_9',
+        text: {
+            ko: '온라인 강의나 자기계발 활동은?',
+            en: 'Do you take online courses or self-development activities?',
+            zh: '参加在线课程或自我发展活动吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 1 }
+        }
+    },
+
+    e_30_10: {
+        id: 'e_30_10',
+        text: {
+            ko: '주말 저녁 시간 활용은?',
+            en: 'How do you spend weekend evenings?',
+            zh: '如何度过周末晚上？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '외출/문화생활', en: 'Go out/Culture', zh: '外出/文化' }, score: 4 },
+            2: { label: { ko: '가족과 집에서', en: 'Home with family', zh: '在家和家人' }, score: 5 },
+            3: { label: { ko: 'TV/휴식', en: 'TV/Rest', zh: '电视/休息' }, score: 2 }
+        }
+    },
+
+    // 40대 - 골프/등산/건강 (e_40_1~e_40_10)
+    e_40_1: {
+        id: 'e_40_1',
+        text: {
+            ko: '골프를 치나요?',
+            en: 'Do you play golf?',
+            zh: '打高尔夫吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '정기적으로', en: 'Regularly', zh: '定期' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 4 },
+            3: { label: { ko: '안 침', en: 'No', zh: '不打' }, score: 2 }
+        }
+    },
+
+    e_40_2: {
+        id: 'e_40_2',
+        text: {
+            ko: '등산 빈도는?',
+            en: 'How often do you go hiking?',
+            zh: '登山频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '주 1회 이상', en: 'Weekly+', zh: '每周一次以上' }, score: 5 },
+            2: { label: { ko: '월 1-2회', en: '1-2 times/month', zh: '每月1-2次' }, score: 4 },
+            3: { label: { ko: '거의 안 감', en: 'Rarely', zh: '很少去' }, score: 2 }
+        }
+    },
+
+    e_40_3: {
+        id: 'e_40_3',
+        text: {
+            ko: '건강 관련 취미 활동은?',
+            en: 'Do you have health-related hobbies?',
+            zh: '有健康相关的爱好吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음 (요가, 수영 등)', en: 'Yes (yoga, swimming, etc)', zh: '有（瑜伽、游泳等）' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 1 }
+        }
+    },
+
+    e_40_4: {
+        id: 'e_40_4',
+        text: {
+            ko: '문화센터 강좌 수강 경험은?',
+            en: 'Have you taken cultural center classes?',
+            zh: '参加过文化中心课程吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '현재 수강 중', en: 'Currently taking', zh: '正在上' }, score: 5 },
+            2: { label: { ko: '과거에 수강', en: 'Took before', zh: '以前上过' }, score: 3 },
+            3: { label: { ko: '없음', en: 'Never', zh: '没有' }, score: 1 }
+        }
+    },
+
+    e_40_5: {
+        id: 'e_40_5',
+        text: {
+            ko: '자녀 교육 관련 활동 참여는?',
+            en: 'Do you participate in children\'s educational activities?',
+            zh: '参与子女教育活动吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적', en: 'Active', zh: '积极' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Moderate', zh: '一般' }, score: 3 },
+            3: { label: { ko: '없음/해당없음', en: 'None/N/A', zh: '没有/不适用' }, score: 1 }
+        }
+    },
+
+    e_40_6: {
+        id: 'e_40_6',
+        text: {
+            ko: '와인이나 위스키 같은 취미가 있나요?',
+            en: 'Do you have hobbies like wine or whiskey?',
+            zh: '有葡萄酒或威士忌等爱好吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '관심 있음', en: 'Interested', zh: '感兴趣' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+
+    e_40_7: {
+        id: 'e_40_7',
+        text: {
+            ko: '사진이나 영상 촬영 취미는?',
+            en: 'Do you have photography or videography hobbies?',
+            zh: '有摄影或录像爱好吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 4 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 2 }
+        }
+    },
+
+    e_40_8: {
+        id: 'e_40_8',
+        text: {
+            ko: '동호회 활동을 하나요?',
+            en: 'Do you participate in club activities?',
+            zh: '参加俱乐部活动吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적', en: 'Active', zh: '积极' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 1 }
+        }
+    },
+
+    e_40_9: {
+        id: 'e_40_9',
+        text: {
+            ko: '클래식 음악이나 오페라 관람은?',
+            en: 'Do you attend classical music or opera?',
+            zh: '听古典音乐或看歌剧吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 4 },
+            3: { label: { ko: '거의 안 감', en: 'Rarely', zh: '很少去' }, score: 2 }
+        }
+    },
+
+    e_40_10: {
+        id: 'e_40_10',
+        text: {
+            ko: '주말 여가 시간 활용 만족도는?',
+            en: 'How satisfied are you with weekend leisure time?',
+            zh: '对周末休闲时间的满意度？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '만족', en: 'Satisfied', zh: '满意' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Okay', zh: '一般' }, score: 3 },
+            3: { label: { ko: '불만족', en: 'Unsatisfied', zh: '不满意' }, score: 1 }
+        }
+    },
+
+    // 50대 - 원예/낚시/여행 (e_50_1~e_50_10)
+    e_50_1: {
+        id: 'e_50_1',
+        text: {
+            ko: '원예나 텃밭 가꾸기를 하나요?',
+            en: 'Do you do gardening or farming?',
+            zh: '做园艺或种菜吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '적극적으로', en: 'Actively', zh: '积极地' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 1 }
+        }
+    },
+
+    e_50_2: {
+        id: 'e_50_2',
+        text: {
+            ko: '낚시를 즐기나요?',
+            en: 'Do you enjoy fishing?',
+            zh: '喜欢钓鱼吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 1 }
+        }
+    },
+
+    e_50_3: {
+        id: 'e_50_3',
+        text: {
+            ko: '국내 여행 빈도는?',
+            en: 'How often do you travel domestically?',
+            zh: '国内旅行频率？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '월 1회 이상', en: 'Monthly+', zh: '每月一次以上' }, score: 5 },
+            2: { label: { ko: '분기별 1회', en: 'Quarterly', zh: '每季度一次' }, score: 4 },
+            3: { label: { ko: '연 1-2회', en: '1-2 times/year', zh: '每年1-2次' }, score: 2 }
+        }
+    },
+
+    e_50_4: {
+        id: 'e_50_4',
+        text: {
+            ko: '서예나 그림 같은 예술 활동은?',
+            en: 'Do you do art activities like calligraphy or painting?',
+            zh: '做书法或绘画等艺术活动吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '관심 있음', en: 'Interested', zh: '感兴趣' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 1 }
+        }
+    },
+
+    e_50_5: {
+        id: 'e_50_5',
+        text: {
+            ko: '손주와 함께하는 여가 활동은?',
+            en: 'Do you do leisure activities with grandchildren?',
+            zh: '和孙子孙女一起的休闲活动？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음/해당없음', en: 'None/N/A', zh: '没有/不适用' }, score: 1 }
+        }
+    },
+
+    e_50_6: {
+        id: 'e_50_6',
+        text: {
+            ko: '건강 관련 운동 (게이트볼, 파크골프 등)은?',
+            en: 'Do you do health-related sports (gateball, park golf, etc)?',
+            zh: '做健康相关运动（门球、公园高尔夫等）吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '정기적으로', en: 'Regularly', zh: '定期' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 1 }
+        }
+    },
+
+    e_50_7: {
+        id: 'e_50_7',
+        text: {
+            ko: '노래교실이나 댄스 교실 참여는?',
+            en: 'Do you attend singing or dance classes?',
+            zh: '参加歌唱或舞蹈课程吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '참여 중', en: 'Currently attending', zh: '正在参加' }, score: 5 },
+            2: { label: { ko: '관심 있음', en: 'Interested', zh: '感兴趣' }, score: 3 },
+            3: { label: { ko: '안 함', en: 'No', zh: '不' }, score: 1 }
+        }
+    },
+
+    e_50_8: {
+        id: 'e_50_8',
+        text: {
+            ko: '경로당이나 복지관 이용은?',
+            en: 'Do you use senior centers or welfare centers?',
+            zh: '使用老年中心或福利中心吗？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '자주', en: 'Often', zh: '经常' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '안 감', en: 'No', zh: '不去' }, score: 1 }
+        }
+    },
+
+    e_50_9: {
+        id: 'e_50_9',
+        text: {
+            ko: '배우자와 함께하는 취미 활동은?',
+            en: 'Do you have hobbies with your spouse?',
+            zh: '和配偶一起的爱好活动？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '있음', en: 'Yes', zh: '有' }, score: 5 },
+            2: { label: { ko: '가끔', en: 'Sometimes', zh: '偶尔' }, score: 3 },
+            3: { label: { ko: '없음', en: 'No', zh: '没有' }, score: 1 }
+        }
+    },
+
+    e_50_10: {
+        id: 'e_50_10',
+        text: {
+            ko: '여가 생활 만족도는?',
+            en: 'How satisfied are you with your leisure life?',
+            zh: '对休闲生活的满意度？'
+        },
+        type: 'single',
+        options: {
+            1: { label: { ko: '매우 만족', en: 'Very satisfied', zh: '非常满意' }, score: 5 },
+            2: { label: { ko: '보통', en: 'Okay', zh: '一般' }, score: 3 },
+            3: { label: { ko: '불만족', en: 'Unsatisfied', zh: '不满意' }, score: 1 }
+        }
     }
 };
 
-// 나머지 질문들은 동일한 패턴으로 추가 예정 (w_t1~w_50_10, e_t1~e_50_10)
-// 총 150개 질문 (3 시나리오 × 5 연령대 × 10 질문)
+// 총 150개 질문 완성 (3 시나리오 × 5 연령대 × 10 질문)
+// - 일상생활 (daily): 50개 ✅
+// - 직장생활 (work): 50개 ✅
+// - 연예생활 (entertainment): 50개 ✅
 

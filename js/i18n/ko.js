@@ -18,6 +18,17 @@ const translations_ko = {
     resultText: "당신의 실물 나이는",
     resultTextAge: "세입니다",
 
+    // Scenario Selection
+    scenarioTitle: "어떤 상황의 마음 나이를 알고 싶으신가요?",
+    scenarioDesc: "당신의 연령대에 맞는 질문으로 분석합니다",
+    scenarioDaily: "일상생활",
+    scenarioDailyDesc: "평소 생활 습관과 일상적인 선택",
+    scenarioWork: "직장생활",
+    scenarioWorkDesc: "직장에서의 태도와 업무 스타일",
+    scenarioEntertainment: "연예생활",
+    scenarioEntertainmentDesc: "여가 활동과 취미 생활",
+    btnStartQuestions: "질문 시작하기",
+
     // Questions
     progressText: "{current} / {total}",
     customQuestionNotice: "당신의 연령·성별에 맞춘 질문입니다",

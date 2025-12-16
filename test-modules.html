@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Test</title>
+</head>
+
+<body>
+    <h1>Module Loading Test</h1>
+    <div id="result"></div>
+
+    <script type="module">
+        import { SCENARIOS } from './js/scenarios.js';
+        import { QUESTIONS } from './js/scenarioQuestions.js';
+
+        const resultDiv = document.getElementById('result');
+
+        // Test SCENARIOS
+        console.log('SCENARIOS:', SCENARIOS);
+        resultDiv.innerHTML += '<h2>SCENARIOS Loaded:</h2>';
+        resultDiv.innerHTML += `<p>Daily: ${SCENARIOS.daily.name.ko}</p>`;
+        resultDiv.innerHTML += `<p>Work: ${SCENARIOS.work.name.ko}</p>`;
+        resultDiv.innerHTML += `<p>Entertainment: ${SCENARIOS.entertainment.name.ko}</p>`;
+
+        // Test QUESTIONS
+        console.log('QUESTIONS:', QUESTIONS);
+        resultDiv.innerHTML += '<h2>QUESTIONS Loaded:</h2>';
+        resultDiv.innerHTML += `<p>Total questions: ${Object.keys(QUESTIONS).length}</p>`;
+        resultDiv.innerHTML += `<p>First question (d_t1): ${QUESTIONS.d_t1.text.ko}</p>`;
+        resultDiv.innerHTML += `<p>First work question (w_t1): ${QUESTIONS.w_t1.text.ko}</p>`;
+        resultDiv.innerHTML += `<p>First entertainment question (e_t1): ${QUESTIONS.e_t1.text.ko}</p>`;
+
+        resultDiv.innerHTML += '<h2 style="color: green;">✅ All modules loaded successfully!</h2>';
+    </script>
+</body>
+
+</html>

@@ -18,6 +18,17 @@ const translations_en = {
     resultText: "Your physical age is",
     resultTextAge: "years old",
 
+    // Scenario Selection
+    scenarioTitle: "Which aspect of your mental age would you like to know?",
+    scenarioDesc: "Analyzed with questions tailored to your age group",
+    scenarioDaily: "Daily Life",
+    scenarioDailyDesc: "Your daily habits and routine choices",
+    scenarioWork: "Work Life",
+    scenarioWorkDesc: "Your attitude and work style at the office",
+    scenarioEntertainment: "Entertainment Life",
+    scenarioEntertainmentDesc: "Your leisure activities and hobbies",
+    btnStartQuestions: "Start Questions",
+
     // Questions
     progressText: "{current} / {total}",
     customQuestionNotice: "Questions customized for your age and gender",
