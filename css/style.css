@@ -190,9 +190,11 @@ body {
    =========================== */
 .btn-primary {
     position: relative;
-    padding: 1rem 3rem;
+    padding: 0.8rem 2.5rem;
+    /* Reduced padding */
     font-family: 'Outfit', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    /* Slightly smaller font */
     font-weight: 700;
     color: var(--text-primary);
     background: var(--gradient-primary);
