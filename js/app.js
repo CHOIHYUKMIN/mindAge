@@ -1378,11 +1378,19 @@ const app = {
                     <div class="history-header">
                         <div class="history-left">
                             <span class="history-date-short">${shortDate}</span>
-                            <span class="history-summary">
-                                <span class="age-label">${i18n.t('historyPhysicalAge')}</span> <strong>${item.physicalAge}</strong>
+                            <div class="history-summary">
+                                <span class="summary-group">
+                                    <span class="age-label">${i18n.t('historyPhysicalAge')}</span> <strong>${item.physicalAge}</strong>
+                                </span>
                                 <span class="divider">/</span>
-                                <span class="age-label">${i18n.t('historyMentalAge')}</span> <strong>${item.mentalAge}</strong>
-                            </span>
+                                <span class="summary-group">
+                                    <span class="age-label">${i18n.t('historyMentalAge')}</span> <strong>${item.mentalAge}</strong>
+                                </span>
+                                <span class="divider">/</span>
+                                <span class="summary-text" title="${emotionText}">${emotionText}</span>
+                                <span class="divider">/</span>
+                                <span class="summary-text" title="${faceShapeText}">${faceShapeText}</span>
+                            </div>
                         </div>
                         <div class="history-right">
                             <span class="history-diff-badge ${diffClass}">${diffSign}${diff}</span>

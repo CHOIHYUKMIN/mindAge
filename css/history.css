@@ -143,19 +143,44 @@
 .history-summary {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.95rem;
+    gap: 4px;
+    font-size: 0.9rem;
     color: var(--text-primary);
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+.summary-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
 }
 
 .history-summary .age-label {
     font-size: 0.75rem;
     color: var(--text-secondary);
     display: none;
-    /* Hidden on very small screens */
+    /* Hide labels on mobile */
+}
+
+.summary-text {
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Larger screens: Show labels and expand text */
+@media (min-width: 480px) {
+    .history-summary .age-label {
+        display: inline;
+        margin-right: 2px;
+    }
+
+    .summary-text {
+        max-width: 100px;
+    }
 }
 
 .history-summary strong {
