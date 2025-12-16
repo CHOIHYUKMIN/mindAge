@@ -1189,6 +1189,28 @@ const app = {
 
         // Add confetti effect
         this.createConfetti();
+
+        // 💾 Save to history
+        this.saveToHistory();
+    },
+
+    // Save current result to history
+    async saveToHistory() {
+        try {
+            await HistoryDB.saveResult({
+                physicalAge: this.physicalAge,
+                mentalAge: this.mentalAge,
+                gender: this.gender,
+                scenario: this.currentScenario?.id || 'unknown',
+                archetype: this.archetype,
+                emotion: this.emotion,
+                faceShape: this.faceShape,
+                personalColor: this.personalColor
+            });
+            console.log('✅ Result saved to history');
+        } catch (error) {
+            console.error('Failed to save to history:', error);
+        }
     }
 };
 
