@@ -203,7 +203,7 @@ const app = {
             }
         });
 
-        // Set up event listeners for start button
+        // Set up event listeners for start button (backup for onclick)
         const btnStart = document.querySelector('.btn-start');
         if (btnStart) {
             btnStart.addEventListener('click', (e) => {
