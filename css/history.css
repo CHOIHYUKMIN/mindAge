@@ -93,18 +93,29 @@
 .history-item {
     background: rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-md);
-    padding: var(--spacing-md);
     margin-bottom: var(--spacing-md);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all var(--transition-fast);
+    cursor: pointer;
+    overflow: hidden;
 }
 
 .history-item:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.1);
+}
+
+.history-header {
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
 }
 
 .history-info {
@@ -149,10 +160,6 @@
 
 /* Same */
 
-.history-actions {
-    margin-left: var(--spacing-md);
-}
-
 .btn-delete-record {
     background: none;
     border: none;
@@ -162,11 +169,50 @@
     padding: 4px;
     border-radius: 50%;
     transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-delete-record:hover {
     color: #ff6b6b;
     background: rgba(255, 107, 107, 0.1);
+}
+
+/* Detailed View */
+.history-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0 var(--spacing-md);
+}
+
+.history-item.expanded .history-details {
+    max-height: 500px;
+    /* Sufficient height */
+    padding: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    color: var(--text-tertiary);
+}
+
+.detail-value {
+    color: var(--text-primary);
+    font-weight: 500;
 }
 
 .history-empty {

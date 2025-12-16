@@ -1308,24 +1308,61 @@ const app = {
 
             const scenarioName = i18n.t(`scenario${item.scenario.charAt(0).toUpperCase() + item.scenario.slice(1)}`) || item.scenario;
 
+            // 상세 정보 포맷팅
+            const genderText = item.gender === 'male' ? (i18n.currentLang === 'ko' ? '남성' : 'Male') : (i18n.currentLang === 'ko' ? '여성' : 'Female');
+            const emotionText = item.emotion ? (i18n.t(`emotion_${item.emotion}`) || item.emotion) : '-';
+            // faceShape와 personalColor는 i18n 키가 있을 경우 번역, 없으면 원본
+            let faceShapeText = '-';
+            if (item.faceShape) {
+                // faceShape.js의 매핑 로직을 참고하거나 간단히 표시
+                faceShapeText = item.faceShape;
+            }
+
             html += `
-                <div class="history-item">
-                    <div class="history-info">
-                        <div class="history-date">${date} ${time}</div>
-                        <div class="history-ages">
-                            ${i18n.t('historyPhysicalAge')}: ${item.physicalAge} / ${i18n.t('historyMentalAge')}: ${item.mentalAge}
+                <div class="history-item" onclick="this.classList.toggle('expanded')">
+                    <div class="history-header">
+                        <div class="history-info">
+                            <div class="history-date">${date} ${time}</div>
+                            <div class="history-ages">
+                                ${i18n.t('historyPhysicalAge')}: ${item.physicalAge} / ${i18n.t('historyMentalAge')}: ${item.mentalAge}
+                            </div>
+                            <div class="history-scenario">${scenarioName}</div>
                         </div>
-                        <div class="history-scenario">${scenarioName}</div>
+                        <div class="history-right">
+                            <div class="history-diff ${diffClass}">
+                                ${diffSign}${diff}
+                            </div>
+                            <div class="history-actions">
+                                <button class="btn-delete-record" onclick="event.stopPropagation(); app.deleteHistoryRecord(${item.id})">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 6L6 18M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="history-diff ${diffClass}">
-                        ${diffSign}${diff}
-                    </div>
-                    <div class="history-actions">
-                        <button class="btn-delete-record" onclick="app.deleteHistoryRecord(${item.id})">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 6L6 18M6 6l12 12"></path>
-                            </svg>
-                        </button>
+                    <div class="history-details">
+                        <div class="detail-row">
+                            <span class="detail-label">성별:</span>
+                            <span class="detail-value">${genderText}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">감정:</span>
+                            <span class="detail-value">${emotionText}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">얼굴형:</span>
+                            <span class="detail-value">${item.faceShape || '-'}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">퍼스널 컬러:</span>
+                            <span class="detail-value">${item.personalColor || '-'}</span>
+                        </div>
+                        ${item.archetype ? `
+                        <div class="detail-row" style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px;">
+                            <span class="detail-label">캐릭터:</span>
+                            <span class="detail-value">${item.archetype.name[i18n.currentLang] || item.archetype.name.ko}</span>
+                        </div>` : ''}
                     </div>
                 </div>
             `;
