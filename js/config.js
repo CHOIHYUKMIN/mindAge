@@ -19,7 +19,7 @@ const CONFIG = {
 
     // 버전 관리 (한 곳에서 관리)
     VERSION: '3.0.0',
-    VERSION_NAME: 'Mental Age System v3 🧠'
+    VERSION_NAME: 'christmas edition 🎄',
 };
 
 // Get the current URL based on environment
