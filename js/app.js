@@ -239,10 +239,20 @@ const app = {
         const historyList = document.getElementById('history-list');
         if (historyList) {
             historyList.addEventListener('click', (e) => {
-                // History item click (toggle expand)
-                // Note: Delete button click is handled inline with stopPropagation
+                // 1. Delete button click (High priority)
+                const deleteBtn = e.target.closest('.btn-delete-record');
+                if (deleteBtn) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Crucial: Stop bubbling to history item
+                    const id = deleteBtn.getAttribute('data-id');
+                    this.deleteHistoryRecord(id);
+                    return;
+                }
+
+                // 2. History item click (toggle expand)
                 const historyItem = e.target.closest('.history-item');
-                if (historyItem && !e.target.closest('.btn-delete-record')) {
+                // Only toggle if we didn't click a button (double safety)
+                if (historyItem && !e.target.closest('button')) {
                     historyItem.classList.toggle('expanded');
                 }
             });
@@ -1385,7 +1395,7 @@ const app = {
                         </div>
                         <div class="history-right">
                             <span class="history-diff-badge ${diffClass}">${diffSign}${diff}</span>
-                            <button class="btn-delete-record" onclick="app.deleteHistoryRecord('${item.id}', event)">
+                            <button class="btn-delete-record" data-id="${item.id}">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="pointer-events: none;">
                                     <path d="M18 6L6 18M6 6l12 12"></path>
                                 </svg>
