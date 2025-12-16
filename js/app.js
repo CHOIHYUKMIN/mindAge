@@ -44,6 +44,17 @@ const app = {
         if (age < 60) return 'fifties';
         return 'sixties';
     },
+
+    // Helper: Shuffle array (Fisher-Yates algorithm)
+    shuffleArray(array) {
+        const shuffled = [...array]; // 원본 배열 복사
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    },
+
     // Map age difference to level code
     mapDiffToLevel(diff) {
         if (diff >= 10) return 'Y_E';
@@ -998,8 +1009,11 @@ const app = {
         if (optionsContainer && question.options) {
             optionsContainer.innerHTML = '';
 
+            // 옵션 순서를 랜덤하게 섞기 (패턴 답변 방지)
+            const shuffledOptions = this.shuffleArray(question.options);
+
             // 새 시스템은 options가 배열
-            question.options.forEach((option, index) => {
+            shuffledOptions.forEach((option, index) => {
                 const optionLabel = option.label[i18n.currentLang] || option.label.ko;
                 const optionBtn = document.createElement('button');
                 optionBtn.className = 'option-btn';
